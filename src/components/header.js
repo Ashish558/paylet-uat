@@ -2,7 +2,8 @@ import React from "react";
 import logoWhite from "./../images/logo-color-white-1.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
-const Header = () => {
+const Header = (props) => {
+  console.log(props);
   const [state, setState] = React.useState({
     left: false,
   });
@@ -124,14 +125,35 @@ const Header = () => {
       </div>
     </div>
   );
+  if (props.register)
+    return (
+      <nav class="navbar navbar-expand-md navbar-dark">
+        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <img class="img-responsive float-left" src={logoWhite} alt="" />
+            </li>
+          </ul>
+        </div>
+        <div class="mx-auto order-0">
+          <a class="navbar-brand mx-auto" href="#">
+            E-Mandate Registration
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target=".dual-collapse2"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2"></div>
+      </nav>
+    );
   return (
-    <header>
-      <nav
-        // th:fragment="navbar-fragment"
-        // xmlns:th="http://www.w3.org/1999/xhtml"
-        // xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-        class="navbar fixed-top navbar-expand-lg navbar-light ripshadow white scrolling-navbar botborder"
-      >
+    <header class="navbar fixed-top navbar-expand-lg navbar-light ripshadow white scrolling-navbar botborder">
+      <nav style={{ width: "100%" }}>
         <div class="container-fluid">
           <a style={{ color: "white" }} onClick={toggleDrawer(anchor, true)}>
             <i class="fas fa-bars mr-3"></i>

@@ -778,3 +778,10 @@ li {
 .close:hover {
   color: white;
 }
+.otp-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
