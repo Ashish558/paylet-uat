@@ -703,10 +703,11 @@ p strong {
 }
 
 .loginbg hr {
-  margin-top: 5px;
+  margin: 5px auto;
   width: 30%;
   background-image: linear-gradient(to right, #fec012, #fa0177);
   height: 2px;
+  opacity: 1;
 }
 
 .loginbg img {
