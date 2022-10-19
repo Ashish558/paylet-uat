@@ -15,8 +15,12 @@ body {
   border-width: thin;
   overflow-x: hidden;
   display: block;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
 }
-
+.rightmenu a {
+  text-decoration: none;
+}
 .navbar {
   z-index: 1040;
   background-color: #1f1b69 !important;
