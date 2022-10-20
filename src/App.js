@@ -16,6 +16,15 @@ import {
   ReportsNew,
   AssetsType,
   Currency,
+  Enquiry,
+  EnquiryDetails,
+  CreateEnquiry,
+  CreatePayment,
+  Search,
+  SearchEnquiry,
+  CreateReport,
+  TodayMandate,
+  TransactionReports,
 } from "./components";
 const App = () => {
   const [user, setUser] = React.useState({ name: "ankeeta" });
@@ -31,6 +40,19 @@ const App = () => {
         <Route path="/report-details" exact component={ReportDetails} />
         <Route path="/report" exact component={Report} />
         <Route path="/currency" exact component={Currency} />
+        <Route path="/enquiry" exact component={Enquiry} />
+        <Route path="/enquiry-details" exact component={EnquiryDetails} />
+        <Route path="/create-enquiry" exact component={CreateEnquiry} />
+        <Route path="/create-payment" exact component={CreatePayment} />
+        <Route path="/create-report" exact component={CreateReport} />
+        <Route path="/search" exact component={Search} />
+        <Route path="/search-enquiry" exact component={SearchEnquiry} />
+        <Route path="/today-mandate" exact component={TodayMandate} />
+        <Route
+          path="/transaction-reports"
+          exact
+          component={TransactionReports}
+        />
         <Route
           path="/otp"
           exact
