@@ -2,7 +2,7 @@ import "./css/bootstrap.min.css";
 import "./css/bootstrap.css";
 
 import "./css/style.css";
-import "./css/addons/datatables.min.css";
+
 import React from "react";
 import { Route, BrowserRouter, Redirect, Switch } from "react-router-dom";
 import {
@@ -14,6 +14,8 @@ import {
   Report,
   ReportDetails,
   ReportsNew,
+  AssetsType,
+  Currency,
 } from "./components";
 const App = () => {
   const [user, setUser] = React.useState({ name: "ankeeta" });
@@ -24,9 +26,11 @@ const App = () => {
 
       <Switch>
         <Route path="/login" exact component={Login} />
+        <Route path="/asset-type" exact component={AssetsType} />
         <Route path="/reports-new" exact component={ReportsNew} />
         <Route path="/report-details" exact component={ReportDetails} />
         <Route path="/report" exact component={Report} />
+        <Route path="/currency" exact component={Currency} />
         <Route
           path="/otp"
           exact

@@ -1,6 +1,62 @@
 import React from "react";
+import { styled } from "@mui/material/styles";
+
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
+
+import TableRow from "@mui/material/TableRow";
+import Table from "./table";
 const ReportsNew = () => {
   const [isMandate, setMandate] = React.useState(true);
+  const tableHeadings = [
+    { id: "refNo", label: "Reference Number", numeric: false },
+    { id: "date", label: "Date", numeric: false },
+    { id: "status", label: "Status", numeric: false },
+    { id: "action", label: "Action", numeric: false },
+  ];
+  const tableData = [
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "13/11/2020",
+      status: "Authorized",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "13/11/2020",
+      status: "	Transaction Open Status",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "14/11/2020",
+      status: "Initiated",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "14/11/2020",
+      status: "Authorized",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "15/11/2020",
+      status: "Rejected By NPCI",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "15/11/2020",
+      status: "Authorized",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "17/11/2020",
+      status: "Authorization Request Rejected",
+      action: "view",
+    },
+  ];
 
   return (
     <div style={{ margin: "85px 0" }}>
@@ -426,6 +482,27 @@ const ReportsNew = () => {
               </a>
             </div>
           </div>
+        </div>
+      </div>
+      <Table
+        tableHeadings={tableHeadings}
+        tableData={tableData}
+        tableName={`Generated Report`}
+        defaultSort={`date`}
+      />
+      <div class="row pb-5 mb-5">
+        <div class="col-md-12 text-center">
+          <a href="">
+            <button class="btn btn-primary">Download pdf</button>
+          </a>
+          <a href="">
+            <button class="btn btn-primary">Download csv</button>
+          </a>
+          <a href="home.html">
+            <button type="button" class="btn btn-outline-primary waves-effect">
+              cancel
+            </button>
+          </a>
         </div>
       </div>
     </div>
