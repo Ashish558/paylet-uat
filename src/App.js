@@ -35,6 +35,14 @@ import {
   SearchReport,
   MyDownload,
   MyJobs,
+  Mandate,
+  MandateDetails,
+  MandateReports,
+  MyMandate,
+  PaymentFrequency,
+  PaymentMode,
+  Payments,
+  PaymentsDetails,
 } from "./components";
 const App = () => {
   const [user, setUser] = React.useState({ name: "ankeeta" });
@@ -53,6 +61,14 @@ const App = () => {
         <Route path="/enquiry" exact component={Enquiry} />
         <Route path="/my-download" exact component={MyDownload} />
         <Route path="/my-jobs" exact component={MyJobs} />
+        <Route path="/my-mandate" exact component={MyMandate} />
+        <Route path="/mandate" exact component={Mandate} />
+        <Route path="/mandate-details" exact component={MandateDetails} />
+        <Route path="/mandate-reports" exact component={MandateReports} />
+        <Route path="/payment-frequency" exact component={PaymentFrequency} />
+        <Route path="/payment-mode" exact component={PaymentMode} />
+        <Route path="/payments" exact component={Payments} />
+        <Route path="/payments-details" exact component={PaymentsDetails} />
         <Route
           path="/import-mandate-request"
           exact
