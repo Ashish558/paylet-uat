@@ -24,7 +24,17 @@ import {
   SearchEnquiry,
   CreateReport,
   TodayMandate,
+  TransactionReport,
   TransactionReports,
+  WebReport,
+  WebResult,
+  ImportMandateRequest,
+  InitiateMandateRequest,
+  SearchMandateRequest,
+  SearchPayments,
+  SearchReport,
+  MyDownload,
+  MyJobs,
 } from "./components";
 const App = () => {
   const [user, setUser] = React.useState({ name: "ankeeta" });
@@ -41,6 +51,25 @@ const App = () => {
         <Route path="/report" exact component={Report} />
         <Route path="/currency" exact component={Currency} />
         <Route path="/enquiry" exact component={Enquiry} />
+        <Route path="/my-download" exact component={MyDownload} />
+        <Route path="/my-jobs" exact component={MyJobs} />
+        <Route
+          path="/import-mandate-request"
+          exact
+          component={ImportMandateRequest}
+        />
+        <Route
+          path="/initiate-mandate-request"
+          exact
+          component={InitiateMandateRequest}
+        />
+        <Route
+          path="/search-mandate-request"
+          exact
+          component={SearchMandateRequest}
+        />
+        <Route path="/search-payments" exact component={SearchPayments} />
+        <Route path="/search-report" exact component={SearchReport} />
         <Route path="/enquiry-details" exact component={EnquiryDetails} />
         <Route path="/create-enquiry" exact component={CreateEnquiry} />
         <Route path="/create-payment" exact component={CreatePayment} />
@@ -48,6 +77,9 @@ const App = () => {
         <Route path="/search" exact component={Search} />
         <Route path="/search-enquiry" exact component={SearchEnquiry} />
         <Route path="/today-mandate" exact component={TodayMandate} />
+        <Route path="/web-report" exact component={WebReport} />
+        <Route path="/web-result" exact component={WebResult} />
+        <Route path="/transaction-report" exact component={TransactionReport} />
         <Route
           path="/transaction-reports"
           exact

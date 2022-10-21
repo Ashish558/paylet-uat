@@ -1,7 +1,7 @@
 import React from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
-const SearchEnquiry = () => {
+const SearchPayments = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
     { id: "refNo", label: "Reference Number", numeric: false },
@@ -40,19 +40,19 @@ const SearchEnquiry = () => {
       <div class="row mt-5 pt-3">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="enquiry.html">
+            <a data-toggle="tooltip" title="Back" href="payments.html">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
-            <span class="heading-color">Search Enquiry</span>
+            <span class="heading-color">Search payments</span>
           </h4>
         </div>
         <div class="col-md-6">
           <ul class="nav justify-content-end mr-3 mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="create-enquiry.html">
+              <a class="nav-link" href="create-payments.html">
                 <i class="fas fa-plus mr-2"></i>
-                <span>Create Enquiry</span>
+                <span>Create Payments</span>
               </a>
             </li>
           </ul>
@@ -60,37 +60,39 @@ const SearchEnquiry = () => {
       </div>
 
       <hr class="mt-0 ml-4 mr-4 mb-2 mt-0" />
+
       <div class="row sector2 mr-1 mb-4">
         <div class="col-md-6">
-          <h5 class="mb-0">Search Enquiry</h5>
+          <h5 class="mb-0">Search Payments</h5>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
                 <a href="#">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">List of Enquiry</a>
+                <a href="#">List of Payments</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Search Enquiry</a>
+                <a href="#">Search Payments</a>
               </li>
             </ol>
           </nav>
         </div>
         <div class="col-md-6">
-          <div
-            class="btn-toolbar mb-2 mr-4 mb-md-0 float-right"
-            onClick={() => setExpand(!expand)}
-          >
-            <a href="#" style={{ textDecoration: "none" }}>
-              Show/Hide Filters
+          <div class="btn-toolbar mb-2 mr-2 mb-md-0 float-right">
+            <a
+              role="button"
+              href="#"
+              style={{ textDecoration: "none" }}
+              onClick={() => setExpand(!expand)}
+            >
+              Show/Hide Search Mandate
             </a>
           </div>
         </div>
       </div>
-
       <Collapse in={expand}>
-        <div class="sector3 ml-4 mr-4 mb-5 pb-5 ">
+        <div class="sector3 ml-4 mr-4 mb-5 pb-5" id="myDIV">
           <div class="row">
             <div class="col-md-4">
               <div class="md-form">
@@ -208,12 +210,14 @@ const SearchEnquiry = () => {
           </div>
         </div>
       </Collapse>
+
       <Table
         tableHeadings={tableHeadings}
         tableData={tableData}
-        tableName={`Search Enquiry Details`}
+        tableName={`Search payments Details`}
         defaultSort={`date`}
       />
+
       <div class="row pb-5 mb-5">
         <div class="col-md-12 text-center">
           <a href="home.html">
@@ -226,4 +230,4 @@ const SearchEnquiry = () => {
     </div>
   );
 };
-export default SearchEnquiry;
+export default SearchPayments;
