@@ -5,7 +5,7 @@ const InitiateMandateRequest = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="mandate.html">
+            <a data-toggle="tooltip" title="Back" href="/mandate">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -15,13 +15,13 @@ const InitiateMandateRequest = () => {
         <div class="col-md-6">
           <ul class="nav justify-content-end mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="search-mandate-request.html">
+              <a class="nav-link" href="/search-mandate-request">
                 <i class="fas fa-search"></i>
                 <span>Search mandate</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="import-mandate-request.html">
+              <a class="nav-link" href="/import-mandate-request">
                 <i class="fas fa-file-import"></i>
                 <span class="mr-2">Import Mandate</span>
               </a>
@@ -343,7 +343,7 @@ const InitiateMandateRequest = () => {
 
           <div class="form-group form-row mb-5">
             <div class="col-sm-12 mb-4 text-center mt-4 mb-5">
-              <a href="mandate.html">
+              <a href="/mandate">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"

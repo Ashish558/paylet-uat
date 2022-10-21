@@ -58,7 +58,7 @@ const Payments = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="index.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -69,14 +69,14 @@ const Payments = () => {
         <div class="col-md-6">
           <ul class="nav justify-content-end mt-2 mr-2">
             <li class="nav-item">
-              <a class="nav-link" href="create-payments.html">
+              <a class="nav-link" href="/create-payment">
                 <i class="fas fa-plus mr-2"></i>
                 <span>Create Payments</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="search-payments.html">
+              <a class="nav-link" href="/search-payments">
                 <i class="fas fa-search mr-2"></i>
                 <span>Search Payments</span>
               </a>
@@ -93,7 +93,7 @@ const Payments = () => {
       />
       <div class="row mb-5 pb-5">
         <div class="col-md-12 text-center">
-          <a href="home.html">
+          <a href="/">
             <button type="button" class="btn btn-outline-primary waves-effect">
               cancel
             </button>

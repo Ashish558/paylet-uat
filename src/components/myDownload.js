@@ -39,7 +39,7 @@ const MyDownload = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-3 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="home.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;

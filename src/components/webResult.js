@@ -85,7 +85,7 @@ const WebResult = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="home.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -100,7 +100,7 @@ const WebResult = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
                 <a href="#">Master Data</a>

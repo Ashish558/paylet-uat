@@ -6,7 +6,7 @@ const CreateReport = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="report.html">
+            <a data-toggle="tooltip" title="Back" href="/report">
               <i class="fas fa-chevron-left mr-2"></i>
             </a>
             &nbsp;<span class="heading-color">Create Report</span>
@@ -15,7 +15,7 @@ const CreateReport = () => {
         <div class="col-md-6">
           <ul class="nav justify-content-end mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="search-report.html">
+              <a class="nav-link" href="/search-report">
                 <i class="fas fa-search mr-2"></i>
                 <span class="mr-2">Search Reports</span>
               </a>
@@ -329,7 +329,7 @@ const CreateReport = () => {
 
               <div class="form-group form-row mb-5">
                 <div class="col-sm-12 mb-4 text-center mt-4 mb-5">
-                  <a href="mandate.html">
+                  <a href="/mandate">
                     <button
                       type="button"
                       class="btn btn-outline-primary waves-effect"

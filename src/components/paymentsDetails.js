@@ -5,7 +5,7 @@ const PaymentsDetails = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="payments.html">
+            <a data-toggle="tooltip" title="Back" href="/payments">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -60,7 +60,7 @@ const PaymentsDetails = () => {
         <div class="col-md-12 text-center">
           <button class="btn btn-primary">edit</button>
           <button class="btn btn-danger">delete</button>
-          <a href="mandate.html">
+          <a href="/mandate">
             <button type="button" class="btn btn-outline-primary waves-effect">
               cancel
             </button>

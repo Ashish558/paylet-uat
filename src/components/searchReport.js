@@ -40,7 +40,7 @@ const SearchReport = () => {
       <div class="row mt-5 pt-3">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="report.html">
+            <a data-toggle="tooltip" title="Back" href="/report">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -50,7 +50,7 @@ const SearchReport = () => {
         <div class="col-md-6">
           <ul class="nav justify-content-end mr-3 mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="create-report.html">
+              <a class="nav-link" href="/create-report">
                 <i class="fas fa-plus mr-2"></i>
                 <span>Create Report</span>
               </a>
@@ -73,7 +73,7 @@ const SearchReport = () => {
                 <a href="#">List of Report</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Search Report</a>
+                <a href="/search-report">Search Report</a>
               </li>
             </ol>
           </nav>
@@ -197,7 +197,7 @@ const SearchReport = () => {
           <div class="row">
             <div class="col-md-12 mt-4 text-center">
               <button class="btn btn-primary">search</button>
-              <a href="home.html">
+              <a href="/">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"
@@ -217,7 +217,7 @@ const SearchReport = () => {
       />
       <div class="row pb-5 mb-5">
         <div class="col-md-12 text-center">
-          <a href="home.html">
+          <a href="/">
             <button type="button" class="btn btn-outline-primary waves-effect">
               cancel
             </button>

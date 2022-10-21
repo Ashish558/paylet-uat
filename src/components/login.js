@@ -54,7 +54,7 @@ const Login = () => {
             </a>
           </div>
         </div>
-        <a href="otp.html">
+        <a href="/otp">
           <button
             class="btn btn-sm btn-sm btn-block mt-4 mb-5 waves-effect waves-light pt-2 pb-2 ml-0"
             type="submit"

@@ -57,7 +57,7 @@ const TodayMandate = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="home.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -91,7 +91,7 @@ const TodayMandate = () => {
       />
       <div class="row mb-5 pb-5">
         <div class="col-md-12 text-center">
-          <a href="home.html">
+          <a href="/">
             <button type="button" class="btn btn-outline-primary waves-effect">
               cancel
             </button>

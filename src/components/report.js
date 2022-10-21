@@ -1,11 +1,66 @@
 import React from "react";
+import Table from "./table";
+import Collapse from "@mui/material/Collapse";
 const Report = () => {
+  const [isMandate, setMandate] = React.useState(true);
+  const [expand, setExpand] = React.useState(true);
+  const tableHeadings = [
+    { id: "refNo", label: "Reference Number", numeric: false },
+    { id: "date", label: "Creation Date", numeric: false },
+    { id: "status", label: "Status", numeric: false },
+    { id: "action", label: "Action", numeric: false },
+  ];
+  const tableData = [
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "13/11/2020",
+      status: "Authorized",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "13/11/2020",
+      status: "	Transaction Open Status",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "14/11/2020",
+      status: "Initiated",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "14/11/2020",
+      status: "Authorized",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "15/11/2020",
+      status: "Rejected By NPCI",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "15/11/2020",
+      status: "Authorized",
+      action: "view",
+    },
+    {
+      refNo: "d13d7632368a4f28a5986f65174fd44b",
+      date: "17/11/2020",
+      status: "Authorization Request Rejected",
+      action: "view",
+    },
+  ];
+
   return (
     <div style={{ marginTop: "85px" }}>
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="index.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -32,14 +87,19 @@ const Report = () => {
       </div>
 
       <div id="main_content">
-        <li class="selected" id="page1" onclick="change_tab(this.id);">
+        <li
+          id="page1"
+          className={isMandate ? "selected" : "notselected"}
+          onClick={() => setMandate(true)}
+        >
           Mandate Report
         </li>
-        <li class="notselected" id="page2" onclick="change_tab(this.id);">
+        <li
+          className={!isMandate ? "selected" : "notselected"}
+          id="page2"
+          onClick={() => setMandate(false)}
+        >
           Payment Report
-        </li>
-        <li class="notselected" id="page3" onclick="change_tab(this.id);">
-          Page3
         </li>
 
         <div class="hidden_desc" id="page1_desc">
@@ -282,7 +342,7 @@ const Report = () => {
               >
                 Generate Report
               </button>
-              <a href="home.html">
+              <a href="/">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"
@@ -295,7 +355,7 @@ const Report = () => {
         </div>
 
         <div id="page_content">
-          <h4 class="mt-3">Mandate Report</h4>
+          <h4 class="mt-3">{isMandate ? "Mandate" : "Payment"} Report</h4>
           <div class="row">
             <div class="col-md-4">
               <div class="md-form">
@@ -402,13 +462,11 @@ const Report = () => {
             <div class="col-md-12 mt-4 text-center">
               <button
                 class="btn btn-primary"
-                data-toggle="collapse"
-                data-target=".multi-collapse"
-                aria-expanded="false"
+                onClick={() => setExpand(!expand)}
               >
                 Generate Report
               </button>
-              <a href="home.html">
+              <a href="/">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"
@@ -421,6 +479,32 @@ const Report = () => {
           </div>
         </div>
       </div>
+      <Collapse in={expand}>
+        <Table
+          tableHeadings={tableHeadings}
+          tableData={tableData}
+          tableName={`Generated Report`}
+          defaultSort={`date`}
+        />
+        <div class="row pb-5 mb-5">
+          <div class="col-md-12 text-center">
+            <a href="">
+              <button class="btn btn-primary">Download pdf</button>
+            </a>
+            <a href="">
+              <button class="btn btn-primary">Download csv</button>
+            </a>
+            <a href="/">
+              <button
+                type="button"
+                class="btn btn-outline-primary waves-effect"
+              >
+                cancel
+              </button>
+            </a>
+          </div>
+        </div>
+      </Collapse>
     </div>
   );
 };

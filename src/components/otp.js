@@ -52,7 +52,7 @@ const OTP = () => {
                 <div class="col-md-12 text-center">
                   <input name="token" type="hidden" />
 
-                  <a href="home.html" class="btn btn-primary btn-sm ml-3">
+                  <a href="/" class="btn btn-primary btn-sm ml-3">
                     Generate OTP
                   </a>
                   <button

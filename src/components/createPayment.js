@@ -6,7 +6,7 @@ const CreatePayment = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="payments.html">
+            <a data-toggle="tooltip" title="Back" href="/payments">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -16,7 +16,7 @@ const CreatePayment = () => {
         <div class="col-md-6">
           <ul class="nav justify-content-end mt-2">
             <li class="nav-item">
-              <a class="nav-link" href="search-payments.html">
+              <a class="nav-link" href="/search-payments">
                 <i class="fas fa-search mr-2"></i>
                 <span class="mr-2">Search Payments</span>
               </a>
@@ -345,7 +345,7 @@ const CreatePayment = () => {
 
             <div class="form-group form-row mb-5">
               <div class="col-sm-12 mb-4 text-center mt-4 mb-5">
-                <a href="mandate.html">
+                <a href="/mandate">
                   <button
                     type="button"
                     class="btn btn-outline-primary waves-effect"

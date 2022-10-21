@@ -1,9 +1,7 @@
 import React from "react";
 import Table from "./table";
 
-import { useHistory } from "react-router-dom";
 const ImportMandateRequest = () => {
-  const history = useHistory();
   const tableHeadings = [
     { id: "refNo", label: "Batch Reference", numeric: false },
 
@@ -62,7 +60,7 @@ const ImportMandateRequest = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-3 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="mandate.html">
+            <a data-toggle="tooltip" title="Back" href="/mandate">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -72,20 +70,14 @@ const ImportMandateRequest = () => {
 
         <div class="col-md-6">
           <ul class="nav justify-content-end mt-2">
-            <li
-              class="nav-item"
-              onClick={() => history.push("/initiate-mandate-request")}
-            >
-              <a class="nav-link">
+            <li class="nav-item">
+              <a class="nav-link" href="/initiate-mandate-request">
                 <i class="fas fa-plus mr-2"></i>
                 <span>Create Mandate</span>
               </a>
             </li>
-            <li
-              class="nav-item"
-              onClick={() => history.push("/search-mandate-request")}
-            >
-              <a class="nav-link">
+            <li class="nav-item">
+              <a class="nav-link" href="/search-mandate-request">
                 <i class="fas fa-file-import mr-2"></i>
                 <span>Search Mandate</span>
               </a>
@@ -161,7 +153,7 @@ const ImportMandateRequest = () => {
       />
       <div class="row mb-5 pb-5">
         <div class="col-md-12 text-center">
-          <a href="home.html">
+          <a href="/">
             <button type="button" class="btn btn-outline-primary waves-effect">
               cancel
             </button>

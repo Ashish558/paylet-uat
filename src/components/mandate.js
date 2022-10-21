@@ -57,7 +57,7 @@ const Mandate = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="index.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -68,20 +68,20 @@ const Mandate = () => {
         <div class="col-md-6">
           <ul class="nav justify-content-end mt-2 mr-2">
             <li class="nav-item">
-              <a class="nav-link" href="initiate-mandate-request.html">
+              <a class="nav-link" href="/initiate-mandate-request">
                 <i class="fas fa-plus mr-2"></i>
                 <span>Create Mandate</span>
               </a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="search-mandate-request.html">
+              <a class="nav-link" href="/search-mandate-request">
                 <i class="fas fa-search mr-2"></i>
                 <span>Search Mandate</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="import-mandate-request.html">
+              <a class="nav-link" href="/import-mandate-request">
                 <i class="fas fa-file-import mr-2"></i>
                 <span>Bulk Upload</span>
               </a>

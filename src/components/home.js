@@ -1,5 +1,6 @@
 import React from "react";
 import paycordBrand from "./../images/paycorp-brand.png";
+
 const Home = () => {
   return (
     <div class="container section3">
@@ -10,7 +11,7 @@ const Home = () => {
         <div class="col-md-5 section4">
           <div class="row mt-md-5">
             <div class="col-md-4">
-              <a href="mandate.html">
+              <a href="/mandate">
                 <span class="fa-stack fa-2x">
                   <i class="fa fa-circle fa-stack-2x icon-background"></i>
                   <i class="fa fa-file-alt fa-stack-1x"></i>
@@ -22,7 +23,7 @@ const Home = () => {
           <div class="row mt-3">
             <div class="col-md-2"></div>
             <div class="col-md-2">
-              <a href="payments.html">
+              <a href="/payments">
                 <span class="fa-stack fa-2x">
                   <i class="fa fa-circle fa-stack-2x icon-background"></i>
                   <i class="fa fa-rupee-sign fa-stack-1x"></i>
@@ -34,7 +35,7 @@ const Home = () => {
           <div class="row mt-md-5 mt-3">
             <div class="col-md-2"></div>
             <div class="col-md-2">
-              <a href="enquiry.html">
+              <a href="/enquiry">
                 <span class="fa-stack fa-2x">
                   <i class="fa fa-circle fa-stack-2x icon-background"></i>
                   <i class="fa fa-search fa-stack-1x"></i>
@@ -45,7 +46,7 @@ const Home = () => {
           </div>
           <div class="row mt-3">
             <div class="col-md-2">
-              <a href="report.html">
+              <a href="/report">
                 <span class="fa-stack fa-2x">
                   <i class="fa fa-circle fa-stack-2x icon-background"></i>
                   <i class="fa fa-file fa-stack-1x"></i>
@@ -60,17 +61,17 @@ const Home = () => {
             <li class="list-group-item pl-0 pb-0">
               <h4>Quick Links</h4>
             </li>
-            <a href="initiate-mandate-request.html">
+            <a href="/initiate-mandate-request">
               <li class="list-group-item pb-2 pt-2 border-bottom">
                 Create Mandate
               </li>
             </a>
-            <a href="search-mandate-request.html">
+            <a href="/search-mandate-request">
               <li class="list-group-item pb-2 pt-2 border-bottom">
                 Search Mandate
               </li>
             </a>
-            <a href="import-mandate-request.html">
+            <a href="/import-mandate-request">
               <li class="list-group-item pb-2 pt-2 border-bottom">
                 Import Mandate{" "}
               </li>
@@ -79,23 +80,23 @@ const Home = () => {
             <li class="list-group-item pl-0 pb-0">
               <h4 class="mt-2">Saved Reports</h4>
             </li>
-            <a href="today-mandate.html">
+            <a href="/today-mandate">
               <li class="list-group-item pb-2 pt-2 border-bottom">
                 Today's Mandate
               </li>
             </a>
-            <a href="my-mandate.html">
+            <a href="/my-mandate">
               <li class="list-group-item pb-2 pt-2 border-bottom">
                 My Mandate
               </li>
             </a>
-            <a href="myjobs.html">
+            <a href="/my-jobs">
               <li class="list-group-item pb-2 pt-2 border-bottom">
                 My Transactions
               </li>
             </a>
 
-            <a href="my-download.html">
+            <a href="/my-download">
               <li class="list-group-item pb-2">Downloads</li>
             </a>
           </ul>

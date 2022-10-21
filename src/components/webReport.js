@@ -58,7 +58,7 @@ const WebReport = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="index.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -180,7 +180,7 @@ const WebReport = () => {
               <button class="btn btn-primary" onClick={() => setExpand(true)}>
                 Generate Report
               </button>
-              <a href="home.html">
+              <a href="/home">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"

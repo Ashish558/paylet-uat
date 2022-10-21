@@ -32,7 +32,7 @@ const Header = (props) => {
           <div class="nav_item">
             <a
               class="list-group-item active list-group-item-action waves-effect"
-              href="home.html"
+              href="/"
             >
               Home
             </a>
@@ -43,16 +43,16 @@ const Header = (props) => {
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="Currency.html">Add Currency</a>
+                <a href="/currency">Add Currency</a>
               </li>
               <li>
-                <a href="AssetsType.html">Add Assets Type</a>
+                <a href="/asset-type">Add Assets Type</a>
               </li>
               <li>
-                <a href="PaymentFrequency.html">Add Payment Frequency</a>
+                <a href="/payment-frequency">Add Payment Frequency</a>
               </li>
               <li>
-                <a href="PaymentMode.html">Add Payment Modes</a>
+                <a href="/payment-mode">Add Payment Modes</a>
               </li>
             </ul>
           </div>
@@ -62,16 +62,16 @@ const Header = (props) => {
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="WebReport.html">Web user</a>
+                <a href="/web-report">Web user</a>
               </li>
               <li>
-                <a href="AssetsType.html">Add Assets Type</a>
+                <a href="/asset-type">Add Assets Type</a>
               </li>
               <li>
-                <a href="PaymentFrequency.html">Payment Frequency</a>
+                <a href="/payment-frequency">Payment Frequency</a>
               </li>
               <li>
-                <a href="PaymentMode.html">Payment Modes</a>
+                <a href="/payment-mode">Payment Modes</a>
               </li>{" "}
             </ul>
           </div>
@@ -81,16 +81,16 @@ const Header = (props) => {
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="mandate-reports.html">Mandate Reports</a>
+                <a href="/mandate-reports">Mandate Reports</a>
               </li>
               <li>
-                <a href="TransactionReport.html">Transaction Reports</a>
+                <a href="/transaction-report">Transaction Reports</a>
               </li>
               <li>
-                <a href="WebResult.html">Web Reports</a>
+                <a href="/web-result">Web Reports</a>
               </li>
               <li>
-                <a href="PaymentMode.html">Payment Modes</a>
+                <a href="/payment-mode">Payment Modes</a>
               </li>
             </ul>
           </div>
@@ -98,25 +98,25 @@ const Header = (props) => {
           <div class="list-group list-group-flush ">
             <a
               class="list-group-item active list-group-item-action waves-effect"
-              href="today-mandate.html"
+              href="/today-mandate"
             >
               Today's Mandate
             </a>
             <a
               class="list-group-item list-group-item-action waves-effect"
-              href="my-mandate.html"
+              href="/my-mandate"
             >
               My Mandate
             </a>
             <a
               class="list-group-item list-group-item-action waves-effect"
-              href="myjobs.html"
+              href="/my-jobs"
             >
               My Transaction
             </a>
             <a
               class="list-group-item list-group-item-action waves-effect"
-              href="my-download.html"
+              href="/my-download"
             >
               Downloads
             </a>

@@ -63,7 +63,7 @@ const ReportsNew = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="index.html">
+            <a data-toggle="tooltip" title="Back" href="/">
               <i class="fas fa-chevron-left"></i>
             </a>
             &nbsp;
@@ -222,7 +222,7 @@ const ReportsNew = () => {
               >
                 Generate Report
               </button>
-              <a href="home.html">
+              <a href="/">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"
@@ -347,7 +347,7 @@ const ReportsNew = () => {
               >
                 Generate Report
               </button>
-              <a href="home.html">
+              <a href="/">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"
@@ -472,7 +472,7 @@ const ReportsNew = () => {
               >
                 Generate Report
               </button>
-              <a href="home.html">
+              <a href="/">
                 <button
                   type="button"
                   class="btn btn-outline-primary waves-effect"
@@ -498,7 +498,7 @@ const ReportsNew = () => {
           <a href="">
             <button class="btn btn-primary">Download csv</button>
           </a>
-          <a href="home.html">
+          <a href="/">
             <button type="button" class="btn btn-outline-primary waves-effect">
               cancel
             </button>
