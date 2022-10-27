@@ -1,0 +1,63 @@
+.imageview {
+  background-image: url("./../images/login-bg.PNG");
+  background-repeat: no-repeat;
+  background-position: right top;
+  width: 100%;
+  height: auto;
+  background-size: auto;
+}
+
+.form-group input {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+}
+
+h1 {
+  color: #522486;
+  font-weight: 500;
+}
+
+p strong {
+  color: #fa0177;
+}
+
+.loginpage button {
+  background-image: linear-gradient(to bottom right, #fa0177, #522486);
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+hr {
+  margin-top: 5px;
+  width: 30%;
+  background-image: linear-gradient(to right, #fec012, #fa0177);
+  height: 2px;
+}
+
+.loginbg img {
+  width: 200px;
+  height: auto;
+}
+
+/* Extra small devices (phones, 480px and down) */
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .imageview {
+    background-size: 140px auto;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .imageview {
+    background-size: 140px auto;
+  }
+}
+
+/* Small devices (tablets and large phones, 600px and up) */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .imageview {
+    background-size: 400px auto;
+  }
+}
