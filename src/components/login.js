@@ -1,12 +1,26 @@
 import React, { useState } from "react";
 import payImage from "./../images/pay.PNG";
 import TextField from "@mui/material/TextField";
+import { sendOtp, validateOtp } from "../services/auth";
 
 const Login = () => {
   const [mobileNumber, setMobileNumber] = useState(0)
+  const [otp, setOtp] = useState(0)
 
   const handleSendOtp = () => {
     console.log(mobileNumber)
+    sendOtp(mobileNumber, (err, res) => {
+      if (err) console.log(err)
+      console.log(res)
+    })
+  }
+
+  const handleOtpVerification = () => {
+    console.log(mobileNumber, otp)
+    validateOtp(mobileNumber, otp, (err, res) => {
+      if (err) console.log(err)
+      console.log(res)
+    })
   }
 
   return (
@@ -26,7 +40,7 @@ const Login = () => {
           <div class="d-flex align-items-center">
             <div class="m-inr flex-1 mr-3">
               <input
-                type="text"
+                type="number"
                 id="materialSubscriptionFormUsername"
                 class="form-control"
                 value={mobileNumber}
@@ -52,12 +66,15 @@ const Login = () => {
                 type="password"
                 id="materialSubscriptionFormPasswords"
                 class="form-control"
+                value={otp}
+                onChange={e => setOtp(e.target.value)}
               />
               <label for="materialSubscriptionFormPassword">OTP</label>
             </div>
             <a
               href="#."
               class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
+              onClick={handleOtpVerification}
             >
               VERIFY
             </a>
