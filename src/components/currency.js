@@ -12,6 +12,7 @@ const Currency = () => {
     { id: "status", label: "Status", numeric: false },
     { id: "action", label: "Action", numeric: false },
   ];
+  
   const tableData = [
     {
       slNo: 1,
