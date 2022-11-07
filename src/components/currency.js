@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./table";
 
 import Collapse from "@mui/material/Collapse";
+import { addCurrency } from "../services/payment";
 const Currency = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -34,6 +35,20 @@ const Currency = () => {
       action: "Activate",
     },
   ];
+  const [currencyName, setCurrencyName] = useState('')
+  const [currencyCode, setCurrencyCode] = useState('')
+
+  const handleSubmit = () => {
+    if (currencyName.trim() === '') return
+    if (currencyCode.trim() === '') return
+    addCurrency({ currencyName, currencyCode}, (err, res) => {
+      setCurrencyCode('')
+      setCurrencyName('')
+      if(err) return console.log(err.response)
+      console.log(res)
+    })
+  }
+  
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
@@ -83,9 +98,11 @@ const Currency = () => {
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
                   <input
-                    type="email"
+                    type="text"
                     id="materialSubscriptionFormEmail"
                     class="form-control"
+                    value={currencyName}
+                    onChange={e => setCurrencyName(e.target.value)}
                   />
                   <label for="materialSubscriptionFormEmail">
                     Currency Name
@@ -95,13 +112,17 @@ const Currency = () => {
               </div>
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input type="email" id="currency_code" class="form-control" />
+                  <input type="text" id="currency_code" class="form-control"
+                    value={currencyCode}
+                    onChange={e => setCurrencyCode(e.target.value)}
+                  />
                   <label for="currency_code">Currency Code</label>
                 </div>
                 <div class="col-md-4">
                   <a
                     href="#."
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
+                    onClick={handleSubmit}
                   >
                     Add
                   </a>

@@ -14,7 +14,7 @@ export const sendOtp = (mobileNumber, cb) => {
 }
 
 export const validateOtp = (mobileNumber, otp, cb) => {
-   axios.post(`${BASE_URL}/login/requestOTP`, {
+   axios.post(`${BASE_URL}/login/validateOTP`, {
       mobileNumber,
       otp
    })

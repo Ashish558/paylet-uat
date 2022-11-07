@@ -8,12 +8,3 @@ export const getDashboard = (mobileNumber, cb) => {
       .then(res => cb(null, res))
       .catch(err => cb(err, null))
 }
-
-export const validateOtp = (mobileNumber, otp, cb) => {
-   axios.post(`${BASE_URL}/login/requestOTP`, {
-      mobileNumber,
-      otp
-   })
-      .then(res => cb(null, res))
-      .catch(err => cb(err, null))
-}
