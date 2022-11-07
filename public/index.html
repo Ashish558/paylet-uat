@@ -83,6 +83,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
     <!-- Bootstrap tooltips -->
     <script type="text/javascript" src="./js/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
@@ -110,9 +111,11 @@
     <script type="text/javascript"></script>
 
     <script>
-      jQuery(".onclick_info").click(function () {
-        jQuery(this).parent().toggleClass("main_sub_child");
-      });
+    
+      document.addEventListener('click',function(e){
+        if(e.target.classList.contains('onclick_info'))
+          e.target.closest('.nav_item').classList.toggle('main_sub_child')
+      })
     </script>
     <script>
       function myFunction() {
