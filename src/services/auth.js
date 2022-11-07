@@ -13,11 +13,8 @@ export const sendOtp = (mobileNumber, cb) => {
       .catch(err => cb(err, null))
 }
 
-export const validateOtp = (mobileNumber, otp, cb) => {
-   axios.post(`${BASE_URL}/login/validateOTP`, {
-      mobileNumber,
-      otp
-   })
+export const validateOtp = (body, cb) => {
+   axios.post(`${BASE_URL}/login/validateOTP`, body)
       .then(res => cb(null, res))
       .catch(err => cb(err, null))
 }

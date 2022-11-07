@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
 const Report = () => {
@@ -54,6 +54,8 @@ const Report = () => {
       action: "view",
     },
   ];
+
+  const [accountnumber, setAccountnumber] = useState(0)
 
   return (
     <div style={{ marginTop: "85px" }}>
@@ -145,6 +147,8 @@ const Report = () => {
                   type="text"
                   id="materialSubscriptionFormPasswords"
                   class="form-control"
+                  value={accountnumber}
+                  onChange={e => setAccountnumber(e.target.value)}
                 />
                 <label for="materialSubscriptionFormPasswords">Account</label>
               </div>

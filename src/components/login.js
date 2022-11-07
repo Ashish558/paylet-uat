@@ -12,14 +12,19 @@ const Login = () => {
     sendOtp(mobileNumber, (err, res) => {
       if (err) console.log(err)
       console.log(res)
+      if (res.data.otp) {
+        alert(`Your otp is ${res.data.otp}`)
+      }
     })
   }
 
   const handleOtpVerification = () => {
-    console.log(mobileNumber, otp)
-    validateOtp(mobileNumber, otp, (err, res) => {
+    validateOtp({  mobileNumber, otp }, (err, res) => {
       if (err) console.log(err)
       console.log(res)
+      if (res.data.messageDiscription) {
+        alert(res.data.messageDiscription)
+      }
     })
   }
 

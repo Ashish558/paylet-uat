@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import { addPaymentMode } from "../services/payment";
 const PaymentMode = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -29,6 +30,24 @@ const PaymentMode = () => {
       action: "Activate",
     },
   ];
+
+  const [paymentName, setPaymentName] = useState('')
+  const [paymentStatus, setPaymentStatus] = useState(0)
+
+  const handleSubmit = () => {
+    if (paymentName.trim() === '') return
+
+    addPaymentMode({ paymentmodename: paymentName, status: parseInt(paymentStatus) }, (err, res) => {
+      // setPaymentName('')
+      // setPaymentStatus(0)
+      if (err) return console.log(err.response)
+      console.log(res)
+      if(res.data.messageDiscription){
+        alert(res.data.messageDiscription)
+      }
+    })
+  }
+
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
@@ -79,9 +98,11 @@ const PaymentMode = () => {
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
                   <input
-                    type="email"
+                    type="text"
                     id="materialSubscriptionFormEmail"
                     class="form-control"
+                    value={paymentName}
+                    onChange={e => setPaymentName(e.target.value)}
                   />
                   <label for="materialSubscriptionFormEmail">
                     Payment Mode Name
@@ -92,9 +113,11 @@ const PaymentMode = () => {
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
                   <input
-                    type="email"
+                    type="number"
                     id="PaymentMode_code"
                     class="form-control"
+                    value={paymentStatus}
+                    onChange={e => setPaymentStatus(e.target.value)}
                   />
                   <label for="PaymentMode_code">Payment Mode Status</label>
                 </div>
@@ -102,6 +125,7 @@ const PaymentMode = () => {
                   <a
                     href="#."
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
+                    onClick={handleSubmit}
                   >
                     Add
                   </a>

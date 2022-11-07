@@ -41,14 +41,17 @@ const Currency = () => {
   const handleSubmit = () => {
     if (currencyName.trim() === '') return
     if (currencyCode.trim() === '') return
-    addCurrency({ currencyName, currencyCode}, (err, res) => {
+    addCurrency({ currencyName, currencycode: currencyCode }, (err, res) => {
       setCurrencyCode('')
       setCurrencyName('')
-      if(err) return console.log(err.response)
+      if (err) return console.log(err.response)
       console.log(res)
+      if (res.data.messageDiscription) {
+        alert(res.data.messageDiscription)
+      }
     })
   }
-  
+
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
