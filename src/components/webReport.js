@@ -69,14 +69,14 @@ const WebReport = () => {
       <hr class="mt-0 ml-4 mr-4" />
       <div class="row sector2">
         <div class="col-md-12">
-          <h5 class="mb-0">Create Report</h5>
+          <h5 class="mb-0">Web Report</h5>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-3 pb-2 pt-0">
               <li class="breadcrumb-item">
                 <a href="#">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Create Report</a>
+                <a href="#">Web Report</a>
               </li>
             </ol>
           </nav>
