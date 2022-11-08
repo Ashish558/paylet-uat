@@ -1,16 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
-import { addPaymentMode } from "../services/payment";
+import { addPaymentMode, getAllPaymentMode } from "../services/payment";
 const PaymentMode = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
-    { id: "slNo", label: "SL No", numeric: true },
+    { id: "payment_mode_id", label: "Payment Mode Id", numeric: true },
     { id: "paymentMode", label: "Payment Mode Name", numeric: false },
     { id: "status", label: "Status", numeric: false },
     { id: "action", label: "Action", numeric: false },
   ];
-  const tableData = [
+  const data = [
     {
       slNo: 1,
       paymentMode: "ACH",
@@ -33,20 +33,65 @@ const PaymentMode = () => {
 
   const [paymentName, setPaymentName] = useState('')
   const [paymentStatus, setPaymentStatus] = useState(0)
+  const [tableData, setTableData] = useState([])
 
   const handleSubmit = () => {
     if (paymentName.trim() === '') return
 
     addPaymentMode({ paymentmodename: paymentName, status: parseInt(paymentStatus) }, (err, res) => {
-      // setPaymentName('')
-      // setPaymentStatus(0)
+      setPaymentName('')
+      setPaymentStatus(0)
       if (err) return console.log(err.response)
       console.log(res)
-      if(res.data.messageDiscription){
+      fetchPaymentModes()
+      if (res.data.messageDiscription) {
         alert(res.data.messageDiscription)
       }
     })
   }
+
+  const handleAction = row => {
+    console.log(row)
+
+    if (row.action === 'Deactivate') {
+      addPaymentMode({
+        paymentmodename: row.payment_mode_name,
+        status: 20,
+        payment_mode_id: row.payment_mode_id
+      }, (err, res) => {
+        if (err) return console.log(err.response)
+        fetchPaymentModes()
+      })
+    }else{
+      addPaymentMode({
+        paymentmodename: row.payment_mode_name,
+        status: 10,
+        payment_mode_id: row.payment_mode_id
+      }, (err, res) => {
+        if (err) return console.log(err.response)
+        fetchPaymentModes()
+      })
+    }
+
+  }
+
+  const fetchPaymentModes = () => {
+    getAllPaymentMode((err, res) => {
+      if (err) return console.log(err.response)
+      // console.log(res)
+      setTableData(res.data.map(curr => {
+        return {
+          ...curr,
+          action: curr.status === 10 ? 'Deactivate' : 'Activate',
+          status: curr.status === 10 ? 'Active' : 'Inactive'
+        }
+      }))
+    })
+  }
+
+  useEffect(() => {
+    fetchPaymentModes()
+  }, [])
 
   return (
     <div style={{ margin: "85px 0" }}>
@@ -141,6 +186,7 @@ const PaymentMode = () => {
         tableData={tableData}
         tableName={`Payment Mode Details`}
         defaultSort={`slNo`}
+        onClickAction={handleAction}
       />
     </div>
   );

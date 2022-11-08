@@ -127,6 +127,7 @@ export default function EnhancedTable({
   tableData,
   tableName,
   defaultSort,
+  onClickAction
 }) {
   let thd = tableHeadings.map((t) => {
     return { ...t, disablePadding: false };
@@ -200,7 +201,8 @@ export default function EnhancedTable({
                   return (
                     <StyledTableRow tabIndex={-1} key={index}>
                       {Object.keys(row).map((k, index) => (
-                        <StyledTableCell>{row[k]}</StyledTableCell>
+                        // console.log(k),
+                        <StyledTableCell onClick={() => k === 'action' && onClickAction !== undefined ? onClickAction(row) : null} >{row[k]}</StyledTableCell>
                       ))}
                     </StyledTableRow>
                   );

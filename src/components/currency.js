@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./table";
 
 import Collapse from "@mui/material/Collapse";
-import { addCurrency } from "../services/payment";
+import { addCurrency, deactivateCurrency, getAllCurrency } from "../services/payment";
 const Currency = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
-    { id: "slNo", label: "SL No", numeric: true },
+    { id: "Currency Id", label: "Currency Id", numeric: true },
     { id: "currencyName", label: "Currency Name", numeric: false },
     { id: "currencyCode", label: "Currency Code", numeric: false },
     { id: "status", label: "Status", numeric: false },
     { id: "action", label: "Action", numeric: false },
   ];
-  
-  const tableData = [
+
+  const data = [
     {
       slNo: 1,
       currencyName: "Indian Rupee",
@@ -36,8 +36,10 @@ const Currency = () => {
       action: "Activate",
     },
   ];
+
   const [currencyName, setCurrencyName] = useState('')
   const [currencyCode, setCurrencyCode] = useState('')
+  const [tableData, setTableData] = useState([])
 
   const handleSubmit = () => {
     if (currencyName.trim() === '') return
@@ -47,11 +49,41 @@ const Currency = () => {
       setCurrencyName('')
       if (err) return console.log(err.response)
       console.log(res)
+      fetchCurrencies()
       if (res.data.messageDiscription) {
         alert(res.data.messageDiscription)
       }
     })
   }
+
+  const handleDeactivate = row => {
+    console.log(row)
+    if (row.action === 'Activate') return
+    deactivateCurrency({ currencyName: row.currencyName }, (err, res) => {
+      if (err) return console.log(err.response)
+      console.log(res)
+      fetchCurrencies()
+    })
+  }
+
+  const fetchCurrencies = () => {
+    getAllCurrency((err, res) => {
+      if (err) return console.log(err.response)
+      console.log(res)
+      setTableData(res.data.map(curr => {
+        return {
+          ...curr,
+          action: curr.status === '10' ? 'Deactivate' : 'Activate',
+          status: curr.status === '10' ? 'Active' : 'Inactive'
+        }
+      }))
+    })
+  }
+  
+  useEffect(() => {
+    fetchCurrencies()
+  }, [])
+
 
   return (
     <div style={{ margin: "85px 0" }}>
@@ -136,13 +168,16 @@ const Currency = () => {
           </div>
         </div>
       </Collapse>
-
-      <Table
-        tableHeadings={tableHeadings}
-        tableData={tableData}
-        tableName={`Currency Details`}
-        defaultSort={`currencyName`}
-      />
+      {
+        tableData.length >= 1 &&
+        <Table
+          tableHeadings={tableHeadings}
+          tableData={tableData}
+          tableName={`Currency Details`}
+          defaultSort={`currencyName`}
+          onClickAction={handleDeactivate}
+        />
+      }
     </div>
   );
 };
