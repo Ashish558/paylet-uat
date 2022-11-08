@@ -7,6 +7,7 @@ export { default as Report } from "./report";
 export { default as ReportDetails } from "./reportDetails";
 export { default as ReportsNew } from "./reportsNew";
 export { default as EnhancedTable } from "./table";
+export {default as AddWebUser} from "./addWebUser";
 export { default as AssetsType } from "./assetsType";
 export { default as Currency } from "./currency";
 export { default as Enquiry } from "./enquiry";

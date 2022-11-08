@@ -14,6 +14,7 @@ import {
   Report,
   ReportDetails,
   ReportsNew,
+  AddWebUser,
   AssetsType,
   Currency,
   Enquiry,
@@ -53,6 +54,7 @@ const App = () => {
 
       <Switch>
         <Route path="/login" exact component={Login} />
+        <Route path="/add-web-user" exact component={AddWebUser}/>
         <Route path="/asset-type" exact component={AssetsType} />
         <Route path="/reports-new" exact component={ReportsNew} />
         <Route path="/report-details" exact component={ReportDetails} />
