@@ -1,35 +1,103 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import { addAssetType, getAssetTypes } from "../services/payment";
+const data = [
+  {
+    slNo: 1,
+    assetType: "Building",
+    assetStatus: "Active",
+    action: "Deactivate",
+  },
+  {
+    slNo: 2,
+    assetType: "Computer",
+    assetStatus: "Active",
+    action: "Deactivate",
+  },
+  {
+    slNo: 3,
+    assetType: "Flat",
+    assetStatus: "Inactive",
+    action: "Activate",
+  },
+];
+
 const AssetsType = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
     { id: "slNo", label: "SL No", numeric: true },
     { id: "assetType", label: "Asset Type", numeric: false },
-
     { id: "assetStatus", label: "Asset Status", numeric: false },
+    { id: "dateCreated", label: "Date Created", numeric: false },
     { id: "action", label: "Action", numeric: false },
   ];
-  const tableData = [
-    {
-      slNo: 1,
-      assetType: "Building",
-      assetStatus: "Active",
-      action: "Deactivate",
-    },
-    {
-      slNo: 2,
-      assetType: "Computer",
-      assetStatus: "Active",
-      action: "Deactivate",
-    },
-    {
-      slNo: 3,
-      assetType: "Flat",
-      assetStatus: "Inactive",
-      action: "Activate",
-    },
-  ];
+  const [tableData, setTableData] = useState(data)
+  const [assetType, setAssetType] = useState('')
+  const [status, setStatus] = useState('')
+
+  const handleSubmit = () => {
+    if (assetType.trim() === '') return
+    if (status.trim() === '') return
+
+    addAssetType({ assetName: assetType, status: parseInt(status) }, (err, res) => {
+      setAssetType('')
+      setStatus('')
+      if (err) return console.log(err.response)
+      // console.log(res)
+      fetchAssetTypes()
+      if (res.data.messageDiscription) {
+        alert(res.data.messageDiscription)
+      }
+    })
+  }
+
+  const handleAction = row => {
+    // console.log(row)
+    if (row.action === 'Deactivate') {
+      addAssetType({
+        assetName: row.assetName,
+        status: 20,
+        assetId: row.assetId
+      }, (err, res) => {
+        if (err) return console.log(err.response)
+        fetchAssetTypes()
+      })
+    } else {
+      addAssetType({
+        assetName: row.assetName,
+        status: 10,
+        assetId: row.assetId
+      }, (err, res) => {
+        if (err) return console.log(err.response)
+        fetchAssetTypes()
+      })
+    }
+
+  }
+
+  const fetchAssetTypes = () => {
+    getAssetTypes((err, res) => {
+      if (err) return console.log(err.response)
+      // console.log(res)
+
+      if (res.data) {
+        setTableData(res.data.map(curr => {
+          return {
+            ...curr,
+            action: curr.status === 10 ? 'Deactivate' : 'Activate',
+            status: curr.status === 10 ? 'Active' : 'Inactive'
+          }
+        }))
+      }
+
+    })
+  }
+
+  useEffect(() => {
+    fetchAssetTypes()
+  }, [])
+
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
@@ -83,6 +151,8 @@ const AssetsType = () => {
                     type="email"
                     id="materialSubscriptionFormEmail"
                     class="form-control"
+                    value={assetType}
+                    onChange={e => setAssetType(e.target.value)}
                   />
                   <label for="materialSubscriptionFormEmail">Asset Type</label>
                 </div>
@@ -94,6 +164,8 @@ const AssetsType = () => {
                     type="email"
                     id="AssetType_code"
                     class="form-control"
+                    value={status}
+                    onChange={e => setStatus(e.target.value)}
                   />
                   <label for="AssetType_code">Asset Type Status</label>
                 </div>
@@ -101,6 +173,7 @@ const AssetsType = () => {
                   <a
                     href="#."
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
+                    onClick={handleSubmit}
                   >
                     Add
                   </a>
@@ -116,6 +189,7 @@ const AssetsType = () => {
         tableData={tableData}
         tableName={`Asset Type Details`}
         defaultSort={`assetType`}
+        onClickAction={handleAction}
       />
     </div>
   );

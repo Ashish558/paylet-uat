@@ -42,7 +42,6 @@ const PaymentMode = () => {
       setPaymentName('')
       setPaymentStatus(0)
       if (err) return console.log(err.response)
-      console.log(res)
       fetchPaymentModes()
       if (res.data.messageDiscription) {
         alert(res.data.messageDiscription)

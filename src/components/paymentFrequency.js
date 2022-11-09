@@ -43,7 +43,7 @@ const PaymentFrequency = () => {
     addPaymentFrequency({ paymentfreqname: frequencyType, status: parseInt(status) },
       (err, res) => {
         if (err) return console.log(err.response)
-        console.log(res)
+        // console.log(res)
         fetchPaymentFrequency()
         if (res.data.messageDiscription) {
           alert(res.data.messageDiscription)
@@ -54,7 +54,7 @@ const PaymentFrequency = () => {
   const fetchPaymentFrequency = () => {
     getFrequency((err, res) => {
       if (err) return console.log(err.response)
-      console.log(res)
+      // console.log(res)
       setTableData(res.data.map(frequency => {
         return {
           ...frequency,
