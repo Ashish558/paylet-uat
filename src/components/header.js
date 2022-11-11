@@ -14,7 +14,7 @@ const Header = (props) => {
   const list = (anchor) => (
     <div class="modal-content ">
       <div class="modal-header">
-        <img class="img-responsive ml-3 float-left" src={logoWhite} />
+        <img class="img-responsive ml-3 float-left" alt="" src={logoWhite} />
 
         <button
           type="button"
@@ -152,10 +152,10 @@ const Header = (props) => {
       </nav>
     );
   return (
-    <header class="navbar fixed-top navbar-expand-lg navbar-light ripshadow white scrolling-navbar botborder">
+    <header  class="navbar fixed-top navbar-expand-lg navbar-light ripshadow white scrolling-navbar botborder">
       <nav style={{ width: "100%" }}>
         <div class="container-fluid">
-          <a style={{ color: "white" }} onClick={toggleDrawer(anchor, true)}>
+          <a style={{ color: "white" }} onClick={toggleDrawer(anchor, true)} >
             <i class="fas fa-bars mr-3"></i>
           </a>
 
@@ -169,12 +169,12 @@ const Header = (props) => {
             <div class="md-form mr-auto">
               <label for="form1"></label>
             </div>
-            <Dropdown>
+            <Dropdown >
               <Dropdown.Toggle id="dropdown-basic">
                 <i class="fas fa-user"></i>
               </Dropdown.Toggle>
 
-              <Dropdown.Menu>
+              <Dropdown.Menu style={{width:'270px'}}>
                 <div class="text-center">
                   <i class="fas fa-user-circle  fa-3x text-center"></i>
                 </div>
@@ -218,6 +218,7 @@ const Header = (props) => {
         </div>
       </nav>
       <SwipeableDrawer
+      
         anchor={anchor}
         open={state[anchor]}
         onClose={toggleDrawer(anchor, false)}

@@ -22,8 +22,8 @@ const AddWebUser=()=>{
                 <h5 class="mb-0">Add Web User</h5>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb ml-2 mb-3 pb-2 pt-0">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Web User</a></li>
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/add-web-user">Web User</a></li>
                     </ol>
                 </nav>
 			</div>
