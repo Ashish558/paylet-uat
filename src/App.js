@@ -14,6 +14,7 @@ import {
   Report,
   ReportDetails,
   ReportsNew,
+  AddWebUser,
   AssetsType,
   Currency,
   Enquiry,
@@ -28,6 +29,7 @@ import {
   TransactionReports,
   WebReport,
   WebResult,
+  WebUser,
   ImportMandateRequest,
   InitiateMandateRequest,
   SearchMandateRequest,
@@ -53,6 +55,7 @@ const App = () => {
 
       <Switch>
         <Route path="/login" exact component={Login} />
+        <Route path="/add-web-user" exact component={AddWebUser}/>
         <Route path="/asset-type" exact component={AssetsType} />
         <Route path="/reports-new" exact component={ReportsNew} />
         <Route path="/report-details" exact component={ReportDetails} />
@@ -95,6 +98,7 @@ const App = () => {
         <Route path="/today-mandate" exact component={TodayMandate} />
         <Route path="/web-report" exact component={WebReport} />
         <Route path="/web-result" exact component={WebResult} />
+        <Route path="/web-user" exact component={WebUser} />
         <Route path="/transaction-report" exact component={TransactionReport} />
         <Route
           path="/transaction-reports"

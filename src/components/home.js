@@ -6,7 +6,7 @@ const Home = () => {
     <div class="container section3">
       <div class="row mt-md-5 pt-md-4">
         <div class="col-md-4 mt-md-5 text-center">
-          <img class="img-responsive ml-md-3" src={paycordBrand} />
+          <img class="img-responsive ml-md-3" alt="" src={paycordBrand} />
         </div>
         <div class="col-md-5 section4">
           <div class="row mt-md-5">
@@ -72,7 +72,7 @@ const Home = () => {
               </li>
             </a>
             <a href="/import-mandate-request">
-              <li class="list-group-item pb-2 pt-2 border-bottom">
+              <li class="list-group-item pb-2 pt-2 ">
                 Import Mandate{" "}
               </li>
             </a>
@@ -97,7 +97,7 @@ const Home = () => {
             </a>
 
             <a href="/my-download">
-              <li class="list-group-item pb-2">Downloads</li>
+              <li class="list-group-item pb-2" >Downloads</li>
             </a>
           </ul>
         </div>
