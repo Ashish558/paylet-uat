@@ -22,6 +22,7 @@ export { default as TransactionReports } from "./transactionReports";
 export { default as TransactionReport } from "./transactionReport";
 export { default as WebResult } from "./webResult";
 export { default as WebReport } from "./webReport";
+export { default as WebUser} from "./webUser";
 export { default as ImportMandateRequest } from "./importMandateRequest";
 export { default as InitiateMandateRequest } from "./initiateMandateRequest";
 export { default as SearchMandateRequest } from "./searchMandateRequest";

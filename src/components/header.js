@@ -1,9 +1,11 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import logoWhite from "./../images/logo-color-white-1.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 const Header = (props) => {
-  console.log(props);
+  const location=useLocation();
+  
   const [state, setState] = React.useState({
     left: false,
   });
@@ -37,6 +39,7 @@ const Header = (props) => {
               Home
             </a>
           </div>
+          {location.pathname==='/'?<>
           <div class="nav_item">
             <a class="list-group-item list-group-item-action waves-effect onclick_info">
               Master Data
@@ -62,17 +65,8 @@ const Header = (props) => {
             </a>
             <ul class="sub-menu">
               <li>
-                <a href="/web-report">Web user</a>
+                <a href="/web-user">Web user</a>
               </li>
-              <li>
-                <a href="/asset-type">Add Assets Type</a>
-              </li>
-              <li>
-                <a href="/payment-frequency">Payment Frequency</a>
-              </li>
-              <li>
-                <a href="/payment-mode">Payment Modes</a>
-              </li>{" "}
             </ul>
           </div>
           <div class="nav_item">
@@ -89,11 +83,43 @@ const Header = (props) => {
               <li>
                 <a href="/web-result">Web Reports</a>
               </li>
-              <li>
-                <a href="/payment-mode">Payment Modes</a>
-              </li>
             </ul>
           </div>
+          </>:<>
+          <div class="nav_item">
+            <a
+              class="list-group-item active list-group-item-action waves-effect"
+              href="/mandate"
+            >
+              Mandate
+            </a>
+          </div>
+          <div class="nav_item">
+            <a
+              class="list-group-item active list-group-item-action waves-effect"
+              href="/payments"
+            >
+              Payments
+            </a>
+          </div>
+          <div class="nav_item">
+            <a
+              class="list-group-item active list-group-item-action waves-effect"
+              href="/enquiry"
+            >
+              Enquiry
+            </a>
+          </div>
+          <div class="nav_item">
+            <a
+              class="list-group-item active list-group-item-action waves-effect"
+              href="/report"
+            >
+              Reports
+            </a>
+          </div>
+          </>}
+          
           <h4 class="mt-4 ml-3">Quick Links</h4>
           <div class="list-group list-group-flush ">
             <a
@@ -158,7 +184,15 @@ const Header = (props) => {
           <a style={{ color: "white" }} onClick={toggleDrawer(anchor, true)} >
             <i class="fas fa-bars mr-3"></i>
           </a>
-
+          <SwipeableDrawer
+      
+        anchor={anchor}
+        open={state[anchor]}
+        onClose={toggleDrawer(anchor, false)}
+        onOpen={toggleDrawer(anchor, true)}
+      >
+        {list(anchor)}
+      </SwipeableDrawer>
           <a href="/home">
             <img src={logoWhite} class="img-fluid" alt="" />
           </a>
@@ -217,15 +251,7 @@ const Header = (props) => {
           </div>
         </div>
       </nav>
-      <SwipeableDrawer
       
-        anchor={anchor}
-        open={state[anchor]}
-        onClose={toggleDrawer(anchor, false)}
-        onOpen={toggleDrawer(anchor, true)}
-      >
-        {list(anchor)}
-      </SwipeableDrawer>
     </header>
   );
 };
