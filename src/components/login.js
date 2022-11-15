@@ -13,7 +13,10 @@ const Login = () => {
       if (err) console.log(err)
       console.log(res)
       if (res.data.otp) {
-        alert(`Your otp is ${res.data.otp}`)
+       return alert(`Your otp is ${res.data.otp}`)
+      }
+      if (res.data.messageDiscription) {
+        alert(res.data.messageDiscription)
       }
     })
   }
