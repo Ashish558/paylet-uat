@@ -1,5 +1,5 @@
 import axios from "axios"
-const BASE_URL = 'http://13.232.244.243:5201/web'
+const BASE_URL = 'https://paylet.paycorp.io/web'
 
 export const sendOtp = (mobileNumber, cb) => {
    axios.post(`${BASE_URL}/login/requestOTP`, {

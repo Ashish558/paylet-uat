@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import Table from "./table";
 
 import Collapse from "@mui/material/Collapse";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import { addCurrency, deactivateCurrency, getAllCurrency } from "../services/payment";
+
 const Currency = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -39,12 +44,15 @@ const Currency = () => {
 
   const [currencyName, setCurrencyName] = useState('')
   const [currencyCode, setCurrencyCode] = useState('')
+  const [status, setStatus] = useState('')
   const [tableData, setTableData] = useState([])
 
   const handleSubmit = () => {
     if (currencyName.trim() === '') return
     if (currencyCode.trim() === '') return
-    addCurrency({ currencyName, currencycode: currencyCode }, (err, res) => {
+    if (status === '') return
+
+    addCurrency({ currencyName, currencycode: currencyCode, status: getStatus(status) }, (err, res) => {
       setCurrencyCode('')
       setCurrencyName('')
       if (err) return console.log(err.response)
@@ -56,6 +64,8 @@ const Currency = () => {
     })
   }
 
+  const getStatus = stat => stat === 'Active' ? '10' : '20'
+  
   const handleDeactivate = row => {
     console.log(row)
     if (row.action === 'Activate') return
@@ -64,6 +74,10 @@ const Currency = () => {
       console.log(res)
       fetchCurrencies()
     })
+  }
+
+  const handleStatusChange = e => {
+    setStatus(e.target.value)
   }
 
   const fetchCurrencies = () => {
@@ -79,7 +93,7 @@ const Currency = () => {
       }))
     })
   }
-  
+
   useEffect(() => {
     fetchCurrencies()
   }, [])
@@ -105,7 +119,7 @@ const Currency = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
                 <a href="#">Master Data</a>
@@ -153,6 +167,28 @@ const Currency = () => {
                     onChange={e => setCurrencyCode(e.target.value)}
                   />
                   <label for="currency_code">Currency Code</label>
+                </div>
+                <div class="col-md-4">
+                </div>
+              </div>
+              <div class="col-12 d-flex align-items-center">
+                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                  <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                    <InputLabel for='demo-simple-select-standard' 
+                    id="status-select"
+                    className={status === '' ? 'in-active' : 'active'}
+                    >Status</InputLabel>
+                    <Select
+                      labelId="status-select"
+                      id="demo-simple-select-standard"
+                      label="Status"
+                      value={status}
+                      onChange={e => handleStatusChange(e)}
+                    >
+                      <MenuItem value="Active">Active</MenuItem>
+                      <MenuItem value="InActive">InActive</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div class="col-md-4">
                   <a

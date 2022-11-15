@@ -1,5 +1,8 @@
 import React from "react";
-
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 const CreateEnquiry = () => {
   return (
     <div style={{ margin: "85px 0" }}>
@@ -47,13 +50,13 @@ const CreateEnquiry = () => {
                   <nav aria-label="breadcrumb">
                     <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
                       <li class="breadcrumb-item">
-                        <a href="#">Home</a>
+                        <a href="/">Home</a>
                       </li>
                       <li class="breadcrumb-item">
-                        <a href="#">List of Enquiry</a>
+                        <a href="/">List of Enquiry</a>
                       </li>
                       <li class="breadcrumb-item">
-                        <a href="#">Enquiry Details</a>
+                        <a href="/">Enquiry Details</a>
                       </li>
                     </ol>
                   </nav>
@@ -61,9 +64,9 @@ const CreateEnquiry = () => {
 
                 <div class="col-md-6">
                   <div class="btn-toolbar mb-2 mb-md-0 float-right">
-                    <div class="btn-group mr-3">
+                    
                       <form method="POST" action="#" class="form-inline">
-                        <input
+                      <input
                           type="hidden"
                           name="_csrf"
                           value="bee03f06-538a-41ee-9f73-2770a5c00716"
@@ -71,18 +74,20 @@ const CreateEnquiry = () => {
                         <label class="sr-only" for="productCode">
                           Product Code
                         </label>
-                        <select
-                          id="productCode"
-                          name="productCode"
-                          class="form-control mt-2"
-                        >
-                          <option value="DEFAULT">Mandate</option>
-                          <option value="SPECIAL_LOAN_MANDATE">
-                            Special Loan Mandate
-                          </option>
-                        </select>
+                        <FormControl variant="outlined" sx={{ m: 1, width:220}}>
+                          
+                          <Select
+                            labelId="mandate-select"
+                            id="demo-simple-select-standard"
+                            defaultValue="DEFAULT"
+                          >
+                            <MenuItem value="DEFAULT">Mandate</MenuItem>
+                            <MenuItem value="SPECIAL_LOAN_MANDATE">Special Loan Mandate</MenuItem>
+                          </Select>
+                        </FormControl>
+                       
                       </form>
-                    </div>
+                    
                   </div>
                 </div>
               </div>

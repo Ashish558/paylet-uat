@@ -444,6 +444,11 @@ const Enquiry = () => {
         tableName={`Enquiry Details`}
         defaultSort={`date`}
       />
+       <div class="row pb-5 mb-5">
+            <div class="col-md-12 text-center">
+                <a href="/"><button type="button" class="btn btn-outline-primary waves-effect">cancel</button></a>
+            </div>
+        </div>
     </div>
   );
 };

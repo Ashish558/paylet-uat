@@ -94,7 +94,7 @@ const ImportMandateRequest = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
                 <a href="#">List of Mandates</a>

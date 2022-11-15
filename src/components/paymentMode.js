@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 import { addPaymentMode, getAllPaymentMode } from "../services/payment";
+
 const PaymentMode = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -32,13 +37,13 @@ const PaymentMode = () => {
   ];
 
   const [paymentName, setPaymentName] = useState('')
-  const [paymentStatus, setPaymentStatus] = useState(0)
+  const [paymentStatus, setPaymentStatus] = useState('')
   const [tableData, setTableData] = useState([])
 
   const handleSubmit = () => {
     if (paymentName.trim() === '') return
 
-    addPaymentMode({ paymentmodename: paymentName, status: parseInt(paymentStatus) }, (err, res) => {
+    addPaymentMode({ paymentmodename: paymentName, status: getStatus(paymentStatus) }, (err, res) => {
       setPaymentName('')
       setPaymentStatus(0)
       if (err) return console.log(err.response)
@@ -48,6 +53,10 @@ const PaymentMode = () => {
       }
     })
   }
+
+  const getStatus = stat => stat === 'Active' ? 10 : 20
+
+  const handleStatusChange = e => setPaymentStatus(e.target.value)
 
   const handleAction = row => {
     console.log(row)
@@ -61,7 +70,7 @@ const PaymentMode = () => {
         if (err) return console.log(err.response)
         fetchPaymentModes()
       })
-    }else{
+    } else {
       addPaymentMode({
         paymentmodename: row.payment_mode_name,
         status: 10,
@@ -112,7 +121,7 @@ const PaymentMode = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
                 <a href="#">Master Data</a>
@@ -156,14 +165,22 @@ const PaymentMode = () => {
               </div>
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="number"
-                    id="PaymentMode_code"
-                    class="form-control"
-                    value={paymentStatus}
-                    onChange={e => setPaymentStatus(e.target.value)}
-                  />
-                  <label for="PaymentMode_code">Payment Mode Status</label>
+                  <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                    <InputLabel id="payment-mode-status-select"
+                      className={paymentStatus === '' ? 'in-active' : 'active'}>
+                      Payment Mode Status
+                    </InputLabel>
+                    <Select
+                      labelId="payment-mode-status-select"
+                      id="demo-simple-select-standard"
+                      label="Payment Mode Status"
+                      value={paymentStatus}
+                      onChange={e => handleStatusChange(e)}
+                    >
+                      <MenuItem value="Active">Active</MenuItem>
+                      <MenuItem value="InActive">InActive</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div class="col-md-4">
                   <a

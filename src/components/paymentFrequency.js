@@ -3,6 +3,11 @@ import Table from "./table";
 import Collapse from "@mui/material/Collapse";
 import { addPaymentFrequency, getFrequency } from "../services/payment";
 
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+
 const data = [
   {
     slNo: 1,
@@ -27,7 +32,7 @@ const data = [
 const PaymentFrequency = () => {
   const [expand, setExpand] = React.useState(true);
   const [frequencyType, setFrequencyType] = useState('')
-  const [status, setStatus] = useState(0)
+  const [status, setStatus] = useState('')
   const [tableData, setTableData] = useState([])
 
   const tableHeadings = [
@@ -39,8 +44,8 @@ const PaymentFrequency = () => {
 
   const handleSubmit = () => {
     if (frequencyType.trim() === '') return
-    if(!status) return
-    addPaymentFrequency({ paymentfreqname: frequencyType, status: parseInt(status) },
+    if (!status) return
+    addPaymentFrequency({ paymentfreqname: frequencyType, status: getStatus(status) },
       (err, res) => {
         if (err) return console.log(err.response)
         // console.log(res)
@@ -65,9 +70,13 @@ const PaymentFrequency = () => {
     })
   }
 
+  const getStatus = stat => stat === 'Active' ? 10 : 20
+
+  const handleStatusChange = e =>  setStatus(e.target.value)
+  
   const handleAction = row => {
     console.log(row)
-   
+
     if (row.action === 'Deactivate') {
       addPaymentFrequency({
         paymentfreqname: row.payment_freq_name,
@@ -77,7 +86,7 @@ const PaymentFrequency = () => {
         if (err) return console.log(err.response)
         fetchPaymentFrequency()
       })
-    }else{
+    } else {
       addPaymentFrequency({
         paymentfreqname: row.payment_freq_name,
         status: 10,
@@ -113,13 +122,13 @@ const PaymentFrequency = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Master Data</a>
+                <a href="/">Master Data</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Payment Frequency</a>
+                <a href="/payment-frequency">Payment Frequency</a>
               </li>
             </ol>
           </nav>
@@ -158,14 +167,22 @@ const PaymentFrequency = () => {
               </div>
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="number"
-                    id="PaymentFrequency_code"
-                    class="form-control"
-                    value={status}
-                    onChange={e => setStatus(e.target.value)}
-                  />
-                  <label for="PaymentFrequency_code">Frequency Status</label>
+                  <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                    <InputLabel id="frequency-status-select"
+                      className={status === '' ? 'in-active' : 'active'}>
+                      Frequency Status
+                    </InputLabel>
+                    <Select
+                      labelId="frequency-status-select"
+                      id="demo-simple-select-standard"
+                      label="Frequency Status"
+                      value={status}
+                      onChange={e => handleStatusChange(e)}
+                    >
+                      <MenuItem value="Active">Active</MenuItem>
+                      <MenuItem value="InActive">InActive</MenuItem>
+                    </Select>
+                  </FormControl>
                 </div>
                 <div class="col-md-4">
                   <a

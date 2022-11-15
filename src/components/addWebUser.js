@@ -77,7 +77,7 @@ const AddWebUser=()=>{
                     </div>
                     <div class="col-md-6">
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                          <InputLabel id="country-select">Age</InputLabel>
+                          <InputLabel id="country-select">Country</InputLabel>
                           <Select
                             labelId="country-select"
                             id="demo-simple-select-standard"
