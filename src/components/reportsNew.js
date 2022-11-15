@@ -5,6 +5,10 @@ import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
 import TableRow from "@mui/material/TableRow";
 import Table from "./table";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 const ReportsNew = () => {
   const [isMandate, setMandate] = React.useState(true);
   const tableHeadings = [
@@ -79,10 +83,10 @@ const ReportsNew = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-3 pb-2 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Create Report</a>
+                <a href="/reports-new">Create Report</a>
               </li>
             </ol>
           </nav>
@@ -137,14 +141,20 @@ const ReportsNew = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Mandate Status">Mandate Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+              
+              <FormControl variant="standard" sx={{ m: 1, width:'100%'}}>
+              <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
+                          <Select
+                            labelId="mandate-status"
+                            id="demo-simple-select-standard"
+                            defaultValue="DEFAULT"
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+                
+              
             </div>
             <div class="col-md-6">
               <div class="md-form">
@@ -262,14 +272,19 @@ const ReportsNew = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Mandate Status">Mandate Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+              
+              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+              <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
+                          <Select
+                            labelId="mandate-status"
+                            id="demo-simple-select-standard"
+                            defaultValue="DEFAULT"
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+              
             </div>
             <div class="col-md-6">
               <div class="md-form">
@@ -387,14 +402,19 @@ const ReportsNew = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Mandate Status">Mandate Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+              
+              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+              <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
+                          <Select
+                            labelId="mandate-status"
+                            id="demo-simple-select-standard"
+                           
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+              
             </div>
             <div class="col-md-6">
               <div class="md-form">

@@ -1,6 +1,10 @@
 import React from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 const AssetsType = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -50,13 +54,13 @@ const AssetsType = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Master Data</a>
+                <a href="/">Master Data</a>
               </li>
               <li class="breadcrumb-item">
-                <a href="#">Asset Type</a>
+                <a href="/asset-type">Asset Type</a>
               </li>
             </ol>
           </nav>
@@ -90,16 +94,21 @@ const AssetsType = () => {
               </div>
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="email"
-                    id="AssetType_code"
-                    class="form-control"
-                  />
-                  <label for="AssetType_code">Asset Type Status</label>
+                <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+                          <InputLabel id="asset-type-status-select">Asset Type Status</InputLabel>
+                          <Select
+                            labelId="asset-type-status-select"
+                            id="demo-simple-select-standard"
+                            label="Asset Type Status"
+                          >
+                            <MenuItem value="Active">Active</MenuItem>
+                            <MenuItem value="InActive">InActive</MenuItem>
+                          </Select>
+                        </FormControl>
                 </div>
                 <div class="col-md-4">
                   <a
-                    href="#."
+                    href="#"
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
                   >
                     Add

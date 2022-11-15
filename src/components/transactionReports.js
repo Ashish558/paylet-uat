@@ -1,5 +1,9 @@
 import React from "react";
 import Table from "./table";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 const TransactionReports = () => {
   const [isTransaction, setTransaction] = React.useState(true);
   const tableHeadings = [
@@ -132,14 +136,19 @@ const TransactionReports = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Transaction Status">Transaction Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+              
+              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+              <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
+                          <Select
+                            labelId="transaction-status"
+                            id="demo-simple-select-standard"
+                           
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+                
             </div>
             <div class="col-md-6">
               <div class="md-form">
@@ -260,14 +269,19 @@ const TransactionReports = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Transaction Status">Transaction Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+              
+              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+              <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
+                          <Select
+                            labelId="transaction-status"
+                            id="demo-simple-select-standard"
+                           
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+                
             </div>
             <div class="col-md-6">
               <div class="md-form">
@@ -390,14 +404,19 @@ const TransactionReports = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Transaction Status">Transaction Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+              
+              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+              <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
+                          <Select
+                            labelId="transaction-status"
+                            id="demo-simple-select-standard"
+                           
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+              
             </div>
             <div class="col-md-6">
               <div class="md-form">

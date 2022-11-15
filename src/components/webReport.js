@@ -1,6 +1,10 @@
 import React from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
 const WebReport = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -73,7 +77,7 @@ const WebReport = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-3 pb-2 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
                 <a href="#">Create Report</a>
@@ -131,14 +135,20 @@ const WebReport = () => {
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <select name="" id="" class="form-control border_select">
-                  <option value="Web Status">User Status</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                  <option value="1">1</option>
-                </select>
-              </div>
+             
+              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+              <InputLabel id="user-status-select">User Status</InputLabel>
+                          <Select
+                            labelId="user-status"
+                            id="demo-simple-select-standard"
+                           
+                          >
+                            <MenuItem value="1">1</MenuItem>
+                            <MenuItem value="1">1</MenuItem>
+                          </Select>
+                </FormControl>
+                
+              
             </div>
             <div class="col-md-6">
               <div class="md-form">

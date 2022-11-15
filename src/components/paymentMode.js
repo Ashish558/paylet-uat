@@ -1,6 +1,10 @@
 import React from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
 const PaymentMode = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -49,7 +53,7 @@ const PaymentMode = () => {
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
               </li>
               <li class="breadcrumb-item">
                 <a href="#">Master Data</a>
@@ -91,12 +95,17 @@ const PaymentMode = () => {
               </div>
               <div class="col-12 d-flex align-items-center">
                 <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="email"
-                    id="PaymentMode_code"
-                    class="form-control"
-                  />
-                  <label for="PaymentMode_code">Payment Mode Status</label>
+                <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
+                          <InputLabel id="payment-mode-status-select">Payment Mode Status</InputLabel>
+                          <Select
+                            labelId="payment-mode-status-select"
+                            id="demo-simple-select-standard"
+                            label="Payment Mode Status"
+                          >
+                            <MenuItem value="Active">Active</MenuItem>
+                            <MenuItem value="InActive">InActive</MenuItem>
+                          </Select>
+                        </FormControl>
                 </div>
                 <div class="col-md-4">
                   <a
