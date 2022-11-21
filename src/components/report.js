@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+
 const Report = () => {
   const [isMandate, setMandate] = React.useState(true);
   const [expand, setExpand] = React.useState(true);
