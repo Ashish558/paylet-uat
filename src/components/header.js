@@ -193,7 +193,7 @@ const Header = (props) => {
       >
         {list(anchor)}
       </SwipeableDrawer>
-          <a href="/home">
+          <a href="/">
             <img src={logoWhite} class="img-fluid" alt="" />
           </a>
           <div
