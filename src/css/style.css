@@ -804,3 +804,6 @@ li {
   padding: 0.5rem 1.6rem;
     font-size: .64rem;
 }
+.css-levciy-MuiTablePagination-displayedRows,.css-pdct74-MuiTablePagination-selectLabel{
+  margin:0;
+}

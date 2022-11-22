@@ -169,19 +169,10 @@ export default function EnhancedTable({
           }}
         >
           <h5>{tableName}</h5>
-          <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-            <InputLabel>Search</InputLabel>
-            <OutlinedInput
-              id="outlined-adornment-password"
-              endAdornment={
-                <InputAdornment position="end">
-                  <IconButton edge="end">
-                    <SearchIcon />
-                  </IconButton>
-                </InputAdornment>
-              }
-            />
-          </FormControl>
+          <form style={{display:'flex',justifyContent:"space-between",marginBottom:'15px'}}>
+            <div style={{fontWeight:'400', width: '100px'}}>Search :</div>
+            <input className="form-control form-control-sm" type="text"/>
+          </form>
         </div>
 
         <TableContainer>
