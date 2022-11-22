@@ -7,6 +7,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { addAssetType, getAssetTypes } from "../services/payment";
+import { checkIfIdExist } from "../utils/utils";
 const data = [
   {
     slNo: 1,
@@ -47,16 +48,17 @@ const AssetsType = () => {
     if (status.trim() === '') return
 
     addAssetType({ assetName: assetType, status: getStatus(status) }, (err, res) => {
+      if (err) return console.log(err.response)
+      if(checkIfIdExist(res.data.assetId, tableData, 'assetId')){
+       return alert('Asset Type already exists')
+      }
       setAssetType('')
       setStatus('')
-      if (err) return console.log(err.response)
-      // console.log(res)
       fetchAssetTypes()
-      if (res.data.messageDiscription) {
-        alert(res.data.messageDiscription)
-      }
+      alert('Asset Type Added Successfully')
     })
   }
+  // console.log(tableData)
 
   const handleAction = row => {
     // console.log(row)

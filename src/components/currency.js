@@ -8,6 +8,30 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { addCurrency, deactivateCurrency, getAllCurrency } from "../services/payment";
 
+const data = [
+  {
+    slNo: 1,
+    currencyName: "Indian Rupee",
+    currencyCode: "INR",
+    status: "Active",
+    action: "Deactivate",
+  },
+  {
+    slNo: 2,
+    currencyName: "US Dollar",
+    currencyCode: "USD",
+    status: "Active",
+    action: "Deactivate",
+  },
+  {
+    slNo: 3,
+    currencyName: "British Pound",
+    currencyCode: "Pound",
+    status: "Inactive",
+    action: "Activate",
+  },
+];
+
 const Currency = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -16,30 +40,6 @@ const Currency = () => {
     { id: "currencyCode", label: "Currency Code", numeric: false },
     { id: "status", label: "Status", numeric: false },
     { id: "action", label: "Action", numeric: false },
-  ];
-
-  const data = [
-    {
-      slNo: 1,
-      currencyName: "Indian Rupee",
-      currencyCode: "INR",
-      status: "Active",
-      action: "Deactivate",
-    },
-    {
-      slNo: 2,
-      currencyName: "US Dollar",
-      currencyCode: "USD",
-      status: "Active",
-      action: "Deactivate",
-    },
-    {
-      slNo: 3,
-      currencyName: "British Pound",
-      currencyCode: "Pound",
-      status: "Inactive",
-      action: "Activate",
-    },
   ];
 
   const [currencyName, setCurrencyName] = useState('')
@@ -53,19 +53,21 @@ const Currency = () => {
     if (status === '') return
 
     addCurrency({ currencyName, currencycode: currencyCode, status: getStatus(status) }, (err, res) => {
+      
+      if (err) return console.log(err.response)
+      if (res.data.messageDiscription) {
+        return alert('Currency already exists')
+      }
       setCurrencyCode('')
       setCurrencyName('')
-      if (err) return console.log(err.response)
-      console.log(res)
+      setStatus('')
       fetchCurrencies()
-      if (res.data.messageDiscription) {
-        alert(res.data.messageDiscription)
-      }
+      alert('Currency added successfully')
     })
   }
 
   const getStatus = stat => stat === 'Active' ? '10' : '20'
-  
+
   const handleDeactivate = row => {
     console.log(row)
     if (row.action === 'Activate') return
@@ -83,7 +85,7 @@ const Currency = () => {
   const fetchCurrencies = () => {
     getAllCurrency((err, res) => {
       if (err) return console.log(err.response)
-      console.log(res)
+      // console.log(res)
       setTableData(res.data.map(curr => {
         return {
           ...curr,
@@ -172,11 +174,11 @@ const Currency = () => {
                 </div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="md-form flex-1 col-md-8 pl-0 pr-0 mt-2">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
-                    <InputLabel for='demo-simple-select-standard' 
-                    id="status-select"
-                    className={status === '' ? 'in-active' : 'active'}
+                    <InputLabel for='demo-simple-select-standard'
+                      id="status-select"
+                      className={status === '' ? 'in-active' : 'active'}
                     >Status</InputLabel>
                     <Select
                       labelId="status-select"

@@ -7,6 +7,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { checkIfIdExist } from "../utils/utils";
 
 const data = [
   {
@@ -48,11 +49,14 @@ const PaymentFrequency = () => {
     addPaymentFrequency({ paymentfreqname: frequencyType, status: getStatus(status) },
       (err, res) => {
         if (err) return console.log(err.response)
-        // console.log(res)
-        fetchPaymentFrequency()
-        if (res.data.messageDiscription) {
-          alert(res.data.messageDiscription)
+
+        if (checkIfIdExist(res.data.payment_freq_id, tableData, 'payment_freq_id')) {
+          return alert('Payment Frequency already exists')
         }
+        setFrequencyType('')
+        setStatus('')
+        fetchPaymentFrequency()
+        alert('Payment Frequency Added Successfully')
       })
   }
 
@@ -72,8 +76,8 @@ const PaymentFrequency = () => {
 
   const getStatus = stat => stat === 'Active' ? 10 : 20
 
-  const handleStatusChange = e =>  setStatus(e.target.value)
-  
+  const handleStatusChange = e => setStatus(e.target.value)
+
   const handleAction = row => {
     console.log(row)
 
@@ -166,7 +170,7 @@ const PaymentFrequency = () => {
                 <div class="col-md-4"></div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="md-form flex-1 col-md-8 pl-0 pr-0 mt-2">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
                     <InputLabel id="frequency-status-select"
                       className={status === '' ? 'in-active' : 'active'}>

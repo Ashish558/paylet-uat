@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { addPaymentMode, getAllPaymentMode } from "../services/payment";
+import { checkIfIdExist } from "../utils/utils";
 
 const PaymentMode = () => {
   const [expand, setExpand] = React.useState(true);
@@ -44,13 +45,17 @@ const PaymentMode = () => {
     if (paymentName.trim() === '') return
 
     addPaymentMode({ paymentmodename: paymentName, status: getStatus(paymentStatus) }, (err, res) => {
+      
+      if (err) return console.log(err.response)
+      if (checkIfIdExist(res.data.payment_mode_id, tableData, 'payment_mode_id')) {
+        return alert('Payment Mode already exists')
+      }
+      
       setPaymentName('')
       setPaymentStatus(0)
-      if (err) return console.log(err.response)
+
       fetchPaymentModes()
-      if (res.data.messageDiscription) {
-        alert(res.data.messageDiscription)
-      }
+      alert('Payment Mode Added Successfully')
     })
   }
 
@@ -164,7 +169,7 @@ const PaymentMode = () => {
                 <div class="col-md-4"></div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="md-form flex-1 col-md-8 pl-0 pr-0 mt-2">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
                     <InputLabel id="payment-mode-status-select"
                       className={paymentStatus === '' ? 'in-active' : 'active'}>
