@@ -15,7 +15,7 @@ let initialState = {
    address: '',
    pinCode: '',
 }
-
+ 
 const AddWebUser = () => {
 
    const [values, setValues] = useState(initialState)
@@ -26,11 +26,15 @@ const AddWebUser = () => {
          ...values,
          pinCode: parseInt(values.pinCode)
       }
-      // console.log(body)
       registerAdmin(body, (err, res) => {
          if (err) return console.log(err)
          console.log(res)
-         setValues(initialState)
+         if(res.data.messageDiscription === 'OK'){
+            alert('User successfully added')
+            setValues(initialState)
+         }else{
+            alert(res.data.messageDiscription)
+         }
       })
    }
 
@@ -119,7 +123,7 @@ const AddWebUser = () => {
                      </div>
                   </div>
                   <div class="col-md-6">
-                     <FormControl required={true} variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                     <FormControl required={true} variant="standard" sx={{ mt: 1, minWidth: 120, width: '100%' }}>
                         <InputLabel id="country-select">Country</InputLabel>
                         <Select
                            labelId="country-select"
@@ -135,7 +139,7 @@ const AddWebUser = () => {
                   </div>
                   <div class="col-md-6">
 
-                     <FormControl required={true} variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                     <FormControl required={true} variant="standard" sx={{mt:1, width: '100%', minWidth: 120 }}>
                         <InputLabel id="user-type-select">User Type</InputLabel>
                         <Select
                            labelId="user-type-select"
