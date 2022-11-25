@@ -6,6 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 const Currency = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -85,28 +86,22 @@ const Currency = () => {
           <div id="myDIV">
             <div class="row justify-content-center col-md-6 ml-auto mr-auto">
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Currency Name
-                  </label>
+                <div class="flex-1 col-md-8 pl-0 pr-0">
+                <TextField label="Currency Name" name="currencyName" variant="standard" fullWidth />
+                 
                 </div>
                 <div class="col-md-4"></div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input type="email" id="currency_code" class="form-control" />
-                  <label for="currency_code">Currency Code</label>
+                <div class="flex-1 col-md-8 pl-0 pr-0">
+                <TextField label="Currency Code" name="currencyCode" variant="standard" fullWidth />
+                 
                 </div>
                 <div class="col-md-4">
                 </div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="flex-1 col-md-8 pl-0 pr-0">
                 <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
                           <InputLabel id="status-select">Status</InputLabel>
                           <Select

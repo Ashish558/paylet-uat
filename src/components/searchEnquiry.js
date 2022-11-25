@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "./table";
 import Collapse from "@mui/material/Collapse";
+import TextField from '@mui/material/TextField';
 const SearchEnquiry = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -93,61 +94,23 @@ const SearchEnquiry = () => {
         <div class="sector3 ml-4 mr-4 mb-5 pb-5 ">
           <div class="row">
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormPasswords"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormPasswords">
-                  Initiated between
-                </label>
-              </div>
+            <TextField label="Initiated between" name="initiatedBetween" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Reference 1</label>
-              </div>
+            <TextField label="Reference 1" name="reference1" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Email</label>
+              <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
               </div>
-            </div>
+
           </div>
           <div class="row">
-            <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormPasswords"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormPasswords">Account</label>
+          <div class="col-md-4">
+              <TextField label="Account" name="account" variant="standard" fullWidth />
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Mandate Status
-                </label>
+              <div class="col-md-4">
+              <TextField label="Mandate Status" name="mandateStatus" variant="standard" fullWidth />
               </div>
-            </div>
             <div class="col-md-4">
               <div class="md-form">
                 <input
@@ -161,36 +124,13 @@ const SearchEnquiry = () => {
           </div>
           <div class="row">
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormPasswords"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormPasswords">
-                  Account Number
-                </label>
-              </div>
+            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />   
             </div>
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Email</label>
-              </div>
+            <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Created by</label>
-              </div>
+            <TextField label="Created by" name="createdBy" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row">

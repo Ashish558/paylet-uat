@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 const AssetsType = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -82,18 +83,13 @@ const AssetsType = () => {
           <div id="myDIV">
             <div class="row justify-content-center col-md-6 ml-auto mr-auto">
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">Asset Type</label>
+                <div class="flex-1 col-md-8 pl-0 pr-0">
+                  <TextField label="Asset Type" name="assetType" variant="standard" fullWidth />
                 </div>
                 <div class="col-md-4"></div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="flex-1 col-md-8 pl-0 pr-0">
                 <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
                           <InputLabel id="asset-type-status-select">Asset Type Status</InputLabel>
                           <Select

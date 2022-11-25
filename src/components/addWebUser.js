@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 const AddWebUser=()=>{
  return (
   <div style={{ margin: "85px 0" }}>
@@ -40,43 +41,25 @@ const AddWebUser=()=>{
                 
                 <div class="row col-md-6 mr-auto pl-0">
                     <div class="col-md-6">
-                        <div class="md-form">
-                            <input type="text" id="firstName"  class="form-control"/>
-                            <label for="">First Name</label>
-                        </div>
+                     <TextField label="First Name" name="firstName" variant="standard" fullWidth />
                     </div>
                     <div class="col-md-6">
-                        <div class="md-form">
-                            <input type="text" id="lastName"  class="form-control"/>
-                            <label for="">Last Name</label>
-                        </div>
+                     <TextField label="Last Name" name="lastName" variant="standard" fullWidth />   
                     </div>
                     <div class="col-md-6">
-                        <div class="md-form">
-                            <input type="number" id="mobilenumber"  class="form-control"/>
-                            <label for="">Mobile Number</label>
-                        </div>
+                     <TextField label="Mobile Number" name="mobileNumber" variant="standard" fullWidth />
                     </div>
                     <div class="col-md-6">
-                        <div class="md-form">
-                            <input type="email" id="email"  class="form-control"/>
-                            <label for="">Email</label>
-                        </div>
+                    <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
                     </div>
                     <div class="col-md-6">
-                        <div class="md-form">
-                            <input type="text" id="address"  class="form-control"/>
-                        <label for="">Address</label>
-                        </div>
+                    <TextField label="Address" name="address" variant="standard" fullWidth />
                     </div>
                     <div class="col-md-6">
-                        <div class="md-form">
-                            <input type="number" id="pincode"  class="form-control"/>
-                        <label for="">Pincode</label>
-                        </div>
+                    <TextField label="Pincode"  name="pincode"  variant="standard" fullWidth /> 
                     </div>
                     <div class="col-md-6">
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120,margin:'0' }}>
                           <InputLabel id="country-select">Country</InputLabel>
                           <Select
                             labelId="country-select"
@@ -90,7 +73,7 @@ const AddWebUser=()=>{
                     </div> 
                     <div class="col-md-6">
                        
-                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
+                        <FormControl variant="standard" sx={{ m: 1, minWidth: 120,margin:'0' }}>
                           <InputLabel id="user-type-select">User Type</InputLabel>
                           <Select
                             labelId="user-type-select"

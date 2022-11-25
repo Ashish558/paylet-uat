@@ -1,14 +1,11 @@
 import React from "react";
-import { styled } from "@mui/material/styles";
-
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-
 import TableRow from "@mui/material/TableRow";
 import Table from "./table";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
+import TextField from '@mui/material/TextField';
 const ReportsNew = () => {
   const [isMandate, setMandate] = React.useState(true);
   const tableHeadings = [
@@ -119,25 +116,25 @@ const ReportsNew = () => {
           </div>
           <div class="row col-md-6 ml-auto mr-auto pl-0">
             <div class="col-md-6">
-              <div class="md-form">
+            <div class="md-form">
                 <input
                   type="date"
-                  id="materialSubscriptionFormEmail"
+                  id="fromDate"
                   placeholder="From Date"
                   class="form-control"
                 />
-                <label for="materialSubscriptionFormEmail">From Date</label>
+                <label for="fromDate">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
+            <div class="md-form">
                 <input
                   type="date"
-                  id="materialSubscriptionFormEmail"
+                  id="toDate"
                   placeholder="To Date"
                   class="form-control"
                 />
-                <label for="materialSubscriptionFormEmail">To Date</label>
+                <label for="toDate">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
@@ -157,69 +154,19 @@ const ReportsNew = () => {
               
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Owner /Tenant Name
-                </label>
-              </div>
+            <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Account Number
-                </label>
-              </div>
+            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  {" "}
-                  Mandate Id / Number
-                </label>
-              </div>
+            <TextField label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth /> 
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  {" "}
-                  Assets Number
-                </label>
-              </div>
+            <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Assets Type</label>
-              </div>
+            <TextField label="Assets Type" name="assetsType" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row justify-content-center">
@@ -383,22 +330,22 @@ const ReportsNew = () => {
               <div class="md-form">
                 <input
                   type="date"
-                  id="materialSubscriptionFormEmail"
+                  id="fromDate"
                   placeholder="From Date"
                   class="form-control"
                 />
-                <label for="materialSubscriptionFormEmail">From Date</label>
+                <label for="fromDate">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="md-form">
+            <div class="md-form">
                 <input
                   type="date"
-                  id="materialSubscriptionFormEmail"
-                  placeholder="To Date"
+                  id="toDate"
+                  placeholder="From Date"
                   class="form-control"
                 />
-                <label for="materialSubscriptionFormEmail">To Date</label>
+                <label for="toDate">To Date</label>
               </div>
             </div>
             <div class="col-md-6">
@@ -417,69 +364,19 @@ const ReportsNew = () => {
               
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Owner /Tenant Name
-                </label>
-              </div>
+            <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Account Number
-                </label>
-              </div>
+            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  {" "}
-                  Mandate Id / Number
-                </label>
-              </div>
+            <TextField label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth /> 
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  {" "}
-                  Assets Number
-                </label>
-              </div>
+            <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Assets Type</label>
-              </div>
+            <TextField label="Assets Type" name="assetsType" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row justify-content-center">

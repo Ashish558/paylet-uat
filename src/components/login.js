@@ -21,10 +21,10 @@ const Login = () => {
             <div class="m-inr flex-1 mr-3">
               <input
                 type="text"
-                id="materialSubscriptionFormUsername"
+                id="mobileNumber"
                 class="form-control"
               />
-              <label for="materialSubscriptionFormUsername">
+              <label for="mobileNumber">
                 Mobile Number
               </label>
             </div>
@@ -41,10 +41,10 @@ const Login = () => {
             <div class="m-inr flex-1 mr-3">
               <input
                 type="password"
-                id="materialSubscriptionFormPasswords"
+                id="otp"
                 class="form-control"
               />
-              <label for="materialSubscriptionFormPassword">OTP</label>
+              <label for="otp">OTP</label>
             </div>
             <a
               href="#."

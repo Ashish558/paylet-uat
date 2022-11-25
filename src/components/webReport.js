@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
+import TextField from '@mui/material/TextField';
 const WebReport = () => {
   const [expand, setExpand] = React.useState(true);
   const tableHeadings = [
@@ -151,38 +152,14 @@ const WebReport = () => {
               
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">User Name</label>
-              </div>
+            <TextField label="User name" name="userName" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="number"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Mobile Number</label>
-              </div>
+            <TextField label="Mobile Number" name="mobileNumber" variant="standard" fullWidth />
             </div>
 
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">User Type</label>
-              </div>
+            <TextField label="User Type" name="userType" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row justify-content-center">

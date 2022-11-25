@@ -1,6 +1,6 @@
 import React from "react";
 import Table from "./table";
-
+import TextField from '@mui/material/TextField';
 import Collapse from "@mui/material/Collapse";
 const Search = () => {
   const [expand, setExpand] = React.useState(true);
@@ -82,70 +82,24 @@ const Search = () => {
         <div id="myDIV">
           <div class="row sector3" id="myDIV">
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormPasswords"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormPasswords">
-                  Initiated between
-                </label>
-              </div>
+            <TextField label="Initiated between" name="initiatedBetween" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Reference 1</label>
-              </div>
+            <TextField label="Reference 1" name="reference1" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Email</label>
+              <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
               </div>
-            </div>
 
-            <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormPasswords"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormPasswords">Account</label>
+              <div class="col-md-4">
+              <TextField label="Account" name="account" variant="standard" fullWidth />
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Mandate Status
-                </label>
+              <div class="col-md-4">
+              <TextField label="Mandate Status" name="mandateStatus" variant="standard" fullWidth />
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="md-form">
-                <input
-                  type="email"
-                  id="materialSubscriptionFormEmail"
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">Consumer name</label>
+              <div class="col-md-4">
+              <TextField label="Consumer name" name="consumerName" variant="standard" fullWidth />
               </div>
-            </div>
           </div>
         </div>
       </Collapse>
