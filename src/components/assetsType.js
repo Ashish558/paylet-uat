@@ -5,6 +5,7 @@ import Collapse from "@mui/material/Collapse";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import { addAssetType, getAssetTypes } from "../services/payment";
 import { checkIfIdExist } from "../utils/utils";
@@ -50,11 +51,11 @@ const AssetsType = () => {
 
     addAssetType({ assetName: assetType, status: getStatus(status) }, (err, res) => {
       if (err) return console.log(err.response)
-      if(checkIfIdExist(res.data.assetId, tableData, 'assetId')){
-       return alert('Asset Type already exists')
+      if (checkIfIdExist(res.data.assetId, tableData, 'assetId')) {
+        return alert('Asset Type already exists')
       }
       setAssetType('')
-      setStatus('')
+      // setStatus('')
       fetchAssetTypes()
       alert('Asset Type Added Successfully')
     })
@@ -62,7 +63,7 @@ const AssetsType = () => {
   // console.log(tableData)
 
   const handleAction = row => {
-    // console.log(row)
+    console.log(row)
     if (row.action === 'Deactivate') {
       addAssetType({
         assetName: row.assetName,
@@ -87,7 +88,7 @@ const AssetsType = () => {
 
   const getStatus = stat => stat === 'Active' ? 10 : 20
 
-  const handleStatusChange = e =>  setStatus(e.target.value)
+  const handleStatusChange = e => setStatus(e.target.value)
 
   const fetchAssetTypes = () => {
     getAssetTypes((err, res) => {
@@ -159,29 +160,24 @@ const AssetsType = () => {
           <div id="myDIV">
             <div class="row justify-content-center col-md-6 ml-auto mr-auto">
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                    value={assetType}
-                    onChange={e => setAssetType(e.target.value)}
-                  />
-                  <label for="materialSubscriptionFormEmail">Asset Type</label>
+                <div class="flex-1 col-md-8 pl-0 pr-0">
+                  <TextField label="Asset Type" name="assetType" variant="standard" 
+                  fullWidth
+                  value={assetType}
+                  onChange={e => setAssetType(e.target.value)} />
                 </div>
                 <div class="col-md-4"></div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="flex-1 col-md-8 pl-0 pr-0">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
-                    <InputLabel id="asset-type-status-select"
-                       className={status === '' ? 'in-active' : 'active'}>Asset Type Status</InputLabel>
+                    <InputLabel id="asset-type-status-select">Asset Type Status</InputLabel>
                     <Select
                       labelId="asset-type-status-select"
                       id="demo-simple-select-standard"
                       label="Asset Type Status"
                       value={status}
-                      onChange={e => handleStatusChange(e)}
+                      onChange={e => setStatus(e.target.value)} 
                     >
                       <MenuItem value="Active">Active</MenuItem>
                       <MenuItem value="InActive">InActive</MenuItem>

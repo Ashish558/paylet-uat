@@ -807,3 +807,6 @@ li {
 .css-levciy-MuiTablePagination-displayedRows,.css-pdct74-MuiTablePagination-selectLabel{
   margin:0;
 }
+.col-md-6,.col-md-4,.col-md-8{
+  margin-bottom:10px;
+}

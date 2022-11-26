@@ -2,6 +2,7 @@ import React from "react";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 const InitiateMandateRequest = () => {
   return (
     <div style={{ margin: "85px 0" }}>
@@ -92,136 +93,33 @@ const InitiateMandateRequest = () => {
             </div>
 
             <div class="row ml-1 mr-1">
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="text"
-                    id="materialSubscriptionFormPasswords"
-                    class="form-control"
-                  />
-                  <label
-                    for="materialSubscriptionFormPasswords"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="The NPCI classification under which this mandate falls"
-                  >
-                    Category Code
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Category Code" name="categoryCode" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label
-                    for="materialSubscriptionFormEmail"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Reference scheme for this mandate. e.g Vehicle Loan etc. Either Scheme Reference or the Consumer Reference Number must be provided."
-                  >
-                    Reference No 1
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Reference No 1" name="referenceNo1" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label
-                    for="materialSubscriptionFormEmail"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Reference number provided to the customer. e.g. Loan Number. Either Scheme Reference or the Consumer Reference Number must be provided."
-                  >
-                    Reference No 2
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Reference No 2" name="referenceNo2" variant="standard" fullWidth />
                 </div>
-              </div>
-
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="text"
-                    id="materialSubscriptionFormPasswords"
-                    class="form-control"
-                  />
-                  <label
-                    for="materialSubscriptionFormPasswords"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Reference number provided to the customer. e.g. Loan Number. Either Scheme Reference or the Consumer Reference Number must be provided."
-                  >
-                    Occurrence
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Occurrence" name="occurrence" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label
-                    for="materialSubscriptionFormEmail"
-                    data-toggle="tooltip"
-                    data-placement="bottom"
-                    title="Whether this mandate is for a one-off or repeated collection."
-                  >
-                    Frequency
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Frequency" name="frequency" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    First Collection Date
-                  </label>
+                <div class="col-md-4">
+                <TextField label="First Collection Date" name="firstCollectionDate" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Final Collection Date
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Final Collection Date" name="finalCollectionDate" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">Debit Type</label>
+                <div class="col-md-4">
+                <TextField label="Debit Type" name="debitType" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">Amount</label>
+                <div class="col-md-4">
+                <TextField label="Amount" name="amount" variant="standard" fullWidth />
                 </div>
-              </div>
             </div>
           </div>
           <div>
@@ -231,61 +129,22 @@ const InitiateMandateRequest = () => {
               </div>
             </div>
             <div class="row ml-1 mr-1">
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="text"
-                    id="materialSubscriptionFormPasswords"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">Name</label>
+                <div class="col-md-4">
+                <TextField label="Name" name="name" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Mobile Number
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Mobile Number" name="mobileNumber" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Phone Number
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Phone Number" name="phoneNumber" variant="standard" fullWidth />
                 </div>
-              </div>
 
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="text"
-                    id="materialSubscriptionFormPasswords"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">Email</label>
+                <div class="col-md-4">
+                <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">PAN</label>
+                <div class="col-md-4">
+                <TextField label="PAN" name="pan" variant="standard" fullWidth />
                 </div>
-              </div>
             </div>
           </div>
           <div>
@@ -295,53 +154,20 @@ const InitiateMandateRequest = () => {
               </div>
             </div>
             <div class="row ml-1 mr-1">
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">Bank</label>
+            <div class="col-md-4">
+                <TextField label="Bank" name="bank" variant="standard" fullWidth />
+      
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Account Type
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Account Type" name="accountType" variant="standard" fullWidth />
                 </div>
-              </div>
 
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="text"
-                    id="materialSubscriptionFormPasswords"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Account Number
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
                 </div>
-              </div>
-              <div class="col-md-4">
-                <div class="md-form">
-                  <input
-                    type="email"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Confirm Account Number
-                  </label>
+                <div class="col-md-4">
+                <TextField label="Confirm Account Number" name="confirmAccountNumber" variant="standard" fullWidth />
                 </div>
-              </div>
             </div>
           </div>
 

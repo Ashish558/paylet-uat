@@ -5,6 +5,7 @@ import Collapse from "@mui/material/Collapse";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
 import Select from '@mui/material/Select';
 import { addCurrency, deactivateCurrency, getAllCurrency } from "../services/payment";
 import { Link } from "react-router-dom";
@@ -54,7 +55,7 @@ const Currency = () => {
     if (status === '') return
 
     addCurrency({ currencyName, currencycode: currencyCode, status: getStatus(status) }, (err, res) => {
-      
+
       if (err) return console.log(err.response)
       if (res.data.messageDiscription) {
         return alert('Currency already exists')
@@ -79,9 +80,7 @@ const Currency = () => {
     })
   }
 
-  const handleStatusChange = e => {
-    setStatus(e.target.value)
-  }
+// console.log(tableData)
 
   const fetchCurrencies = () => {
     getAllCurrency((err, res) => {
@@ -149,44 +148,38 @@ const Currency = () => {
           <div id="myDIV">
             <div class="row justify-content-center col-md-6 ml-auto mr-auto">
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input
-                    type="text"
-                    id="materialSubscriptionFormEmail"
-                    class="form-control"
+                <div class="flex-1 col-md-8 pl-0 pr-0">
+                  <TextField label="Currency Name"
+                    name="currencyName"
+                    variant="standard"
+                    fullWidth
                     value={currencyName}
-                    onChange={e => setCurrencyName(e.target.value)}
-                  />
-                  <label for="materialSubscriptionFormEmail">
-                    Currency Name
-                  </label>
+                    onChange={e => setCurrencyName(e.target.value)} />
+
                 </div>
                 <div class="col-md-4"></div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
-                  <input type="text" id="currency_code" class="form-control"
+                <div class="flex-1 col-md-8 pl-0 pr-0">
+                  <TextField label="Currency Code" name="currencyCode" variant="standard"
+                    fullWidth
                     value={currencyCode}
-                    onChange={e => setCurrencyCode(e.target.value)}
-                  />
-                  <label for="currency_code">Currency Code</label>
+                    onChange={e => setCurrencyCode(e.target.value)} />
+
                 </div>
                 <div class="col-md-4">
                 </div>
               </div>
               <div class="col-12 d-flex align-items-center">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0 mt-2">
+                <div class="flex-1 col-md-8 pl-0 pr-0">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
-                    <InputLabel for='demo-simple-select-standard'
-                      id="status-select"
-                      className={status === '' ? 'in-active' : 'active'}
-                    >Status</InputLabel>
+                    <InputLabel id="status-select">Status</InputLabel>
                     <Select
                       labelId="status-select"
                       id="demo-simple-select-standard"
                       label="Status"
                       value={status}
-                      onChange={e => handleStatusChange(e)}
+                      onChange={e => setStatus(e.target.value)} 
                     >
                       <MenuItem value="Active">Active</MenuItem>
                       <MenuItem value="InActive">InActive</MenuItem>

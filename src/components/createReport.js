@@ -2,6 +2,7 @@ import React from "react";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
 const CreateReport = () => {
   return (
     <div style={{ margin: "85px 0" }}>
@@ -216,61 +217,22 @@ const CreateReport = () => {
                   </div>
                 </div>
                 <div class="row ml-1 mr-1">
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="text"
-                        id="materialSubscriptionFormPasswords"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">Name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="email"
-                        id="materialSubscriptionFormEmail"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">
-                        Mobile Number
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="email"
-                        id="materialSubscriptionFormEmail"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">
-                        Phone Number
-                      </label>
-                    </div>
-                  </div>
+                <div class="col-md-4">
+                <TextField label="Name" name="name" variant="standard" fullWidth />
+                </div>
+                <div class="col-md-4">
+                <TextField label="Mobile Number" name="mobileNumber" variant="standard" fullWidth />
+                </div>
+                <div class="col-md-4">
+                <TextField label="Phone Number" name="phoneNumber" variant="standard" fullWidth />
+                </div>
 
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="text"
-                        id="materialSubscriptionFormPasswords"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">Email</label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="email"
-                        id="materialSubscriptionFormEmail"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">PAN</label>
-                    </div>
-                  </div>
+                <div class="col-md-4">
+                <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
+                </div>
+                <div class="col-md-4">
+                <TextField label="PAN" name="pan" variant="standard" fullWidth />
+                </div>
                 </div>
               </div>
               <div>
@@ -280,53 +242,20 @@ const CreateReport = () => {
                   </div>
                 </div>
                 <div class="row ml-1 mr-1">
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="email"
-                        id="materialSubscriptionFormEmail"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">Bank</label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="email"
-                        id="materialSubscriptionFormEmail"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">
-                        Account Type
-                      </label>
-                    </div>
-                  </div>
+                <div class="col-md-4">
+                <TextField label="Bank" name="bank" variant="standard" fullWidth />
+      
+                </div>
+                <div class="col-md-4">
+                <TextField label="Account Type" name="accountType" variant="standard" fullWidth />
+                </div>
 
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="text"
-                        id="materialSubscriptionFormPasswords"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">
-                        Account Number
-                      </label>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="md-form">
-                      <input
-                        type="email"
-                        id="materialSubscriptionFormEmail"
-                        class="form-control"
-                      />
-                      <label for="materialSubscriptionFormEmail">
-                        Confirm Account Number
-                      </label>
-                    </div>
-                  </div>
+                <div class="col-md-4">
+                <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
+                </div>
+                <div class="col-md-4">
+                <TextField label="Confirm Account Number" name="confirmAccountNumber" variant="standard" fullWidth />
+                </div>
                 </div>
               </div>
 

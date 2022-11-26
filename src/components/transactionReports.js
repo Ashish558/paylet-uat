@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
+import TextField from '@mui/material/TextField';
 const TransactionReports = () => {
   const [isTransaction, setTransaction] = React.useState(true);
   const tableHeadings = [
@@ -419,71 +420,19 @@ const TransactionReports = () => {
               
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Owner /Tenant Name
-                </label>
-              </div>
+            <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Account Number
-                </label>
-              </div>
+            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  {" "}
-                  Transaction Id / Number
-                </label>
-              </div>
+            <TextField label="Transaction Id / Number" name="transactionId" variant="standard" fullWidth /> 
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  {" "}
-                  Assets Number
-                </label>
-              </div>
+            <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-6">
-              <div class="md-form">
-                <input
-                  type="text"
-                  id="materialSubscriptionFormEmail"
-                  placeholder=""
-                  class="form-control"
-                />
-                <label for="materialSubscriptionFormEmail">
-                  Transaction Type
-                </label>
-              </div>
+            <TextField label="Transaction Type" name="transactionType" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row justify-content-center">

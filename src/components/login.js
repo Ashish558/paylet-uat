@@ -49,12 +49,12 @@ const Login = () => {
             <div class="m-inr flex-1 mr-3">
               <input
                 type="number"
-                id="materialSubscriptionFormUsername"
+                id="mobileNumber"
                 class="form-control"
                 value={mobileNumber}
                 onChange={e => setMobileNumber(e.target.value)}
               />
-              <label for="materialSubscriptionFormUsername">
+              <label for="mobileNumber">
                 Mobile Number
               </label>
             </div>
@@ -72,12 +72,12 @@ const Login = () => {
             <div class="m-inr flex-1 mr-3">
               <input
                 type="password"
-                id="materialSubscriptionFormPasswords"
+                id="otp"
                 class="form-control"
                 value={otp}
                 onChange={e => setOtp(e.target.value)}
               />
-              <label for="materialSubscriptionFormPassword">OTP</label>
+              <label for="otp">OTP</label>
             </div>
             <a
               href="#."
