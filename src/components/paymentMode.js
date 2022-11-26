@@ -7,6 +7,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { addPaymentMode, getAllPaymentMode } from "../services/payment";
 import { checkIfIdExist } from "../utils/utils";
+import { Link } from "react-router-dom";
 
 const PaymentMode = () => {
   const [expand, setExpand] = React.useState(true);
@@ -111,9 +112,9 @@ const PaymentMode = () => {
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">
-            <a data-toggle="tooltip" title="Back" href="/">
+            <Link data-toggle="tooltip" title="Back" to="/">
               <i class="fas fa-chevron-left"></i>
-            </a>
+            </Link>
             &nbsp;
             <span class="heading-color">Back</span>
           </h4>

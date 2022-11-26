@@ -4,6 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { registerAdmin } from "../services/auth";
+import { Link } from 'react-router-dom'
 
 let initialState = {
    firstname: '',
@@ -15,7 +16,7 @@ let initialState = {
    address: '',
    pinCode: '',
 }
- 
+
 const AddWebUser = () => {
 
    const [values, setValues] = useState(initialState)
@@ -29,10 +30,10 @@ const AddWebUser = () => {
       registerAdmin(body, (err, res) => {
          if (err) return console.log(err)
          console.log(res)
-         if(res.data.messageDiscription === 'OK'){
+         if (res.data.messageDiscription === 'OK') {
             alert('User successfully added')
             setValues(initialState)
-         }else{
+         } else {
             alert(res.data.messageDiscription)
          }
       })
@@ -43,9 +44,9 @@ const AddWebUser = () => {
          <div class="row">
             <div class="col-md-6">
                <h4 class="ml-4 mt-3 heading-color">
-                  <a data-toggle="tooltip" title="Back" href="index.html">
+                  <Link data-toggle="tooltip" title="Back" to="/web-user">
                      <i class="fas fa-chevron-left"></i>
-                  </a>&nbsp;
+                  </Link>&nbsp;
                   <span class="heading-color">Add Web User</span>
                </h4>
             </div>
@@ -139,7 +140,7 @@ const AddWebUser = () => {
                   </div>
                   <div class="col-md-6">
 
-                     <FormControl required={true} variant="standard" sx={{mt:1, width: '100%', minWidth: 120 }}>
+                     <FormControl required={true} variant="standard" sx={{ mt: 1, width: '100%', minWidth: 120 }}>
                         <InputLabel id="user-type-select">User Type</InputLabel>
                         <Select
                            labelId="user-type-select"
