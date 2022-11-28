@@ -109,28 +109,33 @@ const Report = () => {
         <div class="hidden_desc" id="page1_desc">
           <h4 class="mt-3">Mandate Report</h4>
           <div class="row">
+
             <div class="col-md-4">
               <div class="md-form">
                 <input
-                  type="text"
+                  type="date"
                   id="materialSubscriptionFormPasswords"
                   class="form-control"
                 />
                 <label for="materialSubscriptionFormPasswords">
-                  Initiated between
+                  From Date
                 </label>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="md-form">
                 <input
-                  type="email"
+                  type="date"
                   id="materialSubscriptionFormEmail"
                   class="form-control"
                 />
-                <label for="materialSubscriptionFormEmail">Reference 1</label>
+                <label for="materialSubscriptionFormEmail">
+                  To Date
+                </label>
               </div>
             </div>
+
             <div class="col-md-4">
               <div class="md-form">
                 <input
@@ -364,35 +369,35 @@ const Report = () => {
           <h4 class="mt-3">{isMandate ? "Mandate" : "Payment"} Report</h4>
           <div class="row">
             <div class="col-md-4">
-            <TextField label="Initiated between" name="initiatedBetween" variant="standard" fullWidth /> 
+              <TextField label="Initiated between" name="initiatedBetween" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-            <TextField label="Reference 1" name="reference1" variant="standard" fullWidth />
+              <TextField label="Reference 1" name="reference1" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-            <TextField label="Reference 2" name="reference2" variant="standard" fullWidth />
+              <TextField label="Reference 2" name="reference2" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row">
-              <div class="col-md-4">
+            <div class="col-md-4">
               <TextField label="Account" name="account" variant="standard" fullWidth />
-              </div>
-              <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
               <TextField label="Mandate Status" name="mandateStatus" variant="standard" fullWidth />
-              </div>
-              <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
               <TextField label="Consumer name" name="consumerName" variant="standard" fullWidth />
-              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col-md-4">
-            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />   
+              <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-            <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
+              <TextField type="email" label="Email" name="email" variant="standard" fullWidth />
             </div>
             <div class="col-md-4">
-            <TextField label="Created by" name="createdBy" variant="standard" fullWidth />
+              <TextField label="Created by" name="createdBy" variant="standard" fullWidth />
             </div>
           </div>
           <div class="row">

@@ -3,7 +3,7 @@ import "./css/bootstrap.css";
 
 import "./css/style.css";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Route, BrowserRouter, Redirect, Switch } from "react-router-dom";
 import {
   Header,
@@ -46,20 +46,41 @@ import {
   Payments,
   PaymentsDetails,
 } from "./components";
+import DashBoard from "./components/Dashboard/dashboard";
 const App = () => {
-  const [user, setUser] = React.useState({ name: "ankeeta" });
+
+  const [user, setUser] = useState({ name: "ankeeta" });
+  const [loading, setLoading] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const loginProps = { isLoggedIn, setIsLoggedIn }
+
+  useEffect(() => {
+    const status = sessionStorage.getItem('userStatus')
+    if(status === '0'){
+      setIsLoggedIn(true)
+      setLoading(false)
+    }else{
+      setLoading(false)
+    }
+  }, [])
+
+  if(loading) return <></>
 
   return (
     <BrowserRouter>
       {user && <Header user={user} />}
 
       <Switch>
-        <Route path="/login" exact component={Login} />
-        <Route path="/add-web-user" exact component={AddWebUser}/>
+        <Route path="/login" exact
+          //  component={Login}
+          render={() => <Login {...loginProps} />} />
+
+        <Route path="/dashboard" exact component={DashBoard} />
+        <Route path="/add-web-user" exact component={AddWebUser} />
         <Route path="/asset-type" exact component={AssetsType} />
-        <Route path="/reports-new" exact component={ReportsNew} />
+        {/* <Route path="/reports-new" exact component={ReportsNew} /> */}
         <Route path="/report-details" exact component={ReportDetails} />
-        <Route path="/report" exact component={Report} />
+        <Route path="/report" exact component={ReportsNew} />
         <Route path="/currency" exact component={Currency} />
         <Route path="/enquiry" exact component={Enquiry} />
         <Route path="/my-download" exact component={MyDownload} />
@@ -115,11 +136,12 @@ const App = () => {
             </div>
           )}
         />
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact render={() => isLoggedIn ? <Home /> : <Login  {...loginProps} />} />
       </Switch>
       <Footer />
     </BrowserRouter>
   );
 };
+
 
 export default App;

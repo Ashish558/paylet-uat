@@ -3,7 +3,7 @@ import payImage from "./../images/pay.PNG";
 import TextField from "@mui/material/TextField";
 import { sendOtp, validateOtp } from "../services/auth";
 
-const Login = () => {
+const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [mobileNumber, setMobileNumber] = useState(0)
   const [otp, setOtp] = useState(0)
 
@@ -13,7 +13,7 @@ const Login = () => {
       if (err) console.log(err)
       console.log(res)
       if (res.data.otp) {
-       return alert(`Your otp is ${res.data.otp}`)
+        return alert(`Your otp is ${res.data.otp}`)
       }
       if (res.data.messageDiscription) {
         alert(res.data.messageDiscription)
@@ -22,9 +22,15 @@ const Login = () => {
   }
 
   const handleOtpVerification = () => {
-    validateOtp({  mobileNumber, otp }, (err, res) => {
+    validateOtp({ mobileNumber, otp }, (err, res) => {
       if (err) console.log(err)
       console.log(res)
+      if (res.data.messageDiscription === 'OK') {
+        alert(res.data.messageDiscription)
+        setIsLoggedIn(true)
+        sessionStorage.setItem('userStatus', res.data.userStatus)
+        return
+      }
       if (res.data.messageDiscription) {
         alert(res.data.messageDiscription)
       }
@@ -32,7 +38,7 @@ const Login = () => {
   }
 
   return (
-    <div class="row imageview img-responsive">
+    <div class="row imageview img-responsive" style={{ marginTop: '60px', width: 'auto' }}>
       <div class="col-md-4"></div>
       <div class="col-md-4 mt-5 ml-4 loginpage loginbg text-center">
         <a>

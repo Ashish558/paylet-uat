@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TableRow from "@mui/material/TableRow";
 import Table from "./table";
 import MenuItem from '@mui/material/MenuItem';
@@ -6,6 +6,19 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
+import { mandateReport } from "../services/reports";
+
+const initialState = {
+  fromDate: '',
+  toDate: '',
+  mandateStatus: '',
+  name: '',
+  accountNumber: '',
+  mandateId: '',
+  assetNumber: '',
+  assetType: '',
+}
+
 const ReportsNew = () => {
   const [isMandate, setMandate] = React.useState(true);
   const tableHeadings = [
@@ -59,6 +72,25 @@ const ReportsNew = () => {
     },
   ];
 
+  const [data, setData] = useState(initialState)
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(data)
+    if (isMandate) {
+      mandateReport(data, (err, res) => {
+        if (err) return console.log(err.response)
+        console.log(res)
+        if (res.data.messageDiscription) {
+          alert(res.data.messageDiscription)
+          return
+        }
+        setData(initialState)
+        alert('Mandate Report Generated Successfully')
+      })
+    }
+  }
+
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
@@ -110,63 +142,78 @@ const ReportsNew = () => {
           </div>
         </div>
 
-        <div class="hidden_desc" id="page1_desc">
+        <form class="hidden_desc" id="page1_desc" onSubmit={handleSubmit} >
           <div class="row mr-auto ml-auto w-100 col-md-6">
             <h4 class="mt-3">Mandate Report</h4>
           </div>
           <div class="row col-md-6 ml-auto mr-auto pl-0">
             <div class="col-md-6">
-            <div class="md-form">
-                <input
+              <div class="md-form">
+                <input required
                   type="date"
                   id="fromDate"
                   placeholder="From Date"
                   class="form-control"
+                  value={data.fromDate}
+                  onChange={e => setData({ ...data, fromDate: e.target.value })}
                 />
                 <label for="fromDate">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
-            <div class="md-form">
-                <input
+              <div class="md-form">
+                <input required
                   type="date"
                   id="toDate"
                   placeholder="To Date"
                   class="form-control"
+                  value={data.toDate}
+                  onChange={e => setData({ ...data, toDate: e.target.value })}
                 />
                 <label for="toDate">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
-              
-              <FormControl variant="standard" sx={{ m: 1, width:'100%'}}>
-              <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
-                          <Select
-                            labelId="mandate-status"
-                            id="demo-simple-select-standard"
-                            defaultValue="DEFAULT"
-                          >
-                            <MenuItem value="1">1</MenuItem>
-                            <MenuItem value="1">1</MenuItem>
-                          </Select>
-                </FormControl>
-                
-              
+
+              <FormControl variant="standard" sx={{ m: 1, width: '100%' }}>
+                <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
+                <Select
+                  labelId="mandate-status"
+                  id="demo-simple-select-standard"
+                  defaultValue="DEFAULT"
+                  value={data.mandateStatus}
+                  onChange={e => setData({ ...data, mandateStatus: e.target.value })}
+                >
+                  <MenuItem value="1">1</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
+
             </div>
             <div class="col-md-6">
-            <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth />
+              <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth
+                value={data.name}
+                onChange={e => setData({ ...data, name: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
+              <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth
+                value={data.accountNumber}
+                onChange={e => setData({ ...data, accountNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth /> 
+              <TextField label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth
+                value={data.mandateId}
+                onChange={e => setData({ ...data, mandateId: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth />
+              <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth
+                value={data.assetNumber}
+                onChange={e => setData({ ...data, assetNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Assets Type" name="assetsType" variant="standard" fullWidth />
+              <TextField label="Assets Type" name="assetsType" variant="standard" fullWidth
+                value={data.assetType}
+                onChange={e => setData({ ...data, assetType: e.target.value })} />
             </div>
           </div>
           <div class="row justify-content-center">
@@ -176,6 +223,8 @@ const ReportsNew = () => {
                 data-toggle="collapse"
                 data-target=".multi-collapse"
                 aria-expanded="false"
+                type='submit'
+                onClick={handleSubmit}
               >
                 Generate Report
               </button>
@@ -189,7 +238,7 @@ const ReportsNew = () => {
               </a>
             </div>
           </div>
-        </div>
+        </form>
 
         <div class="hidden_desc" id="page2_desc">
           <div class="row mr-auto ml-auto w-100 col-md-6">
@@ -198,48 +247,56 @@ const ReportsNew = () => {
           <div class="row col-md-6 ml-auto mr-auto pl-0">
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="date"
                   id="materialSubscriptionFormEmail"
                   placeholder="From Date"
                   class="form-control"
+                  value={data.fromDate}
+                  onChange={e => setData({ ...data, fromDate: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="date"
                   id="materialSubscriptionFormEmail"
                   placeholder="To Date"
                   class="form-control"
+                  value={data.toDate}
+                  onChange={e => setData({ ...data, toDate: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">To Date</label>
               </div>
             </div>
             <div class="col-md-6">
-              
-              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
-              <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
-                          <Select
-                            labelId="mandate-status"
-                            id="demo-simple-select-standard"
-                            defaultValue="DEFAULT"
-                          >
-                            <MenuItem value="1">1</MenuItem>
-                            <MenuItem value="1">1</MenuItem>
-                          </Select>
-                </FormControl>
-              
+
+              <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
+                <Select
+                  labelId="mandate-status"
+                  id="demo-simple-select-standard"
+                  defaultValue="DEFAULT"
+                  value={data.mandateStatus}
+                  onChange={e => setData({ ...data, mandateStatus: e.target.value })}
+                >
+                  <MenuItem value="1">1</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
+
             </div>
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="text"
                   id="materialSubscriptionFormEmail"
                   placeholder=""
                   class="form-control"
+                  value={data.name}
+                  onChange={e => setData({ ...data, name: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">
                   Owner /Tenant Name
@@ -248,11 +305,13 @@ const ReportsNew = () => {
             </div>
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="text"
                   id="materialSubscriptionFormEmail"
                   placeholder=""
                   class="form-control"
+                  value={data.accountNumber}
+                  onChange={e => setData({ ...data, accountNumber: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">
                   Account Number
@@ -261,11 +320,13 @@ const ReportsNew = () => {
             </div>
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="text"
                   id="materialSubscriptionFormEmail"
                   placeholder=""
                   class="form-control"
+                  value={data.mandateId}
+                  onChange={e => setData({ ...data, mandateId: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">
                   {" "}
@@ -275,11 +336,13 @@ const ReportsNew = () => {
             </div>
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="text"
                   id="materialSubscriptionFormEmail"
                   placeholder=""
                   class="form-control"
+                  value={data.assetNumber}
+                  onChange={e => setData({ ...data, assetNumber: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">
                   {" "}
@@ -289,11 +352,13 @@ const ReportsNew = () => {
             </div>
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="text"
                   id="materialSubscriptionFormEmail"
                   placeholder=""
                   class="form-control"
+                  value={data.assetType}
+                  onChange={e => setData({ ...data, assetType: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">Assets Type</label>
               </div>
@@ -321,62 +386,82 @@ const ReportsNew = () => {
           </div>
         </div>
 
-        <div id="page_content">
+        <form id="page_content" onSubmit={handleSubmit} >
           <div class="row mr-auto ml-auto w-100 col-md-6">
             <h4 class="mt-3">{isMandate ? "Mandate" : "Payment"} Report</h4>
           </div>
           <div class="row col-md-6 ml-auto mr-auto pl-0">
             <div class="col-md-6">
               <div class="md-form">
-                <input
+                <input required
                   type="date"
                   id="fromDate"
                   placeholder="From Date"
                   class="form-control"
+                  value={data.fromDate}
+                  onChange={e => setData({ ...data, fromDate: e.target.value })}
                 />
                 <label for="fromDate">From Date</label>
               </div>
             </div>
             <div class="col-md-6">
-            <div class="md-form">
-                <input
+              <div class="md-form">
+                <input required
                   type="date"
                   id="toDate"
                   placeholder="From Date"
                   class="form-control"
+                  value={data.toDate}
+                  onChange={e => setData({ ...data, toDate: e.target.value })}
                 />
                 <label for="toDate">To Date</label>
               </div>
             </div>
             <div class="col-md-6">
-              
-              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
-              <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
-                          <Select
-                            labelId="mandate-status"
-                            id="demo-simple-select-standard"
-                           
-                          >
-                            <MenuItem value="1">1</MenuItem>
-                            <MenuItem value="1">1</MenuItem>
-                          </Select>
-                </FormControl>
-              
+
+              <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
+                <Select required={true}
+                  labelId="mandate-status"
+                  id="demo-simple-select-standard"
+                  value={data.mandateStatus}
+                  onChange={e => setData({ ...data, mandateStatus: e.target.value })}
+                >
+                  <MenuItem value="Initiated">Initiated</MenuItem>
+                  {/* <MenuItem value="20">Inactive</MenuItem> */}
+                </Select>
+              </FormControl>
+
             </div>
             <div class="col-md-6">
-            <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth />
+              <TextField required={true}
+                label="Owner /Tenant Name" name="name" variant="standard" fullWidth
+                value={data.name}
+                onChange={e => setData({ ...data, name: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
+              <TextField required={true}
+                label="Account Number" name="accountNumber" variant="standard" fullWidth
+                value={data.accountNumber}
+                onChange={e => setData({ ...data, accountNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth /> 
+              <TextField required={true}
+                label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth
+                value={data.mandateId}
+                onChange={e => setData({ ...data, mandateId: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth />
+              <TextField required={true}
+                label="Assets Number" name="assetsNumber" variant="standard" fullWidth
+                value={data.assetNumber}
+                onChange={e => setData({ ...data, assetNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Assets Type" name="assetsType" variant="standard" fullWidth />
+              <TextField required={true}
+                label="Assets Type" name="assetsType" variant="standard" fullWidth
+                value={data.assetType}
+                onChange={e => setData({ ...data, assetType: e.target.value })} />
             </div>
           </div>
           <div class="row justify-content-center">
@@ -386,6 +471,7 @@ const ReportsNew = () => {
                 data-toggle="collapse"
                 data-target=".multi-collapse"
                 aria-expanded="false"
+                type='submit'
               >
                 Generate Report
               </button>
@@ -399,7 +485,8 @@ const ReportsNew = () => {
               </a>
             </div>
           </div>
-        </div>
+        </form>
+
       </div>
       <Table
         tableHeadings={tableHeadings}

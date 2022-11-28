@@ -11,11 +11,11 @@ const Home = () => {
         <div class="col-md-5 section4">
           <div class="row mt-md-5">
             <div class="col-md-4">
-              <a href="/mandate">
+              <a href="/dashboard">
                 <span class="fa-stack fa-2x">
                   <i class="fa fa-circle fa-stack-2x icon-background"></i>
                   <i class="fa fa-file-alt fa-stack-1x"></i>
-                  <h6>Mandate</h6>
+                  <h6>Dashboard</h6>
                 </span>
               </a>
             </div>
