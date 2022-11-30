@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import { loginUser, sendOtp, validateOtp } from "../services/auth";
 
 const Login = ({ isLoggedIn, setIsLoggedIn }) => {
-  const [mobileNumber, setMobileNumber] = useState(0)
+  const [mobileNumber, setMobileNumber] = useState()
   const [password, setPassword] = useState('')
 
   const handleSubmit = e => {
