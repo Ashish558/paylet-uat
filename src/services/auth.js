@@ -24,3 +24,9 @@ export const registerAdmin = (body, cb) => {
       .then(res => cb(null, res))
       .catch(err => cb(err, null))
 }
+
+export const loginUser = (body, cb) => {
+   axios.post(`${BASE_URL}/login/validPassword`, body)
+      .then(res => cb(null, res))
+      .catch(err => cb(err, null))
+}

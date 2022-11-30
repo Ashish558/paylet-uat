@@ -4,7 +4,7 @@ import "./css/bootstrap.css";
 import "./css/style.css";
 
 import React, { useEffect, useState } from "react";
-import { Route, BrowserRouter, Redirect, Switch } from "react-router-dom";
+import { Route, BrowserRouter, Redirect, Switch, useHistory } from "react-router-dom";
 import {
   Header,
   Footer,
@@ -54,31 +54,70 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const loginProps = { isLoggedIn, setIsLoggedIn }
 
+  let history = useHistory();
+
   useEffect(() => {
     const status = sessionStorage.getItem('userStatus')
-    if(status === '0'){
+    if (status === '1') {
       setIsLoggedIn(true)
       setLoading(false)
-    }else{
+    } else {
       setLoading(false)
     }
   }, [])
 
-  if(loading) return <></>
+  if (loading) return <></>
 
   return (
     <BrowserRouter>
       {user && <Header user={user} />}
 
       <Switch>
-        <Route path="/login" exact
-          //  component={Login}
-          render={() => <Login {...loginProps} />} />
+        <Route path="/" exact render={() => isLoggedIn ? <Home /> : <Login  {...loginProps} />} />
 
-        <Route path="/dashboard" exact component={DashBoard} />
-        <Route path="/add-web-user" exact component={AddWebUser} />
+        <Route path="/login" exact
+          render={() => <Login {...loginProps} />} />
+        {ProtectRoute(isLoggedIn, '/dashboard', DashBoard)}
+        {ProtectRoute(isLoggedIn, '/asset-type', AssetsType)}
+        {ProtectRoute(isLoggedIn, '/report-details', ReportDetails)}
+        {ProtectRoute(isLoggedIn, '/report', ReportsNew)}
+        {ProtectRoute(isLoggedIn, '/currency', Currency)}
+        {ProtectRoute(isLoggedIn, '/enquiry', Enquiry)}
+        {ProtectRoute(isLoggedIn, '/my-download', MyDownload)}
+
+        {ProtectRoute(isLoggedIn, '/my-jobs', MyJobs)}
+        {ProtectRoute(isLoggedIn, '/my-mandate', MyMandate)}
+        {ProtectRoute(isLoggedIn, '/mandate', Mandate)}
+        {ProtectRoute(isLoggedIn, '/mandate-details', MandateDetails)}
+        {ProtectRoute(isLoggedIn, '/mandate-reports', MandateReports)}
+        {ProtectRoute(isLoggedIn, '/payment-frequency', PaymentFrequency)}
+        {ProtectRoute(isLoggedIn, '/payment-mode', PaymentMode)}
+        {ProtectRoute(isLoggedIn, '/payments', Payments)}
+        {ProtectRoute(isLoggedIn, '/payments-details', PaymentsDetails)}
+        {ProtectRoute(isLoggedIn, '/import-mandate-request', ImportMandateRequest)}
+        {ProtectRoute(isLoggedIn, '/initiate-mandate-request', InitiateMandateRequest)}
+        {ProtectRoute(isLoggedIn, '/search-mandate-request', SearchMandateRequest)}
+
+        {ProtectRoute(isLoggedIn, '/search-payments', SearchPayments)}
+        {ProtectRoute(isLoggedIn, '/search-report', SearchReport)}
+        {ProtectRoute(isLoggedIn, '/enquiry-details', EnquiryDetails)}
+        {ProtectRoute(isLoggedIn, '/create-enquiry', CreateEnquiry)}
+        {ProtectRoute(isLoggedIn, '/create-payment', CreatePayment)}
+        {ProtectRoute(isLoggedIn, '/create-report', CreateReport)}
+
+        {ProtectRoute(isLoggedIn, '/search-enquiry', SearchEnquiry)}
+        {ProtectRoute(isLoggedIn, '/today-mandate', TodayMandate)}
+        {ProtectRoute(isLoggedIn, '/web-report', WebReport)}
+        {ProtectRoute(isLoggedIn, '/web-result', WebResult)}
+        {ProtectRoute(isLoggedIn, '/web-user', WebUser)}
+        {ProtectRoute(isLoggedIn, '/transaction-report', TransactionReport)}
+
+        {ProtectRoute(isLoggedIn, '/search', Search)}
+        {ProtectRoute(isLoggedIn, '/transaction-reports', TransactionReports)}
+
+
+        {/* <Route path="/add-web-user" exact component={AddWebUser} />
         <Route path="/asset-type" exact component={AssetsType} />
-        {/* <Route path="/reports-new" exact component={ReportsNew} /> */}
         <Route path="/report-details" exact component={ReportDetails} />
         <Route path="/report" exact component={ReportsNew} />
         <Route path="/currency" exact component={Currency} />
@@ -114,19 +153,20 @@ const App = () => {
         <Route path="/create-enquiry" exact component={CreateEnquiry} />
         <Route path="/create-payment" exact component={CreatePayment} />
         <Route path="/create-report" exact component={CreateReport} />
-        <Route path="/search" exact component={Search} />
+
         <Route path="/search-enquiry" exact component={SearchEnquiry} />
         <Route path="/today-mandate" exact component={TodayMandate} />
         <Route path="/web-report" exact component={WebReport} />
         <Route path="/web-result" exact component={WebResult} />
         <Route path="/web-user" exact component={WebUser} />
         <Route path="/transaction-report" exact component={TransactionReport} />
+        <Route path="/search" exact component={Search} />
         <Route
           path="/transaction-reports"
           exact
           component={TransactionReports}
-        />
-        <Route
+        /> */}
+        {/* <Route
           path="/otp"
           exact
           component={() => (
@@ -135,13 +175,15 @@ const App = () => {
               <OTP />
             </div>
           )}
-        />
-        <Route path="/" exact render={() => isLoggedIn ? <Home /> : <Login  {...loginProps} />} />
+        /> */}
       </Switch>
       <Footer />
     </BrowserRouter>
   );
 };
 
+const ProtectRoute = (isLoggedIn, path, Component) => {
+  return <Route path={path} exact render={() => isLoggedIn ? <Component /> : window.location = '/'} />
+}
 
 export default App;

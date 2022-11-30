@@ -1,21 +1,34 @@
 import React, { useState } from "react";
 import payImage from "./../images/pay.PNG";
 import TextField from "@mui/material/TextField";
-import { loginUser, sendOtp, validateOtp } from "../services/auth";
+import { sendOtp, validateOtp } from "../services/auth";
 
 const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const [mobileNumber, setMobileNumber] = useState(0)
-  const [password, setPassword] = useState('')
+  const [otp, setOtp] = useState(0)
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    loginUser({mobileNumber, password}, (err, res) => {
+  const handleSendOtp = () => {
+    console.log(mobileNumber)
+    sendOtp(mobileNumber, (err, res) => {
       if (err) console.log(err)
       console.log(res)
-      if (res.data.messageDiscription === "password is valid") {
-        alert('Login successful')
-        sessionStorage.setItem('userStatus', '1')
+      if (res.data.otp) {
+        return alert(`Your otp is ${res.data.otp}`)
+      }
+      if (res.data.messageDiscription) {
+        alert(res.data.messageDiscription)
+      }
+    })
+  }
+
+  const handleOtpVerification = () => {
+    validateOtp({ mobileNumber, otp }, (err, res) => {
+      if (err) console.log(err)
+      console.log(res)
+      if (res.data.messageDiscription === 'OK') {
+        alert(res.data.messageDiscription)
         setIsLoggedIn(true)
+        sessionStorage.setItem('userStatus', '1')
         return
       }
       if (res.data.messageDiscription) {
@@ -27,7 +40,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   return (
     <div class="row imageview img-responsive" style={{ marginTop: '60px', width: 'auto' }}>
       <div class="col-md-4"></div>
-      <form class="col-md-4 mt-5 ml-4 loginpage loginbg text-center" onSubmit={handleSubmit}>
+      <div class="col-md-4 mt-5 ml-4 loginpage loginbg text-center">
         <a>
           <img src={payImage} class="img-responsive" alt="" />
         </a>
@@ -44,7 +57,6 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                 type="number"
                 id="mobileNumber"
                 class="form-control"
-                required={true}
                 value={mobileNumber}
                 onChange={e => setMobileNumber(e.target.value)}
               />
@@ -52,7 +64,13 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                 Mobile Number
               </label>
             </div>
-
+            <a
+              href="#."
+              class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
+              onClick={handleSendOtp}
+            >
+              SEND OTP
+            </a>
           </div>
         </div>
         <div class="md-form">
@@ -62,24 +80,29 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                 type="password"
                 id="otp"
                 class="form-control"
-                required={true}
-                value={password}
-                onChange={e => setPassword(e.target.value)}
+                value={otp}
+                onChange={e => setOtp(e.target.value)}
               />
-              <label for="otp">Password</label>
+              <label for="otp">OTP</label>
             </div>
-
+            <a
+              href="#."
+              class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
+              onClick={handleOtpVerification}
+            >
+              VERIFY
+            </a>
           </div>
         </div>
-
-        <button
-          class="btn btn-sm btn-sm btn-block mt-4 mb-5 waves-effect waves-light pt-2 pb-2 ml-0"
-          type="submit"
-        >
-          Continue
-        </button>
-
-      </form>
+        <a href="/otp">
+          <button
+            class="btn btn-sm btn-sm btn-block mt-4 mb-5 waves-effect waves-light pt-2 pb-2 ml-0"
+            type="submit"
+          >
+            Continue
+          </button>
+        </a>
+      </div>
     </div>
   );
 };
