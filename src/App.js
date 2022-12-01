@@ -66,11 +66,17 @@ const App = () => {
     }
   }, [])
 
+  const handleLogout = () => {
+    setIsLoggedIn(false)
+    sessionStorage.clear()
+    window.location = '/'
+  }
+
   if (loading) return <></>
 
   return (
     <BrowserRouter>
-      {user && <Header user={user} />}
+      {user && <Header user={user} handleLogout={handleLogout} />}
 
       <Switch>
         <Route path="/" exact render={() => isLoggedIn ? <Home /> : <Login  {...loginProps} />} />
@@ -110,6 +116,7 @@ const App = () => {
         {ProtectRoute(isLoggedIn, '/web-report', WebReport)}
         {ProtectRoute(isLoggedIn, '/web-result', WebResult)}
         {ProtectRoute(isLoggedIn, '/web-user', WebUser)}
+        {ProtectRoute(isLoggedIn, '/add-web-user', AddWebUser)}
         {ProtectRoute(isLoggedIn, '/transaction-report', TransactionReport)}
 
         {ProtectRoute(isLoggedIn, '/search', Search)}

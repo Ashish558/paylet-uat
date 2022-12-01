@@ -146,8 +146,9 @@ const Currency = () => {
       <Collapse in={expand}>
         <div class="sector3 ml-4 mr-4 mb-5 pb-5">
           <div id="myDIV">
-            <div class="row justify-content-center col-md-6 ml-auto mr-auto">
-              <div class="col-12 d-flex align-items-center">
+            {/* <div class="row justify-content-center col-md-6 ml-auto mr-auto"> */}
+            <div class="row justify-content-start col-md-6">
+              <div class="col-12 d-flex align-items-center px-0">
                 <div class="flex-1 col-md-8 pl-0 pr-0">
                   <TextField label="Currency Name"
                     name="currencyName"
@@ -159,7 +160,7 @@ const Currency = () => {
                 </div>
                 <div class="col-md-4"></div>
               </div>
-              <div class="col-12 d-flex align-items-center">
+              <div class="col-12 d-flex align-items-center px-0">
                 <div class="flex-1 col-md-8 pl-0 pr-0">
                   <TextField label="Currency Code" name="currencyCode" variant="standard"
                     fullWidth
@@ -170,7 +171,7 @@ const Currency = () => {
                 <div class="col-md-4">
                 </div>
               </div>
-              <div class="col-12 d-flex align-items-center">
+              <div class="col-12 d-flex align-items-center px-0">
                 <div class="flex-1 col-md-8 pl-0 pr-0">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
                     <InputLabel id="status-select">Status</InputLabel>

@@ -162,10 +162,10 @@ console.log(values)
 
                   </div>
                </div>
-               <div class="row justify-content-center">
-                  <div class="col-md-6 mt-4">
+               <div class="row justify-content-start">
+                  <div class="col-md-6 mt-4 flex justify-content-center">
                      <button class="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">ADD</button>
-                     <a href="home.html"><button type="button" class="btn btn-outline-primary waves-effect" onclick="myFunction()">cancel</button></a>
+                     <a href="/web-user"><button type="button" class="btn btn-outline-primary waves-effect" onclick="myFunction()">cancel</button></a>
                   </div>
                </div>
             </form>

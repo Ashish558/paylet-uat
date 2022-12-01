@@ -96,13 +96,12 @@ const WebUser = () => {
       <hr class="mt-0 ml-4 mr-4" />
       <div class="row sector2 mr-1">
         <div class="col-md-6">
-          <h5 class="mb-0">User Reports</h5>
+          <h5 class="mb-0">Web User</h5>
           <nav aria-label="breadcrumb">
             <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item"><a href="#">Master Data</a></li>
-              <li class="breadcrumb-item"><a href="#">Reports</a></li>
-              <li class="breadcrumb-item"><a href="#">User Report</a></li>
+              <li class="breadcrumb-item"><a href="#">User Details</a></li>
+              <li class="breadcrumb-item"><a href="#">Web User</a></li>
             </ol>
           </nav>
         </div>
@@ -117,7 +116,7 @@ const WebUser = () => {
       <Table
         tableHeadings={tableHeadings}
         tableData={webUsers}
-        tableName={`User Reports`}
+        tableName={`User Details`}
         defaultSort={`slNo`}
       />
     </div>

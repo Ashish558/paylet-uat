@@ -9,8 +9,8 @@ import TextField from '@mui/material/TextField';
 import { mandateReport } from "../services/reports";
 
 const initialState = {
-  fromDate: '',
-  toDate: '',
+  // fromDate: '',
+  // toDate: '',
   mandateStatus: '',
   name: '',
   accountNumber: '',
@@ -22,12 +22,17 @@ const initialState = {
 const ReportsNew = () => {
   const [isMandate, setMandate] = React.useState(true);
   const tableHeadings = [
-    { id: "refNo", label: "Reference Number", numeric: false },
-    { id: "date", label: "Date", numeric: false },
-    { id: "status", label: "Status", numeric: false },
-    { id: "action", label: "Action", numeric: false },
+    { id: "Sl no", label: "Sl No", numeric: true },
+    { id: "Mandate ID", label: "Mandate ID", numeric: true },
+    { id: "Mandate Date", label: "Mandate Date", numeric: false },
+    { id: "Frequency", label: "Frequency", numeric: false },
+    { id: "No of Payment", label: "No of Payment", numeric: true },
+    { id: "Amount", label: "Amount", numeric: true },
+    { id: "Payment", label: "Payment Mode", numeric: false },
+    { id: "mandateStatus", label: "MandateS tatus", numeric: false },
+    { id: "action", label: "Owner / Tenant Name", numeric: false },
   ];
-  const tableData = [
+  const temptableData = [
     {
       refNo: "d13d7632368a4f28a5986f65174fd44b",
       date: "13/11/2020",
@@ -73,6 +78,7 @@ const ReportsNew = () => {
   ];
 
   const [data, setData] = useState(initialState)
+  const [tableData, setTableData] = useState([])
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -85,6 +91,21 @@ const ReportsNew = () => {
           alert(res.data.messageDiscription)
           return
         }
+
+        let tempdata = res.data.map((item, idx) => {
+          return {
+            slno: idx + 1,
+            mandateId: item.mandateId,
+            date: 'date',
+            name: item.name,
+            paymentFreq: item.paymentFreq,
+            numberOfPayment: item.numberOfPayment,
+            amount: item.amount,
+            paymentMode: item.paymentMode,
+            mandateStatus: item.mandateStatus,
+          }
+        })
+        setTableData(tempdata)
         setData(initialState)
         alert('Mandate Report Generated Successfully')
       })
@@ -123,7 +144,7 @@ const ReportsNew = () => {
       </div>
 
       <div id="main_content">
-        <div class="row mr-auto ml-auto col-md-6">
+        <div class="row col-md-6">
           <div class="col pl-0">
             <li
               className={isMandate ? "selected" : "notselected"}
@@ -143,10 +164,10 @@ const ReportsNew = () => {
         </div>
 
         <form class="hidden_desc" id="page1_desc" onSubmit={handleSubmit} >
-          <div class="row mr-auto ml-auto w-100 col-md-6">
+          <div class="row w-100 col-md-6">
             <h4 class="mt-3">Mandate Report</h4>
           </div>
-          <div class="row col-md-6 ml-auto mr-auto pl-0">
+          <div class="row col-md-6  pl-0">
             <div class="col-md-6">
               <div class="md-form">
                 <input required
@@ -241,11 +262,12 @@ const ReportsNew = () => {
         </form>
 
         <div class="hidden_desc" id="page2_desc">
-          <div class="row mr-auto ml-auto w-100 col-md-6">
+          <div class="row w-100 col-md-6">
             <h4 class="mt-3">Payments Report</h4>
           </div>
-          <div class="row col-md-6 ml-auto mr-auto pl-0">
-            <div class="col-md-6">
+          <div class="row col-md-6  pl-0">
+
+            {/* <div class="col-md-6">
               <div class="md-form">
                 <input required
                   type="date"
@@ -270,7 +292,8 @@ const ReportsNew = () => {
                 />
                 <label for="materialSubscriptionFormEmail">To Date</label>
               </div>
-            </div>
+            </div> */}
+
             <div class="col-md-6">
 
               <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
@@ -387,11 +410,12 @@ const ReportsNew = () => {
         </div>
 
         <form id="page_content" onSubmit={handleSubmit} >
-          <div class="row mr-auto ml-auto w-100 col-md-6">
+          <div class="row w-100 col-md-6">
             <h4 class="mt-3">{isMandate ? "Mandate" : "Payment"} Report</h4>
           </div>
-          <div class="row col-md-6 ml-auto mr-auto pl-0">
-            <div class="col-md-6">
+          <div class="row col-md-6  pl-0">
+
+            {/* <div class="col-md-6">
               <div class="md-form">
                 <input required
                   type="date"
@@ -416,49 +440,51 @@ const ReportsNew = () => {
                 />
                 <label for="toDate">To Date</label>
               </div>
-            </div>
+            </div> */}
+
             <div class="col-md-6">
 
               <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
                 <InputLabel id="mandate-status-select">Mandate Status</InputLabel>
-                <Select required={true}
+                <Select
                   labelId="mandate-status"
                   id="demo-simple-select-standard"
                   value={data.mandateStatus}
                   onChange={e => setData({ ...data, mandateStatus: e.target.value })}
                 >
                   <MenuItem value="Initiated">Initiated</MenuItem>
+                  <MenuItem value="Expired">Expired</MenuItem>
                   {/* <MenuItem value="20">Inactive</MenuItem> */}
                 </Select>
               </FormControl>
 
             </div>
             <div class="col-md-6">
-              <TextField required={true}
+              <TextField
                 label="Owner /Tenant Name" name="name" variant="standard" fullWidth
                 value={data.name}
                 onChange={e => setData({ ...data, name: e.target.value })} />
             </div>
             <div class="col-md-6">
-              <TextField required={true}
+              <TextField
                 label="Account Number" name="accountNumber" variant="standard" fullWidth
                 value={data.accountNumber}
                 onChange={e => setData({ ...data, accountNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-              <TextField required={true}
+              <TextField
                 label="Mandate Id / Number" name="mandateId" variant="standard" fullWidth
                 value={data.mandateId}
                 onChange={e => setData({ ...data, mandateId: e.target.value })} />
             </div>
             <div class="col-md-6">
-              <TextField required={true}
+              <TextField
                 label="Assets Number" name="assetsNumber" variant="standard" fullWidth
                 value={data.assetNumber}
                 onChange={e => setData({ ...data, assetNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-              <TextField required={true}
+              <TextField
                 label="Assets Type" name="assetsType" variant="standard" fullWidth
                 value={data.assetType}
                 onChange={e => setData({ ...data, assetType: e.target.value })} />

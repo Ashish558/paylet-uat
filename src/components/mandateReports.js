@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useEffect } from "react";
+import { getAllMandateReports } from "../services/reports";
+
 import Table from "./table";
 const MandateReports = () => {
   const tableHeadings = [
@@ -12,74 +15,36 @@ const MandateReports = () => {
     { id: "paymentMode", label: "Payment Mode", numeric: false },
     { id: "status", label: "Status", numeric: false },
   ];
-  const tableData = [
-    {
-      slNo: 1,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Intiated",
-    },
-    {
-      slNo: 2,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Processed",
-    },
-    {
-      slNo: 3,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Expired",
-    },
-    {
-      slNo: 4,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash K",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Intiated",
-    },
-    {
-      slNo: 5,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Processed",
-    },
-    {
-      slNo: 6,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash K",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Expired",
-    },
-  ];
+  const [tableData, setTableData] = useState([])
+
+  const fetchData = ()=>{
+    getAllMandateReports((err, res) => {
+      if (err) return console.log(err.response)
+      console.log(res)
+      if (res.data.messageDiscription) {
+        alert(res.data.messageDiscription)
+        return
+      }
+      let tempdata = res.data.map((item, idx) => {
+        return {
+          slno: idx + 1,
+          mandateId: item.mandateId,
+          date: 'date',
+          name: item.name,
+          paymentFreq: item.paymentFreq,
+          numberOfPayment: item.numberOfPayment,
+          amount: item.amount,
+          paymentMode: item.paymentMode,
+          mandateStatus: item.mandateStatus,
+        }
+      })
+      setTableData(tempdata)
+    })
+  }
+  useEffect(() => {
+    fetchData()
+  }, [])
+  
   return (
     <div style={{ marginTop: "85px" }}>
       <div class="row">

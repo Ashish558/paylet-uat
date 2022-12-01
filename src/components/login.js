@@ -13,7 +13,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
       if (err) console.log(err)
       console.log(res)
       if (res.data.messageDiscription === "password is valid") {
-        alert('Login successful')
+        // alert('Login successful')
         sessionStorage.setItem('userStatus', '1')
         setIsLoggedIn(true)
         return

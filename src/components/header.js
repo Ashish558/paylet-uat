@@ -4,14 +4,15 @@ import logoWhite from "./../images/logo-color-white-1.png";
 import Dropdown from "react-bootstrap/Dropdown";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 const Header = (props) => {
-  const location=useLocation();
-  
+  const location = useLocation();
+
   const [state, setState] = React.useState({
     left: false,
   });
   const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
   };
+  const { handleLogout } = props
   const anchor = "left";
   const list = (anchor) => (
     <div class="modal-content ">
@@ -39,87 +40,89 @@ const Header = (props) => {
               Home
             </a>
           </div>
-          {location.pathname==='/'?<>
-          <div class="nav_item">
-            <a class="list-group-item list-group-item-action waves-effect onclick_info">
-              Master Data
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="/currency">Add Currency</a>
-              </li>
-              <li>
-                <a href="/asset-type">Add Assets Type</a>
-              </li>
-              <li>
-                <a href="/payment-frequency">Add Payment Frequency</a>
-              </li>
-              <li>
-                <a href="/payment-mode">Add Payment Modes</a>
-              </li>
-            </ul>
-          </div>
-          <div class="nav_item">
-            <a class="list-group-item list-group-item-action waves-effect onclick_info">
-              User Details
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="/web-user">Web user</a>
-              </li>
-            </ul>
-          </div>
-          <div class="nav_item">
-            <a class="list-group-item list-group-item-action waves-effect onclick_info">
-              Reports
-            </a>
-            <ul class="sub-menu">
-              <li>
-                <a href="/mandate-reports">Mandate Reports</a>
-              </li>
-              <li>
-                <a href="/transaction-report">Transaction Reports</a>
-              </li>
-              <li>
-                <a href="/web-result">Web Reports</a>
-              </li>
-            </ul>
-          </div>
-          </>:<>
-          <div class="nav_item">
-            <a
-              class="list-group-item active list-group-item-action waves-effect"
-              href="/mandate"
-            >
-              Mandate
-            </a>
-          </div>
-          <div class="nav_item">
-            <a
-              class="list-group-item active list-group-item-action waves-effect"
-              href="/payments"
-            >
-              Payments
-            </a>
-          </div>
-          <div class="nav_item">
-            <a
-              class="list-group-item active list-group-item-action waves-effect"
-              href="/enquiry"
-            >
-              Enquiry
-            </a>
-          </div>
-          <div class="nav_item">
-            <a
-              class="list-group-item active list-group-item-action waves-effect"
-              href="/report"
-            >
-              Reports
-            </a>
-          </div>
-          </>}
-          
+          {2 === 2 ? <>
+            <div class="nav_item">
+              <a class="list-group-item list-group-item-action waves-effect onclick_info">
+                Master Data
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="/currency">Add Currency</a>
+                </li>
+                <li>
+                  <a href="/asset-type">Add Assets Type</a>
+                </li>
+                <li>
+                  <a href="/payment-frequency">Add Payment Frequency</a>
+                </li>
+                <li>
+                  <a href="/payment-mode">Add Payment Modes</a>
+                </li>
+              </ul>
+            </div>
+            <div class="nav_item">
+              <a class="list-group-item list-group-item-action waves-effect onclick_info">
+                User Details
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="/web-user">Web user</a>
+                </li>
+              </ul>
+            </div>
+            <div class="nav_item">
+              <a class="list-group-item list-group-item-action waves-effect onclick_info">
+                Reports
+              </a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="/mandate-reports">Mandate Reports</a>
+                </li>
+                <li>
+                  <a href="/transaction-report">Transaction Reports</a>
+                </li>
+                <li>
+                  <a href="/web-result">Web Reports</a>
+                </li>
+              </ul>
+            </div>
+          </> :
+            <>
+              <div class="nav_item">
+                <a
+                  class="list-group-item active list-group-item-action waves-effect"
+                  href="/mandate"
+                >
+                  Mandate
+                </a>
+              </div>
+              <div class="nav_item">
+                <a
+                  class="list-group-item active list-group-item-action waves-effect"
+                  href="/payments"
+                >
+                  Payments
+                </a>
+              </div>
+              <div class="nav_item">
+                <a
+                  class="list-group-item active list-group-item-action waves-effect"
+                  href="/enquiry"
+                >
+                  Enquiry
+                </a>
+              </div>
+              <div class="nav_item">
+                <a
+                  class="list-group-item active list-group-item-action waves-effect"
+                  href="/report"
+                >
+                  Reports
+                </a>
+              </div>
+            </>
+          }
+
           <h4 class="mt-4 ml-3">Quick Links</h4>
           <div class="list-group list-group-flush ">
             <a
@@ -178,21 +181,21 @@ const Header = (props) => {
       </nav>
     );
   return (
-    <header  class="navbar fixed-top navbar-expand-lg navbar-light ripshadow white scrolling-navbar botborder">
+    <header class="navbar fixed-top navbar-expand-lg navbar-light ripshadow white scrolling-navbar botborder">
       <nav style={{ width: "100%" }}>
         <div class="container-fluid">
           <a style={{ color: "white" }} onClick={toggleDrawer(anchor, true)} >
             <i class="fas fa-bars mr-3"></i>
           </a>
           <SwipeableDrawer
-      
-        anchor={anchor}
-        open={state[anchor]}
-        onClose={toggleDrawer(anchor, false)}
-        onOpen={toggleDrawer(anchor, true)}
-      >
-        {list(anchor)}
-      </SwipeableDrawer>
+
+            anchor={anchor}
+            open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
+            onOpen={toggleDrawer(anchor, true)}
+          >
+            {list(anchor)}
+          </SwipeableDrawer>
           <a href="/">
             <img src={logoWhite} class="img-fluid" alt="" />
           </a>
@@ -208,7 +211,7 @@ const Header = (props) => {
                 <i class="fas fa-user"></i>
               </Dropdown.Toggle>
 
-              <Dropdown.Menu style={{width:'270px'}}>
+              <Dropdown.Menu style={{ width: '270px' }}>
                 <div class="text-center">
                   <i class="fas fa-user-circle  fa-3x text-center"></i>
                 </div>
@@ -239,19 +242,19 @@ const Header = (props) => {
                   </p>
                 </Dropdown.Item>
 
-                <form method="POST" action="#">
+                <div onClick={handleLogout} >
                   <div class="profile2 text-center">
                     <button class="btn btn-rounded btn-sm swatch-gray text-center mt-3 logoutbtn">
                       Logout
                     </button>
                   </div>
-                </form>
+                </div>
               </Dropdown.Menu>
             </Dropdown>
           </div>
         </div>
       </nav>
-      
+
     </header>
   );
 };

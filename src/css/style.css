@@ -616,6 +616,19 @@ h3 {
   border-radius: 5px;
 }
 
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active{
+  color: white !important;
+}
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root.Mui-active .MuiTableSortLabel-icon{
+  color: white !important;
+}
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root:hover{
+  color: white !important;
+}
+.css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root:hover .MuiTableSortLabel-icon{
+  color: white !important;
+}
+
 @media (min-width: 769px) {
   .gridtitle .col-md-6 {
     position: relative;

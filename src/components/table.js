@@ -198,11 +198,11 @@ export default function EnhancedTable({
                     </StyledTableRow>
                   );
                 })}
-              {emptyRows > 0 && (
+              {/* {emptyRows > 0 && (
                 <StyledTableRow>
                   <TableCell colSpan={6} />
                 </StyledTableRow>
-              )}
+              )} */}
             </TableBody>
           </Table>
         </TableContainer>
