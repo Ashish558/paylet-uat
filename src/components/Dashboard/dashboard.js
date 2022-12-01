@@ -2,12 +2,13 @@ import React from 'react'
 import styles from './Dashboard.module.css'
 import './main.a6d9b6fb.css'
 import feedbackImg from '../../Assets/images/feedback.png'
+import { Link } from 'react-router-dom'
 
 const DashBoard = () => {
-  
+
   return (
     <>
-      <div className="dashboard-container flex" style={{marginTop: '66px'}} >
+      <div className="dashboard-container" style={{ marginTop: '66px' }} >
         {/* <div className="w-1/5">
           <div id="MerchantSidebar_drawer__vIf85">
             <div className="flex items-center flex-col text-center p-0" id="MerchantSidebar_profile__jyaVe">
@@ -181,6 +182,16 @@ const DashBoard = () => {
             </div>
           </div>
         </div> */}
+        <div class="row">
+          <div class="col-md-6">
+            <h4 class="ml-4 mt-3 heading-color">
+              <Link data-toggle="tooltip" title="Back" to="/">
+                <i class="fas fa-chevron-left"></i>
+              </Link>&nbsp;
+              <span class="ml-1 heading-color">Back</span>
+            </h4>
+          </div>
+        </div>
         <div>
           <div className="p-8" id="MerchantRight_merchantRight__zDik1">
             <div className="grid grid-cols-4" id="MerchantRight_statusContainer__KNVxq">
@@ -321,7 +332,7 @@ const DashBoard = () => {
                   </div>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-10/12" style={{overflow: 'hidden'}} >
+                  <div className="w-10/12" style={{ overflow: 'hidden' }} >
                     <div className="recharts-wrapper" style={{
                       position: 'relative',
                       cursor: 'default',
@@ -840,8 +851,8 @@ const DashBoard = () => {
                   </div>
                   <div className="flex MerchantRight_transaction__yt2AC">
                     <span className="MerchantRight_transacCircle__TgPHz" style={{
-                                                backgroundColor: 'rgb(66,175,79)'
-                                            }}></span>
+                      backgroundColor: 'rgb(66,175,79)'
+                    }}></span>
                     <div>
                       <h3>Transaction 1</h3>
                       <p className="MerchantRight_transactionPara__bxTPZ">
