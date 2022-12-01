@@ -187,13 +187,31 @@ const DashBoard = () => {
             <h4 class="ml-4 mt-3 heading-color">
               <Link data-toggle="tooltip" title="Back" to="/">
                 <i class="fas fa-chevron-left"></i>
-              </Link>&nbsp;
-              <span class="ml-1 heading-color">Back</span>
+              </Link>
+              &nbsp;
+              <span class="heading-color" style={{display: 'inline-block', marginLeft: '4px'}} >Back</span>
             </h4>
           </div>
         </div>
+        <hr class="mt-0 ml-4 mr-4" />
+        <div class="row sector2 mr-1">
+          <div class="col-md-6 ml-4">
+            <h5 class="mb-0 ml-2 my-3">Dashboard</h5>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb ml-2 mb-0 pb-0 pt-0">
+                <li class="breadcrumb-item">
+                  <a href="/">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                  <a>Dashboard</a>
+                </li>
+              </ol>
+            </nav>
+          </div>
+          <div class="col-md-6"></div>
+        </div>
         <div>
-          <div className="p-8" id="MerchantRight_merchantRight__zDik1">
+          <div className="p-8 pt-2" id="MerchantRight_merchantRight__zDik1">
             <div className="grid grid-cols-4" id="MerchantRight_statusContainer__KNVxq">
               <div className="MerchantRight_status__jN1up">
                 <h5>Revenue Status</h5>
