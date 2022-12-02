@@ -158,7 +158,7 @@ const Currency = () => {
                     onChange={e => setCurrencyName(e.target.value)} />
 
                 </div>
-                <div class="col-md-4"></div>
+                {/* <div class="col-md-4"></div> */}
               </div>
               <div class="col-12 d-flex align-items-center px-0">
                 <div class="flex-1 col-md-8 pl-0 pr-0">
@@ -168,8 +168,7 @@ const Currency = () => {
                     onChange={e => setCurrencyCode(e.target.value)} />
 
                 </div>
-                <div class="col-md-4">
-                </div>
+                {/* <div class="col-md-4"> </div> */}
               </div>
               <div class="col-12 d-flex align-items-center px-0">
                 <div class="flex-1 col-md-8 pl-0 pr-0">
@@ -180,14 +179,16 @@ const Currency = () => {
                       id="demo-simple-select-standard"
                       label="Status"
                       value={status}
-                      onChange={e => setStatus(e.target.value)} 
+                      onChange={e => setStatus(e.target.value)}
                     >
                       <MenuItem value="Active">Active</MenuItem>
                       <MenuItem value="InActive">InActive</MenuItem>
                     </Select>
                   </FormControl>
                 </div>
-                <div class="col-md-4">
+              </div>
+              <div class="col-12 d-flex align-items-center px-0">
+                <div className="col-md-8 d-flex justify-content-center">
                   <a
                     href="#."
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
@@ -196,7 +197,9 @@ const Currency = () => {
                     Add
                   </a>
                 </div>
+                <div class="col-md-4"> </div>
               </div>
+
             </div>
           </div>
         </div>

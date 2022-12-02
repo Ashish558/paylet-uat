@@ -1,11 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './Dashboard.module.css'
 import './main.a6d9b6fb.css'
 import feedbackImg from '../../Assets/images/feedback.png'
 import { Link } from 'react-router-dom'
+import IconCard from './iconCard'
+import { getDashboard } from '../../services/get'
+import Card from './card'
+import Graph from './Graph'
 
 const DashBoard = () => {
 
+  const [data, setData] = useState({})
+
+  const fetchDashboard = () => {
+    getDashboard((err, res) => {
+      if (err) return console.log(err.response)
+      // console.log(res)
+      setData(res.data)
+    })
+  }
+
+  useEffect(() => {
+    fetchDashboard()
+  }, [])
+
+  console.log(data)
+  //  if(Object.keys())
   return (
     <>
       <div className="dashboard-container" style={{ marginTop: '66px' }} >
@@ -189,7 +209,7 @@ const DashBoard = () => {
                 <i class="fas fa-chevron-left"></i>
               </Link>
               &nbsp;
-              <span class="heading-color" style={{display: 'inline-block', marginLeft: '4px'}} >Back</span>
+              <span class="heading-color" style={{ display: 'inline-block', marginLeft: '4px' }} >Back</span>
             </h4>
           </div>
         </div>
@@ -211,126 +231,58 @@ const DashBoard = () => {
           <div class="col-md-6"></div>
         </div>
         <div>
+
           <div className="p-8 pt-2" id="MerchantRight_merchantRight__zDik1">
+
             <div className="grid grid-cols-4" id="MerchantRight_statusContainer__KNVxq">
-              <div className="MerchantRight_status__jN1up">
-                <h5>Revenue Status</h5>
-                <div className="flex items-center MerchantRight_statusText__ZUNu4">
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAG9QTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/C4X/DYf/EIX/CIz/D4r/h78pNAAAACV0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wYDAf3/VzSswAAAPfSURBVHicrZnbeqIwEIADQiggIoKIW+3W3b7/My4zOZOEBNy56KeQ/M4xmaSErEuSHrKc0mKWjzLPqjoJTFiHHZFkCs3SfdC6+bBpXLJ0s3InP43p2Z734bpLP6RnnHy+1kM/KuQpmtcKz3W9Iwb1jUoto3DTKGm+IfWNI+8Rdv9i1nbVaiiniqnZhZRMPmNwDMmU/FwfVeKgMSqCU4ODy5XBE9rRDTE4kKHD2HiJjPfYkGBsho/I3o6b6urZ+ImM12/BgXx5iRiPaiuPEIx2adv1uUs/kC9n9rTwtNnDIwRLa5EaE9THY+fi+QTvd6YbG/vRBpkgH3P9SetQeosMMF8va7rfgUzAjVR57AQ/sNtgEDRa5hym9I4M1AWysRMqthsr2CVPXUW3gkl7zNblqG9UqCL7mDo9ODm2ZEuo2k5RRbZp/J4/Zbt4s07fcgZU4B3RhURr0kbx9HSuRVjA4oflwTFEEiqqKWBzalt8bbJEAOtZBienh1cX+KRmgs2wXFHTYsoiPorBbtt7oo9RNlPuQs1Wrq8cLIPTNVmjviQ2EOOcIDf3A08CwXbql0DebSC5oBOrwlyodWBSy9hc+etJNTbJEghOHMitMBcuHahEFVK98KY2dcC5oxkTN1BLjuVPaW9S9B4Y/icE1J385QVO4AlMx78hoF6ZbQC4eBgGVl4gY0UBdR82/wNYqGVqKt4A1oPstsV6mcgnVXpxAn8Kf1DmchLdNF9KeUfKtoxlYk/onHUg6wpQ8qo9KEeciQ38nr+W+DT1A4l7+cKwL4FsWVgrPTHKlsEFZKUHf32LQ4xoU6GGKizA0gZ+BThC9KJkywIssF1iAbG3iJCXqcu8wGKYawtIXlFEvT8Abz+I2lu4/AgPTP0YkszYfcVuB07UavVWOHbpKIGMhQTUegihON3TG9fchWz50GzG3nFHL6b2d9lDMGHxLUOd19IIXIV4yXVmuK5R8V22V6dCdTRG90kiO6/c5OEckZTPhYpz5G+XAK+7mkBUUHoeVXyvaTezHBe9fGV8UJrC7Alf8ANvHHx+FYVZ1ph8bxzN4KRoHpww+XYVCOEb11KdwZEKsdJYBoO4j9Ex4jm6P3GDjL8gk4Itael4wepjs46on/tgx4j3TZFhXazvoLh+reOf4T94br2qYjd5awdZ3rrEXAvKi8a1yzQi9+NTECmuVfuQz/n2SdeRAhfjnkm0qJn/yvTIL33jLhrVcYk6mImkFQ+r3LxSqU0gPx7qb3btfE4Px1JdSIevVTWZXoF9ZRsOJb35ac2+3iJJbw49ab/znwscWlfZeGGXt3TMhiDsH3RYVexctF9hAAAAAElFTkSuQmCC"
-                    alt="" />
-                  <h1>$1300</h1>
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAjBAMAAAB4EQeYAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAADBQTFRFAAAADYn/Dov/Dor/Dor/DYf/DYn/Don/Don/DYr/DIf/DYv/Dor/EIf/Doj/CIf/CLsBjAAAABB0Uk5TAF/v3/9gUKCAn0C/zyCQIKPX7CcAAABuSURBVHic5c67DYAwEINhU/AoEcoijBDJdBQUNGxGyRDMwwqsQHwhITvg5vTraw6wDSO+VWT/lSN9SQU6lS8po4vlE03k+mKghawjikAiokhl2IhUQrQiq4DoRFYBge1I1ezvO1Z5/6pzLuu67TxbVyU2jsBxYgAAAABJRU5ErkJggg=="
-                    alt="" className="MerchantRight_arrow__sz32P" />
-                </div>
-              </div>
-              <div className="MerchantRight_status__jN1up">
-                <h5>Pageview</h5>
-                <div className="flex items-center MerchantRight_statusText__ZUNu4">
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHJQTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/EIX/CIz/C4X/D4r/Doj/DYf/U3DQFAAAACZ0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wHzDfsGAF3+UyAAAD50lEQVR4nKVZ6WKiMBAGRCgBxCgF2qrdtev7v+IyMyQcmQRC55cc+Zj7MgjcFEaH+JgkaU9v2TEWebhywA1WINKckjjaB5qXbybaQHHkzdzJjkZ8Vud9cPJyraMzHj6/5/W1GSFPm/EqpTl5ZWyQt4nmchNc12g02yt5O0B+bJD7k6SVwmnKThCbco3J8GsLHEESk1/utzJ8qdlkwa7ElzPHyx3KIestcEC1RNtYEQnv5uFgdMKGSE8br7i6l3ZEwrv6wAE9rIhoD+GLFwRo7cyU62sXf0AP1nsquFvuwQsCDK2Fa3QQH7edyfMO2pdzNZbmLQ/qwB+P0zsVw7QP1XB+GtbJfgUSgRqTUWMn+MBugYFQaO1z6NI7PHBK4I1SsVh5RjBH9ymL6wyG557cToUs0s/IosG8ErEq8royZccyFgemOCCLdP+7/xUbL0RMjZ8Am6kfIvADoVMNPaGTCw7IKKK5MgtIfOOerpDBA8gc2SRu1uAWoaZkhnSVMF+7r+Ol6dLqIFUynN0qsQjDWl/8WXIh8Ss5x33E42H6EOrKMPQlBSWKlEnUYgSJ2/F3OFOHEQsP/GabMonrkU5OCQugYckab4I9DQ8oZ1yI2dWnFTBC7V0Y9WqvGaTSUtdhOHq8ofkuBTODaf5aAAHv8xlY3NICCI+WTwYAwDthqblzgZ0ZxxCLBfwZ8agt6LhxwBNQ4VGxwBzfd7XtPsDLFI+09S6pRx6dyNAhYf3wRpnikYd0wzNhBQSjSB6wrYN5SlTZD1z7YQN8oqXAoOxcNE+xgJgXbxgDgx7/LU9QWmBDz8DrpS5wPJC9W96pEzcyAIVezT1ylIBEuyWbHAQGoOmijpKi3dJQFKUFSB5ymXyfdrzBLRMmpcDDkJzYrwRA//su2RJwC8baYnBvJ3DLvFieUdUOlCiXD1fKKDuPKb1OeogJCTciMyvngwopPZuO83K2Ikw7PtZ33UMsP1mLuGwu82YpaeJYVEyzBIGsPGnWfbK0oZ0Dz1UdjbCw6EPo6q/h4r7O4iohg7rJRBZ/17SnM54w2M0E7EFlOu8JX/CBXww+WPxf0zvNr4TGSXE+OGFRS3ZaOmSGR5rWdqqxNAQG4sfoLWQZ3alQbF+QacLkbuZ81W1484j88YMdIX54WSZs7Hhrax37Cfvg6buqok2ea5Adlmlb1oJ60ehapgW6cTmtQqq16nVN5y9JqdkNqeC2qKdTI0BsX5kWw9J326JxrE8JgxlqtPRmhJuVxFiZjsUhf9La+RwdimxcSK+vVSfUuauoLxxS1NrRSqt6nRRGLTdNXHf+uTCA5iJuLrS87Yt8vQr2H5m2ToQpWxq0AAAAAElFTkSuQmCC"
-                    alt="" />
-                  <h1>$1300</h1>
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAjBAMAAAB4EQeYAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAADBQTFRFAAAADYn/Dov/Dor/Dor/DYf/DYn/Don/Don/DYr/DIf/DYv/Dor/EIf/Doj/CIf/CLsBjAAAABB0Uk5TAF/v3/9gUKCAn0C/zyCQIKPX7CcAAABuSURBVHic5c67DYAwEINhU/AoEcoijBDJdBQUNGxGyRDMwwqsQHwhITvg5vTraw6wDSO+VWT/lSN9SQU6lS8po4vlE03k+mKghawjikAiokhl2IhUQrQiq4DoRFYBge1I1ezvO1Z5/6pzLuu67TxbVyU2jsBxYgAAAABJRU5ErkJggg=="
-                    alt="" className="MerchantRight_arrow__sz32P" />
-                </div>
-              </div>
-              <div className="MerchantRight_status__jN1up">
-                <h5>Bounce Rate</h5>
-                <div className="flex items-center MerchantRight_statusText__ZUNu4">
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAG9QTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/EIX/CIz/D4r/C4X/DYf/MVzFIQAAACV0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wH98wYC1T++sAAAOCSURBVHicvZnrlqIwDIALIh1BVJRFHHVm1/H9n3FNAoXSprR1z+bHnJHSz1zatIlCuCVJV9k6z+VLPjbrrCiThQlu2BZJuuRZGgctqw+T1kuWBiu342mk5/4Qh6uPpyY94OTDr7I5tSNy583bD56rT5YYlOdcaemF61pF414pzz3y4mH3J1lbF85QdgWpWS8pmVx9cIQkJa/utzb4UusVwa7ClzeOlzu0o258cCBNjbFhicS7BSwwmsERabQN2lf3iicS7xSCA/liiRiPIpQnBEZ7Y9p1jdIP5Mu6evbwtIrhCYFba7Y0Otgft8jkeQfv17obK/NRgHSwHtfTJ3uL0iHSwPzpts7jHUgCbsxHj+3gC6INBkGj1ZrDJT1bgYn6usMqy1YH87kusBrrYWxv7ODkZUKGT4Z0O37KrMj7VEVTwW+CrPbb8axSny68ivRvanpQuqS2AlHFUqmT6aNOoLQCcQei8nep0G8ByyEsYPFtNhgDFGBzarc4Dgg2Q7rKTYvjgGBz3rtwPhYFxDgnyF3Px6KA4ohOLKQlUccBwYmNOEtL4upn6tunWAJCEssw8Ri3IvvMJWCK3gPDfzNA/Qa4WwJ2EsIMofnDAAN9SEDrG3FAYv1X4DTKxb8AurU2LzQ45yH5oEyjvDOAxkUIglI7gQsyB/68nm1wYRt1kQeoMIGUFlxbLxBIWw/+csmB2csc8AvHUjTcDmT05oCUFiDB1vOzu5/J7GUOCGMv0kOGHgEMEGJyE+PZ8jZwOO3AifPLQBQQTjtYgJM7xFvAsnchXYdnNj8igOP5ru4QoxRO4LpX4zmdAht52HLa7RMF3cDLLsEyWMs2sKiGG412+yR5ur2IorkJb8GDyndTxb5ydYleZaKCSmVUcZYuu/PRiXvqb0tNJyyFjPtIiFRSvxOiy94ofD6lnAW9tRjtL1gp6oUTFi55ZPGYWIpHqtYi3VgZBoPYy2gfYUr3O7YI/BtkSjDvGjlfDE2MYB1RP3trhoiXoMgkLc9bauvwM/jWUWirijp5rlZU30zzaQuqytfVTBP96nlFexE5tFVPSz5/Ut7K3cgB5+Oevi34OiD4lulQl/s1GsVTdW0tzETR5M3YbqwUY4d9vV2VP9R2PqSr7WZsSC+3VSfSPS1N+6mE4VDSM0+rWPc6JUnPth8XTpE/LvTQssjaIzVv8zZrFmF/AdnmTjZ2xM1RAAAAAElFTkSuQmCC"
-                    alt="" />
-                  <h1>$1300</h1>
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAjBAMAAAB4EQeYAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAADBQTFRFAAAADYn/Dov/Dor/Dor/DYf/DYn/Don/Don/DYr/DIf/DYv/Dor/EIf/Doj/CIf/CLsBjAAAABB0Uk5TAF/v3/9gUKCAn0C/zyCQIKPX7CcAAABuSURBVHic5c67DYAwEINhU/AoEcoijBDJdBQUNGxGyRDMwwqsQHwhITvg5vTraw6wDSO+VWT/lSN9SQU6lS8po4vlE03k+mKghawjikAiokhl2IhUQrQiq4DoRFYBge1I1ezvO1Z5/6pzLuu67TxbVyU2jsBxYgAAAABJRU5ErkJggg=="
-                    alt="" className="MerchantRight_arrow__sz32P" />
-                </div>
-              </div>
-              <div className="MerchantRight_status__jN1up">
-                <h5>Total Balance</h5>
-                <div className="flex items-center MerchantRight_statusText__ZUNu4">
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHJQTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/EIX/CIz/D4r/C4X/Doj/DYf/R0JcDQAAACZ0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wH98wsGApfSPBAAADXklEQVR4nM2Z23qjIBCAxRioGpMQXWOa2O626/u/4mYGPHKmudi56Nei/M4BhmGaJHYh6S7bU8qe8pbvs6Ikjgl22AFJa6FZGgctqzeVJiVLg5U7mmlCz9M5DscvdZOecfL5V9nU7Yw8evNOo+d4rYlBeaWTll64rp1oplfKq0TePOx+F9bywhrKrhBqcpeS5O6DE0ih5N3+Vo4vtV4R7Cp8Obe83KEdvPHBgTQcY2MkCt4jYIGJGSaieNoG7au+MhMFrw7BgXwYiRiPIpSXJBjtXLXrHqUfyId29ZxgtIrhJQlurc3S6GB/PCKTZw/e52s3VupQgHSwHvfLkZNG6RBpYP5yW9N4BwoBN9LZY0f4QLTBIGj0tOZwSW9WYNfaz4Bq831YjXxU8aTu4M5xpCgh7JcqahSsXLxNVKWK4tdU40E3b5y9UlEcGp/P37IkGMg2U2AH3hDNJvSPgCWTYQGLH4kd+PApacDm1GDxBui3ycFmSFdUY/EG6FfJgM1UulB5aPWWQTDOBLl75aEK9AjLBY0pmC5RRwHBiU1yZbrEFQWEJJZh4lGroihgit4Dw3+/BtgxCDOE5o83sCCkcQA1D8xAdHZhAgpWEBB3TP8/AzENv9uBXywkKA0hR2YCQlB4IFAdX8j3cyjHha1mkyigSAsv33rw84XJocANmL8GKNICrCqupPj1RM8yT776xZxHgPGOthKICZx249liAVIvFcfTDpzItw83zqI+xxScdvDeooYwArWisVh4u9LYHAGcz/ephlgIDwbCRh633Kr6FNI6YE/5u54BOWOsaFbVp/yeU8VNwYlV8CD/6DUqdvaSk2+v1KjgNFaoXwwU9OCsE16F1HokQCq2rgkH+MAPLj54KgzLkfZHRuOdYX1xwqj6bVlViObyKG5rkW6sFINB9NdoHzFc3XtsEfg3yCbBY1XN+WMTI1hH1E/fmhHEW1BkSGvmudo65hnm1lFoq0p08mytKNlM82kLTo1GWzMtkavnGW0ncmyr1i6fDyITUjtyxPm4Z8qEmbllepAXfr9GYzJMXVsNk0w09lC2m1GKucO+P+zKb9F2Pqe7Qz43pN1t1YV0g6ZpvzoDgnAo6dVMq/yqna2Q9Kr750Id+c8FCS2LrL2I5i1ts8YJ+wfbP02uidiG9QAAAABJRU5ErkJggg=="
-                    alt="" />
-                  <h1>$1300</h1>
-                  <img
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAjBAMAAAB4EQeYAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAADBQTFRFAAAADYn/Dov/Dor/Dor/DYf/DYn/Don/Don/DYr/DIf/DYv/Dor/EIf/Doj/CIf/CLsBjAAAABB0Uk5TAF/v3/9gUKCAn0C/zyCQIKPX7CcAAABuSURBVHic5c67DYAwEINhU/AoEcoijBDJdBQUNGxGyRDMwwqsQHwhITvg5vTraw6wDSO+VWT/lSN9SQU6lS8po4vlE03k+mKghawjikAiokhl2IhUQrQiq4DoRFYBge1I1ezvO1Z5/6pzLuu67TxbVyU2jsBxYgAAAABJRU5ErkJggg=="
-                    alt="" className="MerchantRight_arrow__sz32P" />
-                </div>
-              </div>
+
+              <IconCard title='Total Tenate'
+                img={<img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAG9QTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/C4X/DYf/EIX/CIz/D4r/h78pNAAAACV0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wYDAf3/VzSswAAAPfSURBVHicrZnbeqIwEIADQiggIoKIW+3W3b7/My4zOZOEBNy56KeQ/M4xmaSErEuSHrKc0mKWjzLPqjoJTFiHHZFkCs3SfdC6+bBpXLJ0s3InP43p2Z734bpLP6RnnHy+1kM/KuQpmtcKz3W9Iwb1jUoto3DTKGm+IfWNI+8Rdv9i1nbVaiiniqnZhZRMPmNwDMmU/FwfVeKgMSqCU4ODy5XBE9rRDTE4kKHD2HiJjPfYkGBsho/I3o6b6urZ+ImM12/BgXx5iRiPaiuPEIx2adv1uUs/kC9n9rTwtNnDIwRLa5EaE9THY+fi+QTvd6YbG/vRBpkgH3P9SetQeosMMF8va7rfgUzAjVR57AQ/sNtgEDRa5hym9I4M1AWysRMqthsr2CVPXUW3gkl7zNblqG9UqCL7mDo9ODm2ZEuo2k5RRbZp/J4/Zbt4s07fcgZU4B3RhURr0kbx9HSuRVjA4oflwTFEEiqqKWBzalt8bbJEAOtZBienh1cX+KRmgs2wXFHTYsoiPorBbtt7oo9RNlPuQs1Wrq8cLIPTNVmjviQ2EOOcIDf3A08CwXbql0DebSC5oBOrwlyodWBSy9hc+etJNTbJEghOHMitMBcuHahEFVK98KY2dcC5oxkTN1BLjuVPaW9S9B4Y/icE1J385QVO4AlMx78hoF6ZbQC4eBgGVl4gY0UBdR82/wNYqGVqKt4A1oPstsV6mcgnVXpxAn8Kf1DmchLdNF9KeUfKtoxlYk/onHUg6wpQ8qo9KEeciQ38nr+W+DT1A4l7+cKwL4FsWVgrPTHKlsEFZKUHf32LQ4xoU6GGKizA0gZ+BThC9KJkywIssF1iAbG3iJCXqcu8wGKYawtIXlFEvT8Abz+I2lu4/AgPTP0YkszYfcVuB07UavVWOHbpKIGMhQTUegihON3TG9fchWz50GzG3nFHL6b2d9lDMGHxLUOd19IIXIV4yXVmuK5R8V22V6dCdTRG90kiO6/c5OEckZTPhYpz5G+XAK+7mkBUUHoeVXyvaTezHBe9fGV8UJrC7Alf8ANvHHx+FYVZ1ph8bxzN4KRoHpww+XYVCOEb11KdwZEKsdJYBoO4j9Ex4jm6P3GDjL8gk4Itael4wepjs46on/tgx4j3TZFhXazvoLh+reOf4T94br2qYjd5awdZ3rrEXAvKi8a1yzQi9+NTECmuVfuQz/n2SdeRAhfjnkm0qJn/yvTIL33jLhrVcYk6mImkFQ+r3LxSqU0gPx7qb3btfE4Px1JdSIevVTWZXoF9ZRsOJb35ac2+3iJJbw49ab/znwscWlfZeGGXt3TMhiDsH3RYVexctF9hAAAAAElFTkSuQmCC"
+                  alt="" />}
+                num={data.totalTenate ? data.totalTenate : '10'}
+              />
+              <IconCard title='Total Owner'
+                img={<img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHJQTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/EIX/CIz/C4X/D4r/Doj/DYf/U3DQFAAAACZ0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wHzDfsGAF3+UyAAAD50lEQVR4nKVZ6WKiMBAGRCgBxCgF2qrdtev7v+IyMyQcmQRC55cc+Zj7MgjcFEaH+JgkaU9v2TEWebhywA1WINKckjjaB5qXbybaQHHkzdzJjkZ8Vud9cPJyraMzHj6/5/W1GSFPm/EqpTl5ZWyQt4nmchNc12g02yt5O0B+bJD7k6SVwmnKThCbco3J8GsLHEESk1/utzJ8qdlkwa7ElzPHyx3KIestcEC1RNtYEQnv5uFgdMKGSE8br7i6l3ZEwrv6wAE9rIhoD+GLFwRo7cyU62sXf0AP1nsquFvuwQsCDK2Fa3QQH7edyfMO2pdzNZbmLQ/qwB+P0zsVw7QP1XB+GtbJfgUSgRqTUWMn+MBugYFQaO1z6NI7PHBK4I1SsVh5RjBH9ymL6wyG557cToUs0s/IosG8ErEq8royZccyFgemOCCLdP+7/xUbL0RMjZ8Am6kfIvADoVMNPaGTCw7IKKK5MgtIfOOerpDBA8gc2SRu1uAWoaZkhnSVMF+7r+Ol6dLqIFUynN0qsQjDWl/8WXIh8Ss5x33E42H6EOrKMPQlBSWKlEnUYgSJ2/F3OFOHEQsP/GabMonrkU5OCQugYckab4I9DQ8oZ1yI2dWnFTBC7V0Y9WqvGaTSUtdhOHq8ofkuBTODaf5aAAHv8xlY3NICCI+WTwYAwDthqblzgZ0ZxxCLBfwZ8agt6LhxwBNQ4VGxwBzfd7XtPsDLFI+09S6pRx6dyNAhYf3wRpnikYd0wzNhBQSjSB6wrYN5SlTZD1z7YQN8oqXAoOxcNE+xgJgXbxgDgx7/LU9QWmBDz8DrpS5wPJC9W96pEzcyAIVezT1ylIBEuyWbHAQGoOmijpKi3dJQFKUFSB5ymXyfdrzBLRMmpcDDkJzYrwRA//su2RJwC8baYnBvJ3DLvFieUdUOlCiXD1fKKDuPKb1OeogJCTciMyvngwopPZuO83K2Ikw7PtZ33UMsP1mLuGwu82YpaeJYVEyzBIGsPGnWfbK0oZ0Dz1UdjbCw6EPo6q/h4r7O4iohg7rJRBZ/17SnM54w2M0E7EFlOu8JX/CBXww+WPxf0zvNr4TGSXE+OGFRS3ZaOmSGR5rWdqqxNAQG4sfoLWQZ3alQbF+QacLkbuZ81W1484j88YMdIX54WSZs7Hhrax37Cfvg6buqok2ea5Adlmlb1oJ60ehapgW6cTmtQqq16nVN5y9JqdkNqeC2qKdTI0BsX5kWw9J326JxrE8JgxlqtPRmhJuVxFiZjsUhf9La+RwdimxcSK+vVSfUuauoLxxS1NrRSqt6nRRGLTdNXHf+uTCA5iJuLrS87Yt8vQr2H5m2ToQpWxq0AAAAAElFTkSuQmCC"
+                  alt="" />}
+                num={data.totalOwener ? data.totalOwener : '10'}
+              />
+              <IconCard title='Total Web User'
+                img={<img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAG9QTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/EIX/CIz/D4r/C4X/DYf/MVzFIQAAACV0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wH98wYC1T++sAAAOCSURBVHicvZnrlqIwDIALIh1BVJRFHHVm1/H9n3FNAoXSprR1z+bHnJHSz1zatIlCuCVJV9k6z+VLPjbrrCiThQlu2BZJuuRZGgctqw+T1kuWBiu342mk5/4Qh6uPpyY94OTDr7I5tSNy583bD56rT5YYlOdcaemF61pF414pzz3y4mH3J1lbF85QdgWpWS8pmVx9cIQkJa/utzb4UusVwa7ClzeOlzu0o258cCBNjbFhicS7BSwwmsERabQN2lf3iicS7xSCA/liiRiPIpQnBEZ7Y9p1jdIP5Mu6evbwtIrhCYFba7Y0Otgft8jkeQfv17obK/NRgHSwHtfTJ3uL0iHSwPzpts7jHUgCbsxHj+3gC6INBkGj1ZrDJT1bgYn6usMqy1YH87kusBrrYWxv7ODkZUKGT4Z0O37KrMj7VEVTwW+CrPbb8axSny68ivRvanpQuqS2AlHFUqmT6aNOoLQCcQei8nep0G8ByyEsYPFtNhgDFGBzarc4Dgg2Q7rKTYvjgGBz3rtwPhYFxDgnyF3Px6KA4ohOLKQlUccBwYmNOEtL4upn6tunWAJCEssw8Ri3IvvMJWCK3gPDfzNA/Qa4WwJ2EsIMofnDAAN9SEDrG3FAYv1X4DTKxb8AurU2LzQ45yH5oEyjvDOAxkUIglI7gQsyB/68nm1wYRt1kQeoMIGUFlxbLxBIWw/+csmB2csc8AvHUjTcDmT05oCUFiDB1vOzu5/J7GUOCGMv0kOGHgEMEGJyE+PZ8jZwOO3AifPLQBQQTjtYgJM7xFvAsnchXYdnNj8igOP5ru4QoxRO4LpX4zmdAht52HLa7RMF3cDLLsEyWMs2sKiGG412+yR5ur2IorkJb8GDyndTxb5ydYleZaKCSmVUcZYuu/PRiXvqb0tNJyyFjPtIiFRSvxOiy94ofD6lnAW9tRjtL1gp6oUTFi55ZPGYWIpHqtYi3VgZBoPYy2gfYUr3O7YI/BtkSjDvGjlfDE2MYB1RP3trhoiXoMgkLc9bauvwM/jWUWirijp5rlZU30zzaQuqytfVTBP96nlFexE5tFVPSz5/Ut7K3cgB5+Oevi34OiD4lulQl/s1GsVTdW0tzETR5M3YbqwUY4d9vV2VP9R2PqSr7WZsSC+3VSfSPS1N+6mE4VDSM0+rWPc6JUnPth8XTpE/LvTQssjaIzVv8zZrFmF/AdnmTjZ2xM1RAAAAAElFTkSuQmCC"
+                  alt="" />}
+                num={data.totalWebUser ? data.totalWebUser : '10'}
+              />
+              <IconCard title='Total Inactive User'
+                img={<img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAMAAAC5zwKfAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHJQTFRFAAAAEID/DYn/Dov/DYr/DYr/Dor/Dor/Dov/Dor/Don/DIf/Don/DYr/Dov/DYr/CIf/Dor/Dov/Doj/Don/C4r/DYv/Don/EIf/DYn/Dor/Dov/Don/EI//Dor/Dor/EIX/CIz/D4r/C4X/Doj/DYf/R0JcDQAAACZ0Uk5TABBQcJ+/3//vz4BAj69/YCDvz5BwML+gIK9vj98QkJ8wH98wsGApfSPBAAADXklEQVR4nM2Z23qjIBCAxRioGpMQXWOa2O626/u/4mYGPHKmudi56Nei/M4BhmGaJHYh6S7bU8qe8pbvs6Ikjgl22AFJa6FZGgctqzeVJiVLg5U7mmlCz9M5DscvdZOecfL5V9nU7Yw8evNOo+d4rYlBeaWTll64rp1oplfKq0TePOx+F9bywhrKrhBqcpeS5O6DE0ih5N3+Vo4vtV4R7Cp8Obe83KEdvPHBgTQcY2MkCt4jYIGJGSaieNoG7au+MhMFrw7BgXwYiRiPIpSXJBjtXLXrHqUfyId29ZxgtIrhJQlurc3S6GB/PCKTZw/e52s3VupQgHSwHvfLkZNG6RBpYP5yW9N4BwoBN9LZY0f4QLTBIGj0tOZwSW9WYNfaz4Bq831YjXxU8aTu4M5xpCgh7JcqahSsXLxNVKWK4tdU40E3b5y9UlEcGp/P37IkGMg2U2AH3hDNJvSPgCWTYQGLH4kd+PApacDm1GDxBui3ycFmSFdUY/EG6FfJgM1UulB5aPWWQTDOBLl75aEK9AjLBY0pmC5RRwHBiU1yZbrEFQWEJJZh4lGroihgit4Dw3+/BtgxCDOE5o83sCCkcQA1D8xAdHZhAgpWEBB3TP8/AzENv9uBXywkKA0hR2YCQlB4IFAdX8j3cyjHha1mkyigSAsv33rw84XJocANmL8GKNICrCqupPj1RM8yT776xZxHgPGOthKICZx249liAVIvFcfTDpzItw83zqI+xxScdvDeooYwArWisVh4u9LYHAGcz/ephlgIDwbCRh633Kr6FNI6YE/5u54BOWOsaFbVp/yeU8VNwYlV8CD/6DUqdvaSk2+v1KjgNFaoXwwU9OCsE16F1HokQCq2rgkH+MAPLj54KgzLkfZHRuOdYX1xwqj6bVlViObyKG5rkW6sFINB9NdoHzFc3XtsEfg3yCbBY1XN+WMTI1hH1E/fmhHEW1BkSGvmudo65hnm1lFoq0p08mytKNlM82kLTo1GWzMtkavnGW0ncmyr1i6fDyITUjtyxPm4Z8qEmbllepAXfr9GYzJMXVsNk0w09lC2m1GKucO+P+zKb9F2Pqe7Qz43pN1t1YV0g6ZpvzoDgnAo6dVMq/yqna2Q9Kr750Id+c8FCS2LrL2I5i1ts8YJ+wfbP02uidiG9QAAAABJRU5ErkJggg=="
+                  alt="" />}
+                num={data.totalInactiveUser ? data.totalInactiveUser : '10'}
+              />
+
             </div>
+
             <div className="grid grid-cols-4" id="MerchantRight_productivityContainer__KEQ7u">
-              <div className="MerchantRight_stat__EdXej" id="MerchantRight_newOrder__mCsLL">
-                <h5>Revenue Status</h5>
-                <h1>1300</h1>
-                <div className="flex">
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'white'
-                  }}></div>
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'rgb(177,177,177)'
-                  }}></div>
-                </div>
-                <div className="MerchantRight_desc__NFwi6">
-                  70% increase
-                </div>
-              </div>
-              <div className="MerchantRight_stat__EdXej" id="MerchantRight_newSales__gcoTT">
-                <h5>Revenue Status</h5>
-                <h1>1300</h1>
-                <div className="flex">
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'white'
-                  }}></div>
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'rgb(177,177,177)'
-                  }}></div>
-                </div>
-                <div className="MerchantRight_desc__NFwi6">
-                  70% increase
-                </div>
-              </div>
-              <div className="MerchantRight_stat__EdXej" id="MerchantRight_newUsers__MwLIJ">
-                <h5>Revenue Status</h5>
-                <h1>1300</h1>
-                <div className="flex">
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'white'
-                  }}></div>
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'rgb(177,177,177)'
-                  }}></div>
-                </div>
-                <div className="MerchantRight_desc__NFwi6">
-                  70% increase
-                </div>
-              </div>
-              <div className="MerchantRight_stat__EdXej" id="MerchantRight_feedback__ap6R3">
-                <h5>Revenue Status</h5>
-                <h1>1300</h1>
-                <div className="flex">
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'white'
-                  }}></div>
-                  <div className="w-1/2" style={{
-                    height: '1px',
-                    backgroundColor: 'rgb(177,177,177)'
-                  }}></div>
-                </div>
-                <div className="MerchantRight_desc__NFwi6">
-                  70% increase
-                </div>
-              </div>
+
+              <Card title='Total Tenate'
+                id='MerchantRight_newOrder__mCsLL'
+                num={data.totalTenate ? data.totalTenate : '10'}
+              />
+              <Card title='Total Owner'
+                num={data.totalOwener ? data.totalOwener : '10'}
+                id="MerchantRight_newSales__gcoTT"
+              />
+              <Card title='Total Web User'
+                id='MerchantRight_newUsers__MwLIJ'
+                num={data.totalWebUser ? data.totalWebUser : '10'}
+              />
+              <Card title='Total Inactive User'
+                num={data.totalInactiveUser ? data.totalInactiveUser : '10'}
+                id='MerchantRight_feedback__ap6R3'
+              />
+
+
             </div>
             <div className="flex" id="MerchantRight_transactionAnalytics__dHnxq">
               <div className="w-3/4 pe-0" id="MerchantRight_monthDetils__VjC-c">
@@ -351,7 +303,8 @@ const DashBoard = () => {
                 </div>
                 <div className="flex items-center">
                   <div className="w-10/12" style={{ overflow: 'hidden' }} >
-                    <div className="recharts-wrapper" style={{
+                   <Graph />
+                    {/* <div className="recharts-wrapper" style={{
                       position: 'relative',
                       cursor: 'default',
                       width: '800px',
@@ -619,8 +572,9 @@ const DashBoard = () => {
                               className="recharts-dot recharts-line-dot"></circle>
                           </g>
                         </g>
-                      </svg>
-                    </div>
+                      </svg> 
+                    </div>  */}
+
                   </div>
                   <div className="w-2/12 mr-0">
                     <div id="MerchantRight_transaction__yt2AC" className="text-center flex flex-col items-center">
