@@ -21,11 +21,14 @@ export default function Graph(props) {
          fontFamily: 'Poppins, Arial, sans-serif',
          zoom: {
             enabled: false
+         },
+         toolbar: {
+            show: false
          }
       },
       dataLabels: {
          enabled: false,
-         style:{
+         style: {
             fontFamily: 'Poppins, Arial, sans-serif',
          }
       },
@@ -42,7 +45,7 @@ export default function Graph(props) {
             opacity: 0.5
          },
       },
-      legend:{
+      legend: {
          show: false
       },
       xaxis: {
