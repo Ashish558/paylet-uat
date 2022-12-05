@@ -3,6 +3,8 @@ import React from 'react'
 export default function IconCard({ title, num, img, increased }) {
 
    return (
+      <div className='col-12 col-md-3' style={{marginBottom: '18px'}} >
+
       <div className="MerchantRight_status__jN1up">
          <h5>{title} </h5>
          <div className="flex items-center MerchantRight_statusText__ZUNu4">
@@ -18,6 +20,7 @@ export default function IconCard({ title, num, img, increased }) {
                   alt="" className="MerchantRight_arrow__sz32P" />
             }
          </div>
+      </div>
       </div>
    )
 }

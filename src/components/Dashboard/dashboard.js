@@ -234,7 +234,7 @@ const DashBoard = () => {
 
           <div className="p-8 pt-2" id="MerchantRight_merchantRight__zDik1">
 
-            <div className="grid grid-cols-4" id="MerchantRight_statusContainer__KNVxq">
+            <div className="row" id="MerchantRight_statusContainer__KNVxq" style={{ gap: '0' }} >
 
               <IconCard title='Total Tenant'
                 img={<img
@@ -263,8 +263,7 @@ const DashBoard = () => {
 
             </div>
 
-            <div className="grid grid-cols-4" id="MerchantRight_productivityContainer__KEQ7u">
-
+            <div className="row" id="MerchantRight_productivityContainer__KEQ7u" style={{ gap: '0' }} >
               <Card title='Total Tenant'
                 id='MerchantRight_newOrder__mCsLL'
                 num={data.totalTenate ? data.totalTenate : '10'}
@@ -281,11 +280,11 @@ const DashBoard = () => {
                 num={data.totalInactiveUser ? data.totalInactiveUser : '10'}
                 id='MerchantRight_feedback__ap6R3'
               />
-
-
             </div>
+
             <div className="flex" id="MerchantRight_transactionAnalytics__dHnxq">
-              <div className="w-3/4 pe-0" id="MerchantRight_monthDetils__VjC-c">
+
+              <div style={{ flex: 3 }} id="MerchantRight_monthDetils__VjC-c">
                 <div className="flex justify-between" id="MerchantRight_transacHeader__6vKSi">
                   <div className="flex items-center justify-between">
                     <h3>Transaction Statistic</h3>
@@ -303,7 +302,7 @@ const DashBoard = () => {
                 </div>
                 <div className="flex items-center">
                   <div className="w-10/12" style={{ overflow: 'hidden' }} >
-                   <Graph />
+                    <Graph />
                     {/* <div className="recharts-wrapper" style={{
                       position: 'relative',
                       cursor: 'default',
@@ -576,7 +575,7 @@ const DashBoard = () => {
                     </div>  */}
 
                   </div>
-                  <div className="w-2/12 mr-0">
+                  <div className="w-2/12 mr-0" >
                     <div id="MerchantRight_transaction__yt2AC" className="text-center flex flex-col items-center">
                       <img
                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABGBAMAAACpsA4YAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAACFQTFRFAAAAFMfHFMrKE8nJFMnJE8fHFMvLFMnJEMfHFMrKFMnJakrVRgAAAAt0Uk5TAEC/7/9gf+8gz8/SJ6iEAAAAnUlEQVR4nGNgoAZgVHYBAacAQgpTXCDAjYA6VhcYEMCvkAmuUAG/Qha4wgKCCsG0i4vDqMJRhaMKcSkUMgFnJ1VCCtlgGS+BgMIQmEJHAgpVYAqdCCiE53l3ggod4B4eVTiqkIoKketGvAqR60Z8ClHqRnwKUepGfApR6kYCChH8UYWjCmmhsMmFKDCDYQlxCp0YCKuBAETFgh94AQClouJoqEhl/gAAAABJRU5ErkJggg=="
@@ -595,7 +594,8 @@ const DashBoard = () => {
                   </div>
                 </div>
               </div>
-              <div className="w-1/4" id="MerchantRight_statistics__C5D4i">
+
+              <div style={{ flex: 1 }} id="MerchantRight_statistics__C5D4i">
                 <h2>Statistic</h2>
                 <div className="flex flex-col items-center" id="MerchantRight_statImg__HoQe5">
                   <img
@@ -618,9 +618,11 @@ const DashBoard = () => {
                   </div>
                 </div>
               </div>
+
             </div>
-            <div className="flex" id="MerchantRight_invoice__iCg5q">
-              <div className="w-3/4" id="MerchantRight_tableContainer__SQhP5">
+
+            <div className="flex md-flex-col" id="MerchantRight_invoice__iCg5q">
+              <div style={{ flex: 3, overflow: 'auto' }} id="MerchantRight_tableContainer__SQhP5">
                 <table className="table table-zebra w-full">
                   <thead className="text-center">
                     <tr>
@@ -698,7 +700,7 @@ const DashBoard = () => {
                   </tbody>
                 </table>
               </div>
-              <div className="w-1/4" id="MerchantRight_transactionGrowthChart__P0-wJ">
+              <div style={{ flex: 1 }} id="MerchantRight_transactionGrowthChart__P0-wJ">
                 <h4>Transaction Growth chart</h4>
                 <h1>$13500</h1>
                 <h3>Last 6 months</h3>
@@ -743,166 +745,176 @@ const DashBoard = () => {
                 </p>
               </div>
             </div>
-            <div className="grid grid-cols-3" id="MerchantRight_summary__DtgYx">
-              <div className="MerchantRight_summaryItem__7A+cq" id="MerchantRight_transactionHistory__R62Yv">
-                <div className="flex items-center" id="MerchantRight_profile__D5q8m">
-                  <img src="./Assets/images/merchant.png" alt="" />
-                  <div className="pl-3">
-                    <h3>Wade Warren</h3>
-                    <h4>Merchant</h4>
-                  </div>
-                </div>
-                <div id="MerchantRight_transactionHistoryText__2+H5M">
-                  <h6>Transction history</h6>
-                  <ul>
-                    <li className="flex justify-between items-center">
-                      <span>Today Transaction</span><button id="MerchantRight_daily__GddCb">
-                        $400
-                      </button>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>Last 7 days Transaction</span><button id="MerchantRight_weekly__s6uez">
-                        $4000
-                      </button>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>Last 30 days Transaction</span><button id="MerchantRight_monthly__+yHL2">
-                        $40000
-                      </button>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>Last 90 days Transaction</span><button id="MerchantRight_ninetyth__FWEd7">
-                        $400000
-                      </button>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>Last 6 months Transaction</span><button id="MerchantRight_halfYearly__EqvHl">
-                        $4000000
-                      </button>
-                    </li>
-                    <li className="flex justify-between items-center">
-                      <span>Last 1 Year Transaction</span><button id="MerchantRight_yearly__byOya">
-                        $40000000
-                      </button>
-                    </li>
-                  </ul>
-                  <a href="#" id="MerchantRight_details__O8qw7">See details history &gt;&gt;&gt;</a>
-                </div>
-              </div>
-              <div className="MerchantRight_summaryItem__7A+cq" id="MerchantRight_recentTransaction__GJUsN">
-                <div className="flex justify-between">
-                  <h3>Recent Transaction</h3>
-                  <a href="#">See All &gt;&gt;&gt;</a>
-                </div>
-                <div id="MerchantRight_recentTransactionContainer__ISCsL">
-                  <div className="flex MerchantRight_transaction__yt2AC">
-                    <span className="MerchantRight_transacCircle__TgPHz" style={{
-                      backgroundColor: 'rgb(19,42,244)'
-                    }}></span>
-                    <div>
-                      <h3>Transaction 1</h3>
-                      <p className="MerchantRight_transactionPara__bxTPZ">
-                        Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit.
-                      </p>
-                      <p>5 min Ago</p>
+
+            <div className="row" id="MerchantRight_summary__DtgYx" style={{ gap: '0' }} >
+              <div className='merchant-summary-item col-12 col-md-4'>
+                <div className="MerchantRight_summaryItem__7A+cq" id="MerchantRight_transactionHistory__R62Yv">
+                  <div className="flex items-center" id="MerchantRight_profile__D5q8m">
+                    <img src="./Assets/images/merchant.png" alt="" />
+                    <div className="pl-3">
+                      <h3>Wade Warren</h3>
+                      <h4>Merchant</h4>
                     </div>
                   </div>
-                  <div className="flex MerchantRight_transaction__yt2AC">
-                    <span className="MerchantRight_transacCircle__TgPHz" style={{
-                      backgroundColor: 'rgb(249,68,48)'
-                    }}></span>
-                    <div>
-                      <h3>Transaction 1</h3>
-                      <p className="MerchantRight_transactionPara__bxTPZ">
-                        Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit.
-                      </p>
-                      <p>5 min Ago</p>
-                    </div>
-                  </div>
-                  <div className="flex MerchantRight_transaction__yt2AC">
-                    <span className="MerchantRight_transacCircle__TgPHz" style={{
-                      backgroundColor: 'rgb(66,175,79)'
-                    }}></span>
-                    <div>
-                      <h3>Transaction 1</h3>
-                      <p className="MerchantRight_transactionPara__bxTPZ">
-                        Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit.
-                      </p>
-                      <p>5 min Ago</p>
-                    </div>
-                  </div>
-                  <div className="flex MerchantRight_transaction__yt2AC">
-                    <span className="MerchantRight_transacCircle__TgPHz" style={{
-                      backgroundColor: 'rgb(225,85,31)'
-                    }}></span>
-                    <div>
-                      <h3>Transaction 1</h3>
-                      <p className="MerchantRight_transactionPara__bxTPZ">
-                        Lorem ipsum, dolor sit amet
-                        consectetur adipisicing elit.
-                      </p>
-                      <p>5 min Ago</p>
-                    </div>
+                  <div id="MerchantRight_transactionHistoryText__2+H5M">
+                    <h6>Transction history</h6>
+                    <ul>
+                      <li className="flex justify-between items-center">
+                        <span>Today Transaction</span><button id="MerchantRight_daily__GddCb">
+                          $400
+                        </button>
+                      </li>
+                      <li className="flex justify-between items-center">
+                        <span>Last 7 days Transaction</span><button id="MerchantRight_weekly__s6uez">
+                          $4000
+                        </button>
+                      </li>
+                      <li className="flex justify-between items-center">
+                        <span>Last 30 days Transaction</span><button id="MerchantRight_monthly__+yHL2">
+                          $40000
+                        </button>
+                      </li>
+                      <li className="flex justify-between items-center">
+                        <span>Last 90 days Transaction</span><button id="MerchantRight_ninetyth__FWEd7">
+                          $400000
+                        </button>
+                      </li>
+                      <li className="flex justify-between items-center">
+                        <span>Last 6 months Transaction</span><button id="MerchantRight_halfYearly__EqvHl">
+                          $4000000
+                        </button>
+                      </li>
+                      <li className="flex justify-between items-center">
+                        <span>Last 1 Year Transaction</span><button id="MerchantRight_yearly__byOya">
+                          $40000000
+                        </button>
+                      </li>
+                    </ul>
+                    <a href="#" id="MerchantRight_details__O8qw7">See details history &gt;&gt;&gt;</a>
                   </div>
                 </div>
               </div>
-              <div className="MerchantRight_summaryItem__7A+cq" id="MerchantRight_recentFeedback__UfXyH">
-                <div className="flex justify-between">
-                  <h3>Recent Feedbacks</h3>
-                  <a href="#">See All &gt;&gt;&gt;</a>
-                </div>
-                <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
-                  <div className="w-1/5">
-                    <img src={feedbackImg} />
+
+              <div className='merchant-summary-item col-12 col-md-4'>
+                <div className="MerchantRight_summaryItem__7A+cq" id="MerchantRight_recentTransaction__GJUsN">
+                  <div className="flex justify-between">
+                    <h3>Recent Transaction</h3>
+                    <a href="#">See All &gt;&gt;&gt;</a>
                   </div>
-                  <div className="w-4/5">
-                    <div className="MerchantRight_feedback__ap6R3">
-                      Lorem ipsum dolor sit amet
-                      consectetur, adipisicing elit.
-                      Repellendus, laudantium.
+                  <div id="MerchantRight_recentTransactionContainer__ISCsL">
+                    <div className="flex MerchantRight_transaction__yt2AC">
+                      <span className="MerchantRight_transacCircle__TgPHz" style={{
+                        backgroundColor: 'rgb(19,42,244)'
+                      }}></span>
+                      <div>
+                        <h3>Transaction 1</h3>
+                        <p className="MerchantRight_transactionPara__bxTPZ">
+                          Lorem ipsum, dolor sit amet
+                          consectetur adipisicing elit.
+                        </p>
+                        <p>5 min Ago</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
-                  <div className="w-1/5">
-                    <img src={feedbackImg} />
-                  </div>
-                  <div className="w-4/5">
-                    <div className="MerchantRight_feedback__ap6R3">
-                      Lorem ipsum dolor sit amet
-                      consectetur, adipisicing elit.
-                      Repellendus, laudantium.
+                    <div className="flex MerchantRight_transaction__yt2AC">
+                      <span className="MerchantRight_transacCircle__TgPHz" style={{
+                        backgroundColor: 'rgb(249,68,48)'
+                      }}></span>
+                      <div>
+                        <h3>Transaction 1</h3>
+                        <p className="MerchantRight_transactionPara__bxTPZ">
+                          Lorem ipsum, dolor sit amet
+                          consectetur adipisicing elit.
+                        </p>
+                        <p>5 min Ago</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
-                  <div className="w-1/5">
-                    <img src={feedbackImg} />
-                  </div>
-                  <div className="w-4/5">
-                    <div className="MerchantRight_feedback__ap6R3">
-                      Lorem ipsum dolor sit amet
-                      consectetur, adipisicing elit.
-                      Repellendus, laudantium.
+                    <div className="flex MerchantRight_transaction__yt2AC">
+                      <span className="MerchantRight_transacCircle__TgPHz" style={{
+                        backgroundColor: 'rgb(66,175,79)'
+                      }}></span>
+                      <div>
+                        <h3>Transaction 1</h3>
+                        <p className="MerchantRight_transactionPara__bxTPZ">
+                          Lorem ipsum, dolor sit amet
+                          consectetur adipisicing elit.
+                        </p>
+                        <p>5 min Ago</p>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
-                  <div className="w-1/5">
-                    <img src={feedbackImg} />
-                  </div>
-                  <div className="w-4/5">
-                    <div className="MerchantRight_feedback__ap6R3">
-                      Lorem ipsum dolor sit amet
-                      consectetur, adipisicing elit.
-                      Repellendus, laudantium.
+                    <div className="flex MerchantRight_transaction__yt2AC">
+                      <span className="MerchantRight_transacCircle__TgPHz" style={{
+                        backgroundColor: 'rgb(225,85,31)'
+                      }}></span>
+                      <div>
+                        <h3>Transaction 1</h3>
+                        <p className="MerchantRight_transactionPara__bxTPZ">
+                          Lorem ipsum, dolor sit amet
+                          consectetur adipisicing elit.
+                        </p>
+                        <p>5 min Ago</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div className='merchant-summary-item col-12 col-md-4'>
+                <div className="MerchantRight_summaryItem__7A+cq" id="MerchantRight_recentFeedback__UfXyH">
+                  <div className="flex justify-between">
+                    <h3>Recent Feedbacks</h3>
+                    <a href="#">See All &gt;&gt;&gt;</a>
+                  </div>
+                  <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
+                    <div className="w-1/5">
+                      <img src={feedbackImg} />
+                    </div>
+                    <div className="w-4/5">
+                      <div className="MerchantRight_feedback__ap6R3">
+                        Lorem ipsum dolor sit amet
+                        consectetur, adipisicing elit.
+                        Repellendus, laudantium.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
+                    <div className="w-1/5">
+                      <img src={feedbackImg} />
+                    </div>
+                    <div className="w-4/5">
+                      <div className="MerchantRight_feedback__ap6R3">
+                        Lorem ipsum dolor sit amet
+                        consectetur, adipisicing elit.
+                        Repellendus, laudantium.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
+                    <div className="w-1/5">
+                      <img src={feedbackImg} />
+                    </div>
+                    <div className="w-4/5">
+                      <div className="MerchantRight_feedback__ap6R3">
+                        Lorem ipsum dolor sit amet
+                        consectetur, adipisicing elit.
+                        Repellendus, laudantium.
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex items-top MerchantRight_feedBacksContainer__527Fb">
+                    <div className="w-1/5">
+                      <img src={feedbackImg} />
+                    </div>
+                    <div className="w-4/5">
+                      <div className="MerchantRight_feedback__ap6R3">
+                        Lorem ipsum dolor sit amet
+                        consectetur, adipisicing elit.
+                        Repellendus, laudantium.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
           <footer className="flex justify-between" id="MerchantRight_merchantFooter__vsHFR">

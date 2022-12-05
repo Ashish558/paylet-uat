@@ -19,6 +19,7 @@ import FormControl from "@mui/material/FormControl";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
 import { tableCellClasses } from "@mui/material/TableCell";
+import useWindowDimensions from "../hooks/useWindowDimensions";
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: "#633a92",
@@ -122,6 +123,11 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
+const getRowHeader = (tableHeadings, idx) => {
+  console.log(tableHeadings);
+  console.log(idx);
+}
+
 export default function EnhancedTable({
   tableHeadings,
   tableData,
@@ -129,6 +135,8 @@ export default function EnhancedTable({
   defaultSort,
   onClickAction
 }) {
+  const { width } = useWindowDimensions()
+
   let thd = tableHeadings.map((t) => {
     return { ...t, disablePadding: false };
   });
@@ -163,58 +171,85 @@ export default function EnhancedTable({
     <Box sx={{ width: "100%" }}>
       <Paper sx={{ width: "100%", mb: 2, padding: "0 15px" }}>
         <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
+          // style={{ 
+          //   display: "flex",
+          //   justifyContent: "space-between",
+          //   alignItems: "center",
+          // }}
+          className="table__header"
         >
           <h5>{tableName}</h5>
-          <form style={{display:'flex',justifyContent:"space-between",marginBottom:'15px'}}>
-            <div style={{fontWeight:'400', width: '100px'}}>Search :</div>
-            <input className="form-control form-control-sm" type="text"/>
+          <form style={{ display: 'flex', justifyContent: "space-between", marginBottom: '15px' }}>
+            <div style={{ fontWeight: '400', width: '100px' }}>Search :</div>
+            <input className="form-control form-control-sm" type="text" />
           </form>
         </div>
 
-        <TableContainer>
-          <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
-            <EnhancedTableHead
-              order={order}
-              orderBy={orderBy}
-              onRequestSort={handleRequestSort}
-              rowCount={tableData.length}
-              headCells={thd}
-            />
-            <TableBody>
-              {stableSort(tableData, getComparator(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  return (
-                    <StyledTableRow tabIndex={-1} key={index}>
-                      {Object.keys(row).map((k, index) => (
-                        // console.log(k),
-                        <StyledTableCell onClick={() => k === 'action' && onClickAction !== undefined ? onClickAction(row) : null} >{row[k]}</StyledTableCell>
-                      ))}
-                    </StyledTableRow>
-                  );
-                })}
-              {/* {emptyRows > 0 && (
+        {width > 700 ?
+          <TableContainer>
+            <Table sx={{ minWidth: 750 }} aria-labelledby="tableTitle">
+              <EnhancedTableHead
+                order={order}
+                orderBy={orderBy}
+                onRequestSort={handleRequestSort}
+                rowCount={tableData.length}
+                headCells={thd}
+              />
+              <TableBody>
+                {stableSort(tableData, getComparator(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((row, index) => {
+                    return (
+                      <StyledTableRow tabIndex={-1} key={index}>
+                        {Object.keys(row).map((k, index) => (
+                          // console.log(k),
+                          <StyledTableCell onClick={() => k === 'action' && onClickAction !== undefined ? onClickAction(row) : null} >{row[k]}</StyledTableCell>
+                        ))}
+                      </StyledTableRow>
+                    );
+                  })}
+                {/* {emptyRows > 0 && (
                 <StyledTableRow>
                   <TableCell colSpan={6} />
                 </StyledTableRow>
               )} */}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={tableData.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
+              </TableBody>
+            </Table>
+          </TableContainer>
+          :
+          <div>
+            {
+              tableData.map((dataItem, idx) => {
+                return (
+                  <div className="table__item">
+                    {Object.keys(dataItem).map((rowItem, rowIdx) => {
+                      return (
+                        <div className="d-flex justify-content-between">
+                          <p className="table__item-head"> {tableHeadings[rowIdx].label}  </p>
+                          <p className="table__item-data"> {dataItem[rowItem]}  </p>
+                        </div>
+                      )
+                    })}
+
+                  </div>
+                )
+
+
+              })
+            }
+          </div>
+        }
+        {width > 700 &&
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={tableData.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        }
       </Paper>
     </Box>
   );

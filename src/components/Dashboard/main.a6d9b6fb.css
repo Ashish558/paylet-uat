@@ -3230,7 +3230,7 @@ html {
 }
 #MerchantRight_productivityContainer__KEQ7u {
     gap: 50px;
-    margin-top: 33px;
+    margin-top: 15px;
 }
 .MerchantRight_stat__EdXej {
     color: #fff;
@@ -3522,6 +3522,24 @@ html {
 }
 .table-zebra tbody tr:nth-child(2n) td, .table-zebra tbody tr:nth-child(2n) th{
     background-color: transparent;
+}
+.merchant-summary-item:not(:last-child) {
+ padding-right: 20px;
+}
+@media (max-width: 768px) {
+    .MerchantRight_statusContainer__KNVxq > div{
+        margin-bottom: 18px;
+   }
+   #MerchantRight_transactionAnalytics__dHnxq{
+       flex-direction: column;
+   }
+   #MerchantRight_merchantRight__zDik1{
+    padding-left: 1rem;
+    padding-right: 1rem;
+   }
+   .md-flex-col{
+    flex-direction: column;
+   }
 }
 /*# sourceMappingURL=main.a6d9b6fb.css.map*/
 /* 

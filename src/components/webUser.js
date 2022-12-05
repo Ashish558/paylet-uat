@@ -116,7 +116,7 @@ const WebUser = () => {
       <Table
         tableHeadings={tableHeadings}
         tableData={webUsers}
-        tableName={`User Details`}
+        tableName={`User Reports`}
         defaultSort={`slNo`}
       />
     </div>
