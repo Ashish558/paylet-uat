@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { transactionReport } from "../services/payment";
 import Table from "./table";
-const TransactionReport = () => {
+
+
+const TransactionReport = ({ transactionData, setTransactionData }) => {
   const tableHeadings = [
     { id: "slNo", label: "SL No", numeric: true },
     { id: "transactionID", label: "Transaction ID", numeric: false },
@@ -12,74 +15,35 @@ const TransactionReport = () => {
     { id: "paymentMode", label: "Payment Mode", numeric: false },
     { id: "status", label: "Status", numeric: false },
   ];
-  const tableData = [
-    {
-      slNo: 1,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Intiated",
-    },
-    {
-      slNo: 2,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Processed",
-    },
-    {
-      slNo: 3,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Expired",
-    },
-    {
-      slNo: 4,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash K",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Intiated",
-    },
-    {
-      slNo: 5,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Processed",
-    },
-    {
-      slNo: 6,
-      transactionID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash K",
-      frequency: "Monthly",
-      noOfPayment: 10,
-      amount: 1200,
-      paymentMode: "ACH",
-      status: "Expired",
-    },
-  ];
+  const [tableData, setTableData] = useState([])
+
+  const fetchData = () => {
+     transactionReport(transactionData, (err, res) => {
+      if (err) return console.log(err.response)
+      // console.log(res)
+      const tempdata = res.data.map((item, idx) => {
+        const { transectionId, fromDate, name, paymentFreq, numberOfPayment, amount, paymentType, transectionStatus } = item
+        return {
+          slNo: idx + 1,
+          transactionId: transectionId,
+          fromDate: fromDate,
+          name: name,
+          paymentFreq: paymentFreq,
+          numberOfPayment: numberOfPayment,
+          amount: amount,
+          paymentType: paymentType,
+          transectionStatus: transectionStatus
+        }
+      })
+      setTableData(tempdata)
+    })
+  }
+
+  useEffect(() => {
+    console.log(transactionData)
+    fetchData()
+  }, [transactionData])
+  
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">

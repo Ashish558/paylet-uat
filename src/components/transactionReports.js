@@ -1,62 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "./table";
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
-const TransactionReports = () => {
+import { transactionReport } from "../services/payment";
+import { useHistory } from "react-router-dom";
+
+const initialState = {
+  fromDate: '',
+  toDate: '',
+  name: '',
+  transactionId: '',
+  assetNumber: '',
+  paymentType: '',
+}
+
+const TransactionReports = ({ transactionData, setTransactionData }) => {
   const [isTransaction, setTransaction] = React.useState(true);
+  // const tableHeadings = [
+  //   { id: "refNo", label: "Reference Number", numeric: false },
+  //   { id: "date", label: "Creation Date", numeric: false },
+  //   { id: "status", label: "Status", numeric: false },
+  //   { id: "action", label: "Action", numeric: false },
+  // ];
+
+  let history = useHistory();
   const tableHeadings = [
-    { id: "refNo", label: "Reference Number", numeric: false },
-    { id: "date", label: "Creation Date", numeric: false },
+    { id: "slNo", label: "SL No", numeric: true },
+    { id: "transactionID", label: "Mandate ID", numeric: false },
+    { id: "date", label: "Mandate Date", numeric: false },
+    { id: "userName", label: "Owner / Tenant Name", numeric: false },
+    { id: "frequency", label: "Frequency", numeric: false },
+    { id: "noOfPayment", label: "No Of Payment", numeric: true },
+    { id: "amount", label: "Amount", numeric: true },
+    { id: "paymentMode", label: "Payment Mode", numeric: false },
     { id: "status", label: "Status", numeric: false },
-    { id: "action", label: "Action", numeric: false },
   ];
-  const tableData = [
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "13/11/2020",
-      status: "Authorized",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "13/11/2020",
-      status: "	Transaction Open Status",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "14/11/2020",
-      status: "Initiated",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "14/11/2020",
-      status: "Authorized",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "15/11/2020",
-      status: "Rejected By NPCI",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "15/11/2020",
-      status: "Authorized",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "17/11/2020",
-      status: "Authorization Request Rejected",
-      action: "view",
-    },
-  ];
+
+  const [data, setData] = useState(initialState)
+  const [tableData, setTableData] = useState([])
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    setTransactionData(data)
+    history.push('/transaction-report')
+    return
+    transactionReport(data, (err, res) => {
+      if (err) return console.log(err.response)
+      console.log(res)
+      const tempdata = res.data.map((item, idx) => {
+        const { transectionId, fromDate, name, paymentFreq, numberOfPayment, amount, paymentType, transectionStatus } = item
+        return {
+          slNo: idx + 1,
+          transactionId: transectionId,
+          fromDate: fromDate,
+          name: name,
+          paymentFreq: paymentFreq,
+          numberOfPayment: numberOfPayment,
+          amount: amount,
+          paymentType: paymentType,
+          transectionStatus: transectionStatus
+        }
+      })
+      setTableData(tempdata)
+    })
+  }
+
+
+
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
@@ -137,19 +150,19 @@ const TransactionReports = () => {
               </div>
             </div>
             <div class="col-md-6">
-              
-              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
-              <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
-                          <Select
-                            labelId="transaction-status"
-                            id="demo-simple-select-standard"
-                           
-                          >
-                            <MenuItem value="1">1</MenuItem>
-                            <MenuItem value="1">1</MenuItem>
-                          </Select>
-                </FormControl>
-                
+
+              <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
+                <Select
+                  labelId="transaction-status"
+                  id="demo-simple-select-standard"
+
+                >
+                  <MenuItem value="1">1</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
+
             </div>
             <div class="col-md-6">
               <div class="md-form">
@@ -270,19 +283,19 @@ const TransactionReports = () => {
               </div>
             </div>
             <div class="col-md-6">
-              
-              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
-              <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
-                          <Select
-                            labelId="transaction-status"
-                            id="demo-simple-select-standard"
-                           
-                          >
-                            <MenuItem value="1">1</MenuItem>
-                            <MenuItem value="1">1</MenuItem>
-                          </Select>
-                </FormControl>
-                
+
+              <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
+                <Select
+                  labelId="transaction-status"
+                  id="demo-simple-select-standard"
+
+                >
+                  <MenuItem value="1">1</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
+
             </div>
             <div class="col-md-6">
               <div class="md-form">
@@ -375,7 +388,7 @@ const TransactionReports = () => {
           </div>
         </div>
 
-        <div id="page_content">
+        <form id="page_content" onSubmit={handleSubmit}>
           <div class="row mr-auto ml-auto w-100 col-md-6">
             <h4 class="mt-3">
               {isTransaction ? "Transaction" : "Payment"} Report
@@ -389,6 +402,8 @@ const TransactionReports = () => {
                   id="materialSubscriptionFormEmail"
                   placeholder="From Date"
                   class="form-control"
+                  value={data.fromDate}
+                  onChange={e => setData({ ...data, fromDate: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">From Date</label>
               </div>
@@ -400,39 +415,46 @@ const TransactionReports = () => {
                   id="materialSubscriptionFormEmail"
                   placeholder="To Date"
                   class="form-control"
+                  value={data.toDate}
+                  onChange={e => setData({ ...data, toDate: e.target.value })}
                 />
                 <label for="materialSubscriptionFormEmail">To Date</label>
               </div>
             </div>
+            {/* <div class="col-md-6">
+              <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
+                <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
+                <Select
+                  labelId="transaction-status"
+                  id="demo-simple-select-standard"
+
+                >
+                  <MenuItem value="1">1</MenuItem>
+                  <MenuItem value="1">1</MenuItem>
+                </Select>
+              </FormControl>
+            </div> */}
             <div class="col-md-6">
-              
-              <FormControl variant="standard" sx={{ m: 1, width:'100%',marginLeft:'0'}}>
-              <InputLabel id="transaction-status-select">Transaction Status</InputLabel>
-                          <Select
-                            labelId="transaction-status"
-                            id="demo-simple-select-standard"
-                           
-                          >
-                            <MenuItem value="1">1</MenuItem>
-                            <MenuItem value="1">1</MenuItem>
-                          </Select>
-                </FormControl>
-              
+              <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth
+                value={data.name}
+                onChange={e => setData({ ...data, name: e.target.value })} />
+            </div>
+
+            <div class="col-md-6">
+              <TextField label="Transaction Id / Number" name="transactionId" variant="standard"
+                fullWidth
+                value={data.transactionId}
+                onChange={e => setData({ ...data, transactionId: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Owner /Tenant Name" name="name" variant="standard" fullWidth />
+              <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth
+                value={data.assetNumber}
+                onChange={e => setData({ ...data, assetNumber: e.target.value })} />
             </div>
             <div class="col-md-6">
-            <TextField label="Account Number" name="accountNumber" variant="standard" fullWidth />
-            </div>
-            <div class="col-md-6">
-            <TextField label="Transaction Id / Number" name="transactionId" variant="standard" fullWidth /> 
-            </div>
-            <div class="col-md-6">
-            <TextField label="Assets Number" name="assetsNumber" variant="standard" fullWidth />
-            </div>
-            <div class="col-md-6">
-            <TextField label="Transaction Type" name="transactionType" variant="standard" fullWidth />
+              <TextField label="Payment Type" name="PaymentType" variant="standard" fullWidth
+                value={data.paymentType}
+                onChange={e => setData({ ...data, paymentType: e.target.value })} />
             </div>
           </div>
           <div class="row justify-content-center">
@@ -442,6 +464,7 @@ const TransactionReports = () => {
                 data-toggle="collapse"
                 data-target=".multi-collapse"
                 aria-expanded="false"
+                type="submit"
               >
                 Generate Report
               </button>
@@ -455,9 +478,10 @@ const TransactionReports = () => {
               </a>
             </div>
           </div>
-        </div>
+        </form>
       </div>
-      <Table
+
+      {/* <Table
         tableHeadings={tableHeadings}
         tableData={tableData}
         tableName={``}
@@ -477,7 +501,8 @@ const TransactionReports = () => {
             </button>
           </a>
         </div>
-      </div>
+      </div> */}
+
     </div>
   );
 };

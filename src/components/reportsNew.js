@@ -32,50 +32,6 @@ const ReportsNew = () => {
     { id: "mandateStatus", label: "MandateS tatus", numeric: false },
     { id: "action", label: "Owner / Tenant Name", numeric: false },
   ];
-  const temptableData = [
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "13/11/2020",
-      status: "Authorized",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "13/11/2020",
-      status: "	Transaction Open Status",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "14/11/2020",
-      status: "Initiated",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "14/11/2020",
-      status: "Authorized",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "15/11/2020",
-      status: "Rejected By NPCI",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "15/11/2020",
-      status: "Authorized",
-      action: "view",
-    },
-    {
-      refNo: "d13d7632368a4f28a5986f65174fd44b",
-      date: "17/11/2020",
-      status: "Authorization Request Rejected",
-      action: "view",
-    },
-  ];
 
   const [data, setData] = useState(initialState)
   const [tableData, setTableData] = useState([])
@@ -107,7 +63,7 @@ const ReportsNew = () => {
         })
         setTableData(tempdata)
         setData(initialState)
-        alert('Mandate Report Generated Successfully')
+        // alert('Mandate Report Generated Successfully')
       })
     }
   }

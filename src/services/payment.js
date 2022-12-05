@@ -71,3 +71,9 @@ export const mandateReport = (body, cb) => {
       .then(res => cb(null, res))
       .catch(err => cb(err, null))
 }
+
+export const transactionReport = (body, cb) => {
+   axios.post(`${BASE_URL}/payment/transectionReport`, body)
+      .then(res => cb(null, res))
+      .catch(err => cb(err, null))
+}

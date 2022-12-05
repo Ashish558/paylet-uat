@@ -53,8 +53,18 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const loginProps = { isLoggedIn, setIsLoggedIn }
+  const [transactionData, setTransactionData] = useState({
+    fromDate: '',
+    toDate: '',
+    name: '',
+    transactionId: '',
+    assetNumber: '',
+    paymentType: '',
+  })
 
   let history = useHistory();
+
+  const transactionProps = { transactionData, setTransactionData }
 
   useEffect(() => {
     const status = sessionStorage.getItem('userStatus')
@@ -117,10 +127,10 @@ const App = () => {
         {ProtectRoute(isLoggedIn, '/web-result', WebResult)}
         {ProtectRoute(isLoggedIn, '/web-user', WebUser)}
         {ProtectRoute(isLoggedIn, '/add-web-user', AddWebUser)}
-        {ProtectRoute(isLoggedIn, '/transaction-report', TransactionReport)}
+        {ProtectRoute(isLoggedIn, '/transaction-report', TransactionReport, transactionProps)}
 
         {ProtectRoute(isLoggedIn, '/search', Search)}
-        {ProtectRoute(isLoggedIn, '/transaction-reports', TransactionReports)}
+        {ProtectRoute(isLoggedIn, '/transaction-reports', TransactionReports, transactionProps)}
 
 
         {/* <Route path="/add-web-user" exact component={AddWebUser} />
@@ -189,8 +199,8 @@ const App = () => {
   );
 };
 
-const ProtectRoute = (isLoggedIn, path, Component) => {
-  return <Route path={path} exact render={() => isLoggedIn ? <Component /> : window.location = '/'} />
+const ProtectRoute = (isLoggedIn, path, Component, props) => {
+  return <Route path={path} exact render={() => isLoggedIn ? <Component {...props} /> : window.location = '/'} />
 }
 
 export default App;

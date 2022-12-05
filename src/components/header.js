@@ -79,7 +79,7 @@ const Header = (props) => {
                   <a href="/mandate-reports">Mandate Reports</a>
                 </li>
                 <li>
-                  <a href="/transaction-report">Transaction Reports</a>
+                  <a href="/transaction-reports">Transaction Reports</a>
                 </li>
                 <li>
                   <a href="/web-result">Web Reports</a>
