@@ -823,3 +823,13 @@ li {
 .col-md-6,.col-md-4,.col-md-8{
   margin-bottom:10px;
 }
+
+
+@media (max-width: 400px) {
+ 
+.heading-toggle{
+   display: flex;
+   flex-direction: column;
+   align-items: flex-start;
+ }
+}

@@ -53,6 +53,7 @@ const App = () => {
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const loginProps = { isLoggedIn, setIsLoggedIn }
+
   const [transactionData, setTransactionData] = useState({
     fromDate: '',
     toDate: '',
@@ -62,9 +63,19 @@ const App = () => {
     paymentType: '',
   })
 
+  const [mandateData, setMandateData] = useState({
+    mandateStatus: '',
+    name: '',
+    accountNumber: '',
+    mandateId: '',
+    assetNumber: '',
+    assetType: '',
+  })
+
   let history = useHistory();
 
   const transactionProps = { transactionData, setTransactionData }
+  const mandateProps = { mandateData, setMandateData }
 
   useEffect(() => {
     const status = sessionStorage.getItem('userStatus')
@@ -96,7 +107,7 @@ const App = () => {
         {ProtectRoute(isLoggedIn, '/dashboard', DashBoard)}
         {ProtectRoute(isLoggedIn, '/asset-type', AssetsType)}
         {ProtectRoute(isLoggedIn, '/report-details', ReportDetails)}
-        {ProtectRoute(isLoggedIn, '/report', ReportsNew)}
+        {ProtectRoute(isLoggedIn, '/report', ReportsNew, mandateProps)}
         {ProtectRoute(isLoggedIn, '/currency', Currency)}
         {ProtectRoute(isLoggedIn, '/enquiry', Enquiry)}
         {ProtectRoute(isLoggedIn, '/my-download', MyDownload)}
@@ -105,7 +116,7 @@ const App = () => {
         {ProtectRoute(isLoggedIn, '/my-mandate', MyMandate)}
         {ProtectRoute(isLoggedIn, '/mandate', Mandate)}
         {ProtectRoute(isLoggedIn, '/mandate-details', MandateDetails)}
-        {ProtectRoute(isLoggedIn, '/mandate-reports', MandateReports)}
+        {ProtectRoute(isLoggedIn, '/mandate-reports', MandateReports, mandateProps)}
         {ProtectRoute(isLoggedIn, '/payment-frequency', PaymentFrequency)}
         {ProtectRoute(isLoggedIn, '/payment-mode', PaymentMode)}
         {ProtectRoute(isLoggedIn, '/payments', Payments)}

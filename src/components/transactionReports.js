@@ -103,16 +103,16 @@ const TransactionReports = ({ transactionData, setTransactionData }) => {
 
       <div id="main_content">
         <div class="row mr-auto ml-auto col-md-6">
-          <div class="col pl-0">
+          <div class="col heading-toggle pl-0">
             <li
-              className={isTransaction ? "selected" : "notselected"}
+              className={`${isTransaction ? "selected" : "notselected"}`}
               id="page1"
               onClick={() => setTransaction(true)}
             >
               Transaction Report
             </li>
             <li
-              className={!isTransaction ? "selected" : "notselected"}
+              className={`${!isTransaction ? "selected" : "notselected"}`}
               id="page2"
               onClick={() => setTransaction(false)}
             >

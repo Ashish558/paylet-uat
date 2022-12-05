@@ -7,6 +7,7 @@ import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import TextField from '@mui/material/TextField';
 import { mandateReport } from "../services/reports";
+import { useHistory } from "react-router-dom";
 
 const initialState = {
   // fromDate: '',
@@ -19,7 +20,7 @@ const initialState = {
   assetType: '',
 }
 
-const ReportsNew = () => {
+const ReportsNew = ({ setMandateData }) => {
   const [isMandate, setMandate] = React.useState(true);
   const tableHeadings = [
     { id: "Sl no", label: "Sl No", numeric: true },
@@ -35,10 +36,13 @@ const ReportsNew = () => {
 
   const [data, setData] = useState(initialState)
   const [tableData, setTableData] = useState([])
+const history = useHistory()
 
   const handleSubmit = e => {
     e.preventDefault()
-    console.log(data)
+    setMandateData(data)
+    history.push('/mandate-reports')
+    return
     if (isMandate) {
       mandateReport(data, (err, res) => {
         if (err) return console.log(err.response)
@@ -101,7 +105,7 @@ const ReportsNew = () => {
 
       <div id="main_content">
         <div class="row col-md-6">
-          <div class="col pl-0">
+          <div class="col pl-0 heading-toggle">
             <li
               className={isMandate ? "selected" : "notselected"}
               id="page1"
@@ -446,7 +450,7 @@ const ReportsNew = () => {
                 onChange={e => setData({ ...data, assetType: e.target.value })} />
             </div>
           </div>
-          <div class="row justify-content-center">
+          <div class="row justify-content-start">
             <div class="col-md-6 mt-4">
               <button
                 class="btn btn-primary"
@@ -470,7 +474,8 @@ const ReportsNew = () => {
         </form>
 
       </div>
-      <Table
+
+      {/* <Table
         tableHeadings={tableHeadings}
         tableData={tableData}
         tableName={`Generated Report`}
@@ -490,7 +495,8 @@ const ReportsNew = () => {
             </button>
           </a>
         </div>
-      </div>
+      </div> */}
+
     </div>
   );
 };

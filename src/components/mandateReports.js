@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { getAllMandateReports } from "../services/reports";
+import { mandateReport } from "../services/reports";
 
 import Table from "./table";
-const MandateReports = () => {
+const MandateReports = ({ mandateData }) => {
   const tableHeadings = [
     { id: "slNo", label: "SL No", numeric: true },
     { id: "transactionID", label: "Mandate ID", numeric: false },
@@ -17,10 +17,10 @@ const MandateReports = () => {
   ];
   const [tableData, setTableData] = useState([])
 
-  const fetchData = ()=>{
-    getAllMandateReports((err, res) => {
+  const fetchData = () => {
+    mandateReport(mandateData, (err, res) => {
       if (err) return console.log(err.response)
-      console.log(res)
+      // console.log(res)
       if (res.data.messageDiscription) {
         alert(res.data.messageDiscription)
         return
@@ -44,7 +44,7 @@ const MandateReports = () => {
   useEffect(() => {
     fetchData()
   }, [])
-  
+
   return (
     <div style={{ marginTop: "85px" }}>
       <div class="row">

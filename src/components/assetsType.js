@@ -160,17 +160,19 @@ const AssetsType = () => {
           <div id="myDIV">
             {/* <div class="row justify-content-center col-md-6 ml-auto mr-auto"> */}
             <div class="row justify-content-start col-md-6">
+
               <div class="col-12 d-flex align-items-center px-0">
-                <div class="flex-1 col-md-8 pl-0 pr-0">
+                <div class="flex-1 col-12 col-md-8 pl-0 pr-0">
                   <TextField label="Asset Type" name="assetType" variant="standard" 
                   fullWidth
                   value={assetType}
                   onChange={e => setAssetType(e.target.value)} />
                 </div>
-                <div class="col-md-4"></div>
+                <div class="col-md-4 col-0"></div>
               </div>
+
               <div class="col-12 d-flex align-items-center px-0">
-                <div class="flex-1 col-md-8 pl-0 pr-0">
+                <div class="flex-1 col-12 col-md-8 pl-0 pr-0">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
                     <InputLabel id="asset-type-status-select">Asset Type Status</InputLabel>
                     <Select
@@ -186,15 +188,23 @@ const AssetsType = () => {
                   </FormControl>
                 </div>
                 <div class="col-md-4">
+                 
+                </div>
+              </div>
+
+              <div class="col-12 d-flex align-items-center px-0">
+                <div className="col-md-8 col-12  d-flex justify-content-center">
                   <a
-                    href="#"
+                    href="#."
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
                     onClick={handleSubmit}
                   >
                     Add
                   </a>
                 </div>
+                <div class="col-md-4"> </div>
               </div>
+
             </div>
           </div>
         </div>

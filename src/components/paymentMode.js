@@ -155,8 +155,9 @@ const PaymentMode = () => {
           <div id="myDIV">
             {/* <div class="row justify-content-center col-md-6 ml-auto mr-auto"> */}
             <div class="row justify-content-start col-md-6">
+
               <div class="col-12 d-flex align-items-center px-0">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0">
+                <div class="md-form col-12 flex-1 col-md-8 pl-0 pr-0">
                   <input
                     type="text"
                     id="materialSubscriptionFormEmail"
@@ -170,8 +171,9 @@ const PaymentMode = () => {
                 </div>
                 <div class="col-md-4"></div>
               </div>
+
               <div class="col-12 d-flex align-items-center px-0">
-                <div class="md-form flex-1 col-md-8 pl-0 pr-0 mt-2">
+                <div class="md-form col-12 flex-1 col-md-8 pl-0 pr-0 mt-2">
                   <FormControl variant="standard" sx={{ m: 1, width: '100%', marginLeft: '0' }}>
                     <InputLabel id="payment-mode-status-select"
                       className={paymentStatus === '' ? 'in-active' : 'active'}>
@@ -189,7 +191,11 @@ const PaymentMode = () => {
                     </Select>
                   </FormControl>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4"></div>
+              </div>
+
+              <div class="col-12 d-flex align-items-center px-0">
+                <div className="col-md-8 col-12 d-flex justify-content-center">
                   <a
                     href="#."
                     class="btn swatch-gray btn-sm btn-rounded waves-effect waves-light login_btn"
@@ -198,7 +204,9 @@ const PaymentMode = () => {
                     Add
                   </a>
                 </div>
+                <div class="col-md-4"> </div>
               </div>
+
             </div>
           </div>
         </div>

@@ -9,16 +9,3 @@ export const mandateReport = (body, cb) => {
       .catch(err => cb(err, null))
 }
 
-export const getAllMandateReports = (cb) => {
-   const initialState = {
-      mandateStatus: '',
-      name: '',
-      accountNumber: '',
-      mandateId: '',
-      assetNumber: '',
-      assetType: '',
-   }
-   axios.post(`${BASE_URL}/payment/mandateReport`, initialState)
-      .then(res => cb(null, res))
-      .catch(err => cb(err, null))
-}
