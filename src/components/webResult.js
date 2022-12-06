@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
+import { getWebUser } from "../services/get";
 import Table from "./table";
+
 const WebResult = () => {
   const tableHeadings = [
     { id: "slNo", label: "SL No", numeric: true },
@@ -12,74 +15,33 @@ const WebResult = () => {
     { id: "status", label: "Status", numeric: false },
     { id: "action", label: "Action", numeric: false },
   ];
-  const tableData = [
-    {
-      slNo: 1,
-      userID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      mobileNo: "7845145896",
-      email: "abc@gmail.com",
-      userType: "Admin",
-      status: "Intiated",
-      action: "Edit/view",
-    },
-    {
-      slNo: 2,
-      userID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      mobileNo: "7845145896",
-      email: "abc@gmail.com",
-      userType: "Support",
-      status: "Processed",
-      action: "Edit/view",
-    },
-    {
-      slNo: 3,
-      userID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      mobileNo: "7845145896",
-      email: "abc@gmail.com",
-      userType: "Admin",
-      status: "Expired",
-      action: "Edit/view",
-    },
-    {
-      slNo: 4,
-      userID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash K",
-      mobileNo: "7845145896",
-      email: "abc@gmail.com",
-      userType: "Admin",
-      status: "Intiated",
-      action: "Edit/view",
-    },
-    {
-      slNo: 5,
-      userID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash",
-      mobileNo: "7845145896",
-      email: "abc@gmail.com",
-      userType: "Support",
-      status: "Processed",
-      action: "Edit/view",
-    },
-    {
-      slNo: 6,
-      userID: "#2345",
-      date: "2022-08-26",
-      userName: "Prakash K",
-      mobileNo: "7845145896",
-      email: "abc@gmail.com",
-      userType: "Admin",
-      status: "Expired",
-      action: "Edit/view",
-    },
-  ];
+  const [webUsers, setWebUsers] = useState([])
+  // const [webUsers, setWebUsers] = useState([])
+
+  useEffect(() => {
+    getWebUser((err, res) => {
+      if (err) return console.log(err)
+      console.log(res)
+      if (res.data.length > 0) {
+        let tempData = res.data.map((user, idx) => {
+          const { id, address, country, emailId, firstname, lastname, mobile, pinCode, status, userType } = user
+          return {
+            slNo: idx + 1,
+            userId: id,
+            date: '-',
+            userName: lastname !== null ? `${firstname} ${lastname}` : '-',
+            mobileNumber: mobile,
+            email: emailId,
+            userType: userType === 4 ? 'Admin' : userType === 5 ? 'Support' : '-',
+            status: status === 10 ? 'Initiated' : status === 20 ? 'Expired' : 'Processed',
+            action: 'Edit / View'
+          }
+        })
+        setWebUsers(tempData)
+      }
+    })
+  }, [])
+
   return (
     <div style={{ margin: "85px 0" }}>
       <div class="row">
@@ -124,7 +86,7 @@ const WebResult = () => {
       </div>
       <Table
         tableHeadings={tableHeadings}
-        tableData={tableData}
+        tableData={webUsers}
         tableName={`User Reports`}
         defaultSort={`slNo`}
       />
