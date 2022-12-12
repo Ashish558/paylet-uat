@@ -97,7 +97,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {user && <Header user={user} handleLogout={handleLogout} />}
+      {user && <Header user={user} handleLogout={handleLogout} {...loginProps} />}
 
       <Switch>
         <Route path="/" exact render={() => isLoggedIn ? <Home /> : <Login  {...loginProps} />} />

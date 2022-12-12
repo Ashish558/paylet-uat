@@ -10,7 +10,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
   const handleSubmit = e => {
     e.preventDefault()
     loginUser({mobileNumber, password}, (err, res) => {
-      if (err) console.log(err)
+      if (err) console.log(err.response)
       console.log(res)
       if (res.data.messageDiscription === "password is valid") {
         // alert('Login successful')

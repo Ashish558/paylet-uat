@@ -46,7 +46,7 @@ const MandateReports = ({ mandateData }) => {
   }, [])
 
   return (
-    <div style={{ marginTop: "85px" }}>
+    <div style={{ marginTop: "85px",  marginBottom: "70px" }}>
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">

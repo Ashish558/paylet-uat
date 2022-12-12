@@ -30,3 +30,9 @@ export const loginUser = (body, cb) => {
       .then(res => cb(null, res))
       .catch(err => cb(err, null))
 }
+
+export const getUserDetails = (body, cb) => {
+   axios.post(`${BASE_URL}/initial/adminUserList`, body)
+      .then(res => cb(null, res))
+      .catch(err => cb(err, null))
+}
