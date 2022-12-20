@@ -17,11 +17,11 @@ const Header = (props) => {
   };
 
   useEffect(() => {
-    let body = { id: '24' }
+    let body = { id: 24 }
     if (isLoggedIn) {
       getUserDetails(body, (err, res) => {
         if (err) return console.log(err.response)
-        console.log(res)
+        console.log(res.data)
       })
     }
   }, [isLoggedIn])
