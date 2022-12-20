@@ -17,7 +17,7 @@ const Header = (props) => {
   };
 
   useEffect(() => {
-    let body = { id: 3 }
+    let body = { id: '24' }
     if (isLoggedIn) {
       getUserDetails(body, (err, res) => {
         if (err) return console.log(err.response)
