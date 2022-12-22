@@ -17,6 +17,24 @@ const MandateReports = ({ mandateData }) => {
   ];
   const [tableData, setTableData] = useState([])
 
+  const getFormattedDate = argDate => {
+    const date = new Date(argDate)
+    let year = date.getFullYear()
+    let month = date.getMonth()
+    let dateNum = date.getDate()
+    console.log(date.getMonth());
+    if (month < 10) {
+      month = `0${month + 1}`
+    } else {
+      month = month + 1
+    }
+    if (dateNum < 10) {
+      dateNum = `0${dateNum}`
+    }
+    let dateFormatted = `${dateNum}-${month}-${year}`
+    return dateFormatted
+  }
+
   const fetchData = () => {
     mandateReport(mandateData, (err, res) => {
       if (err) return console.log(err.response)
@@ -29,7 +47,7 @@ const MandateReports = ({ mandateData }) => {
         return {
           slno: idx + 1,
           mandateId: item.mandateId,
-          date: 'date',
+          date: getFormattedDate(item.fromDate),
           name: item.name,
           paymentFreq: item.paymentFreq,
           numberOfPayment: item.numberOfPayment,
@@ -46,7 +64,7 @@ const MandateReports = ({ mandateData }) => {
   }, [])
 
   return (
-    <div style={{ marginTop: "85px",  marginBottom: "70px" }}>
+    <div style={{ marginTop: "85px", marginBottom: "70px" }}>
       <div class="row">
         <div class="col-md-6">
           <h4 class="ml-4 mt-3 heading-color">

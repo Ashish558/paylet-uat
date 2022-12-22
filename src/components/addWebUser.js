@@ -42,45 +42,45 @@ console.log(values)
 
    return (
       <div style={{ margin: "85px 0" }}>
-         {/* <div class="row">
-            <div class="col-md-6">
-               <h4 class="ml-4 mt-3 heading-color">
+         {/* <div className="row">
+            <div className="col-md-6">
+               <h4 className="ml-4 mt-3 heading-color">
                   <Link data-toggle="tooltip" title="Back" to="/web-user">
-                     <i class="fas fa-chevron-left"></i>
+                     <i className="fas fa-chevron-left"></i>
                   </Link>&nbsp;
-                  <span class="heading-color">Add Web User</span>
+                  <span className="heading-color">Add Web User</span>
                </h4>
             </div>
          </div> */}
-         <hr class="mt-0 ml-4 mr-4" />
-         <div class="row sector2">
-            <div class="col-md-12">
-               <h5 class="mb-0">
+         <hr className="mt-0 ml-4 mr-4" />
+         <div className="row sector2">
+            <div className="col-md-12">
+               <h5 className="mb-0">
                   <Link data-toggle="tooltip" title="Back" to="/web-user">
-                     <i class="fas fa-chevron-left"></i>
+                     <i className="fas fa-chevron-left"></i>
                   </Link>&nbsp;
                   Add Web User
                </h5>
                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb ml-2 mb-3 pb-2 pt-0">
-                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                     <li class="breadcrumb-item"><a href="/add-web-user">Web User</a></li>
+                  <ol className="breadcrumb ml-2 mb-3 pb-2 pt-0">
+                     <li className="breadcrumb-item"><a href="/">Home</a></li>
+                     <li className="breadcrumb-item"><a href="/add-web-user">Web User</a></li>
                   </ol>
                </nav>
             </div>
          </div>
          <div id="main_content">
 
-            <div class="row mr-auto col-md-6">
-               <div class="col pl-0">
-                  <li class="selected" id="page1">Add Web User</li>
+            <div className="row mr-auto col-md-6">
+               <div className="col pl-0">
+                  <li className="selected" id="page1">Add Web User</li>
 
                </div>
             </div>
             <form id="page_content" onSubmit={handleSubmit}>
 
-               <div class="row col-md-6 mr-auto pl-0">
-                  <div class="col-md-6">
+               <div className="row col-md-6 mr-auto pl-0">
+                  <div className="col-md-6">
                      <TextField label="First Name"
                         name="firstName"
                         variant="standard"
@@ -89,7 +89,7 @@ console.log(values)
                         onChange={e => setValues({ ...values, firstname: e.target.value })}
                      />
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                      <TextField label="Last Name"
                         name="lastName"
                         variant="standard"
@@ -97,7 +97,7 @@ console.log(values)
                         value={values.lastname}
                         onChange={e => setValues({ ...values, lastname: e.target.value })} />
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                      <TextField label="Mobile Number"
                         name="mobileNumber"
                         variant="standard"
@@ -105,7 +105,7 @@ console.log(values)
                         value={values.mobileNumber}
                         onChange={e => setValues({ ...values, mobileNumber: e.target.value })} />
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                      <TextField type="email"
                         label="Email"
                         name="email" variant="standard"
@@ -113,7 +113,7 @@ console.log(values)
                         value={values.emailId}
                         onChange={e => setValues({ ...values, emailId: e.target.value })} />
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                      <TextField label="Address"
                         name="address"
                         variant="standard"
@@ -121,7 +121,7 @@ console.log(values)
                         value={values.address}
                         onChange={e => setValues({ ...values, address: e.target.value })} />
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                      <TextField label="Pincode"
                         name="pincode"
                         variant="standard"
@@ -129,7 +129,7 @@ console.log(values)
                         value={values.pinCode}
                         onChange={e => setValues({ ...values, pinCode: e.target.value })} />
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
                      <FormControl variant="standard" sx={{ m: 1, width: '100%', minWidth: 120, margin: '0' }}>
                         <InputLabel id="country-select">Country</InputLabel>
                         <Select
@@ -144,7 +144,7 @@ console.log(values)
                         </Select>
                      </FormControl>
                   </div>
-                  <div class="col-md-6">
+                  <div className="col-md-6">
 
                      <FormControl variant="standard" sx={{ m: 1, width: '100%', minWidth: 120, margin: '0' }}>
                         <InputLabel id="user-type-select">User Type</InputLabel>
@@ -162,10 +162,10 @@ console.log(values)
 
                   </div>
                </div>
-               <div class="row justify-content-start">
-                  <div class="col-md-6 mt-4 flex justify-content-center">
-                     <button class="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">ADD</button>
-                     <a href="/web-user"><button type="button" class="btn btn-outline-primary waves-effect" onclick="myFunction()">cancel</button></a>
+               <div className="row justify-content-start">
+                  <div className="col-md-6 mt-4 flex justify-content-center">
+                     <button className="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false">ADD</button>
+                     <a href="/web-user"><button type="button" className="btn btn-outline-primary waves-effect" onclick="myFunction()">cancel</button></a>
                   </div>
                </div>
             </form>
@@ -174,57 +174,57 @@ console.log(values)
          </div>
          {/* <form id="page_content" onSubmit={handleSubmit} >
 
-            <div class="row col-md-6 mr-auto pl-0">
-               <div class="col-md-6">
-                  <div class="md-form">
-                     <input required={true} type="text" id="firstName" class="form-control"
+            <div className="row col-md-6 mr-auto pl-0">
+               <div className="col-md-6">
+                  <div className="md-form">
+                     <input required={true} type="text" id="firstName" className="form-control"
                         value={values.firstname}
                         onChange={e => setValues({ ...values, firstname: e.target.value })}
                      />
                      <label for="">First Name</label>
                   </div>
                </div>
-               <div class="col-md-6">
-                  <div class="md-form">
-                     <input required={true} type="text" id="lastName" class="form-control"
+               <div className="col-md-6">
+                  <div className="md-form">
+                     <input required={true} type="text" id="lastName" className="form-control"
                         value={values.lastname}
                         onChange={e => setValues({ ...values, lastname: e.target.value })} />
                      <label for="">Last Name</label>
                   </div>
                </div>
-               <div class="col-md-6">
-                  <div class="md-form">
-                     <input required={true} type="number" id="mobilenumber" class="form-control"
+               <div className="col-md-6">
+                  <div className="md-form">
+                     <input required={true} type="number" id="mobilenumber" className="form-control"
                         value={values.mobileNumber}
                         onChange={e => setValues({ ...values, mobileNumber: e.target.value })} />
                      <label for="">Mobile Number</label>
                   </div>
                </div>
-               <div class="col-md-6">
-                  <div class="md-form">
-                     <input required={true} type="email" id="email" class="form-control"
+               <div className="col-md-6">
+                  <div className="md-form">
+                     <input required={true} type="email" id="email" className="form-control"
                         value={values.emailId}
                         onChange={e => setValues({ ...values, emailId: e.target.value })} />
                      <label for="">Email</label>
                   </div>
                </div>
-               <div class="col-md-6">
-                  <div class="md-form">
-                     <input required={true} type="text" id="address" class="form-control"
+               <div className="col-md-6">
+                  <div className="md-form">
+                     <input required={true} type="text" id="address" className="form-control"
                         value={values.address}
                         onChange={e => setValues({ ...values, address: e.target.value })} />
                      <label for="">Address</label>
                   </div>
                </div>
-               <div class="col-md-6">
-                  <div class="md-form">
-                     <input required={true} type="number" id="pincode" class="form-control"
+               <div className="col-md-6">
+                  <div className="md-form">
+                     <input required={true} type="number" id="pincode" className="form-control"
                         value={values.pinCode}
                         onChange={e => setValues({ ...values, pinCode: e.target.value })} />
                      <label for="">Pincode</label>
                   </div>
                </div>
-               <div class="col-md-6">
+               <div className="col-md-6">
                   <FormControl required={true} variant="standard" sx={{ mt: 1, minWidth: 120, width: '100%' }}>
                      <InputLabel id="country-select">Country</InputLabel>
                      <Select
@@ -239,7 +239,7 @@ console.log(values)
                      </Select>
                   </FormControl>
                </div>
-               <div class="col-md-6">
+               <div className="col-md-6">
 
                   <FormControl required={true} variant="standard" sx={{ mt: 1, width: '100%', minWidth: 120 }}>
                      <InputLabel id="user-type-select">User Type</InputLabel>
@@ -257,10 +257,10 @@ console.log(values)
 
                </div>
             </div>
-            <div class="row justify-content-center">
-               <div class="col-md-6 mt-4">
-                  <button class="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" >ADD</button>
-                  <a href="home.html"><button type="button" class="btn btn-outline-primary waves-effect" onclick="myFunction()">cancel</button></a>
+            <div className="row justify-content-center">
+               <div className="col-md-6 mt-4">
+                  <button className="btn btn-primary" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" >ADD</button>
+                  <a href="home.html"><button type="button" className="btn btn-outline-primary waves-effect" onclick="myFunction()">cancel</button></a>
                </div>
             </div>
 

@@ -17,6 +17,24 @@ const TransactionReport = ({ transactionData, setTransactionData }) => {
   ];
   const [tableData, setTableData] = useState([])
 
+  const getFormattedDate = argDate => {
+    const date = new Date(argDate)
+    let year = date.getFullYear()
+    let month = date.getMonth()
+    let dateNum = date.getDate()
+    console.log(date.getMonth());
+    if (month < 10) {
+      month = `0${month + 1}`
+    } else {
+      month = month + 1
+    }
+    if (dateNum < 10) {
+      dateNum = `0${dateNum}`
+    }
+    let dateFormatted = `${dateNum}-${month}-${year}`
+    return dateFormatted
+  }
+
   const fetchData = () => {
      transactionReport(transactionData, (err, res) => {
       if (err) return console.log(err.response)
@@ -26,7 +44,7 @@ const TransactionReport = ({ transactionData, setTransactionData }) => {
         return {
           slNo: idx + 1,
           transactionId: transectionId,
-          fromDate: fromDate,
+          fromDate: getFormattedDate(fromDate),
           name: name,
           paymentFreq: paymentFreq,
           numberOfPayment: numberOfPayment,

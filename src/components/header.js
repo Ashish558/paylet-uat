@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import logoWhite from "./../images/logo-color-white-1.png";
 import Dropdown from "react-bootstrap/Dropdown";
@@ -12,19 +12,25 @@ const Header = (props) => {
   const [state, setState] = React.useState({
     left: false,
   });
+
   const toggleDrawer = (anchor, open) => (event) => {
     setState({ ...state, [anchor]: open });
   };
 
-  useEffect(() => {
-    let body = { id: 24 }
-    if (isLoggedIn) {
-      getUserDetails(body, (err, res) => {
-        if (err) return console.log(err.response)
-        console.log(res.data)
-      })
-    }
-  }, [isLoggedIn])
+  // useEffect(() => {
+  //   let body = { id: 24 }
+  //   if (isLoggedIn) {
+  //     getUserDetails(body, (err, res) => {
+  //       if (err) return console.log(err.response)
+  //       // console.log(res.data)
+  //       if (res.data.id) {
+  //         setUser(res.data)
+  //       }
+  //     })
+  //   }
+  // }, [isLoggedIn])
+
+  const user = JSON.parse(sessionStorage.getItem('user'))
 
   const anchor = "left";
   const list = (anchor) => (
@@ -230,30 +236,30 @@ const Header = (props) => {
                   <div class="text-center">
                     <i class="fas fa-user-circle  fa-3x text-center"></i>
                   </div>
-                  <Dropdown.Item href="#/action-1">
+                  <Dropdown.Item>
                     <label>
-                      <span>Username</span>
+                      <span>First Name</span>
                     </label>
                     <p class="border-bottom">
-                      <span>abcde</span>
+                      <span> {user.firstname ? user.firstname : '-'} </span>
                     </p>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-2">
+                  <Dropdown.Item>
                     {" "}
                     <label>
-                      <span>Corporate Id</span>
+                      <span>Last Name</span>
                     </label>
                     <p class="border-bottom">
-                      <span>abcde</span>
+                      <span>{user.lastname ? user.lastname : '-'}</span>
                     </p>
                   </Dropdown.Item>
-                  <Dropdown.Item href="#/action-3" class="dropdown-item">
+                  <Dropdown.Item class="dropdown-item">
                     {" "}
                     <label>
-                      <span>Corporate Name</span>
+                      <span> Email </span>
                     </label>
                     <p class="border-bottom">
-                      <span>abcde</span>
+                      <span>{user.emailId ? user.emailId : '-'}</span>
                     </p>
                   </Dropdown.Item>
 

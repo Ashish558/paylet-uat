@@ -49,7 +49,8 @@ import {
 import DashBoard from "./components/Dashboard/dashboard";
 const App = () => {
 
-  const [user, setUser] = useState({ name: "ankeeta" });
+  const [user, setUser] = useState({ firstname: "ankeeta" })
+  
   const [loading, setLoading] = useState(true)
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const loginProps = { isLoggedIn, setIsLoggedIn }
@@ -97,7 +98,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      {user && <Header user={user} handleLogout={handleLogout} {...loginProps} />}
+      {user && <Header setUser={setUser} user={user} handleLogout={handleLogout} {...loginProps} />}
 
       <Switch>
         <Route path="/" exact render={() => isLoggedIn ? <Home /> : <Login  {...loginProps} />} />
