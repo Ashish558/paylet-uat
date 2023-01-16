@@ -1,2 +1,2 @@
 
-export const BASE_URL = 'https://sandbox.paylet.io:9443/web'
+export const BASE_URL = process.env.REACT_APP_BASE_URL

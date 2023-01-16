@@ -30,8 +30,10 @@ const Header = (props) => {
   //   }
   // }, [isLoggedIn])
 
-  const user = JSON.parse(sessionStorage.getItem('user'))
-
+  let user = JSON.parse(sessionStorage.getItem('user'))
+  if (user === null || user === undefined) {
+    user = {}
+  }
   const anchor = "left";
   const list = (anchor) => (
     <div class="modal-content ">
