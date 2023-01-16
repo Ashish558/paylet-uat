@@ -1,5 +1,5 @@
 import axios from "axios"
-const BASE_URL = 'https://paylet.paycorp.io/web'
+const BASE_URL = 'https://sandbox.paylet.io:9443/web'
 
 export const getDashboard = (cb) => {
    axios.get(`${BASE_URL}/initial/dashBoard `)

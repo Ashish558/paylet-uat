@@ -1,5 +1,5 @@
 import axios from "axios"
-const BASE_URL = 'https://paylet.paycorp.io/web'
+const BASE_URL = 'https://sandbox.paylet.io:9443/web'
 
 //CURRENCY
 export const getAllCurrency = (cb) => {
