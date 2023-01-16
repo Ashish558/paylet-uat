@@ -1,2 +1,2 @@
 
-const BASE_URL = 'https://paylet.paycorp.io/web'
+export const BASE_URL = 'https://paylet.paycorp.io/web'
