@@ -69,7 +69,7 @@ const WebUser = () => {
             userName: lastname !== null ? `${firstname} ${lastname}` : '-',
             mobileNumber: mobile,
             email: emailId,
-            userType: userType === 4 ? 'Admin' : userType === 5 ? 'Support' : '-',
+            userType: userType === '4' ? 'Admin' : userType === '5' ? 'Support' : '-',
             status: status === 10 ? 'Initiated' : status === 20 ? 'Expired' : 'Processed',
             action: 'Edit / View'
           }
