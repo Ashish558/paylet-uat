@@ -16,6 +16,7 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         // alert('Login successful')
         sessionStorage.setItem('userStatus', '1')
         const user = JSON.stringify({...res.data.adminDetails})
+        console.log('user', user);
         sessionStorage.setItem('user', user)
         setIsLoggedIn(true)
         return
