@@ -12,10 +12,10 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     loginUser({mobileNumber, password}, (err, res) => {
       if (err) console.log(err.response)
       console.log(res)
-      if (res.data.userStatus) {
+      if (res.data.adminDetails) {
         // alert('Login successful')
         sessionStorage.setItem('userStatus', '1')
-        // const user = JSON.stringify({...res.data.adminDetails})
+        const user = JSON.stringify({...res.data.adminDetails})
         // sessionStorage.setItem('user', user)
         setIsLoggedIn(true)
         return
