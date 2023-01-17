@@ -140,7 +140,7 @@ console.log(values)
                            onChange={e => setValues({ ...values, country: e.target.value })}
                         >
                            <MenuItem value="India">India</MenuItem>
-                           <MenuItem value="India">India</MenuItem>
+                           {/* <MenuItem value="India">India</MenuItem> */}
                         </Select>
                      </FormControl>
                   </div>
